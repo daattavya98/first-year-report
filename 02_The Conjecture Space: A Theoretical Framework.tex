@@ -1,0 +1,42 @@
+\chapter{The Conjecture Space: A theoretical framework} 
+\section{Relevant functional analysis stuff}
+cite (Challenger paper) Might be able to extend the conjecture/relation space to a Banach lattice and not just a Banach space.
+\section{A primer on Model Theory}
+For the remainder of this section, I assume familiarity with the basic definitions and results from first-order logic. Please see appendix ~\ref{app:FOL} for a brief overview.
+\subsection{Model theory of Banach Spaces}
+cite Jose Iovino's stuff. Making notes here so I keep track of them.
+To be able to apply model theoretic ideas to the conjecture space, we will need a series of definitions to talk about the relevant objects.\\
+
+Let $[-\infty, \infty]$ denote the set $\R\cup\{-\infty, \infty\}$ with the following topology: The open intervals $(a,b)$ for $a,b\in \R$. The basic neigbourhoods of $-\infty, \infty$ are of the form $[-\infty, a]$ and $(a,\infty]$ respectively for $a\in \R$.
+\begin{remark}
+    There is a uniform structure compatible with this topology that has a countable base, $\mathfrak{U}$.
+\end{remark}
+
+\begin{definition}[Real-valued m-ary relation]
+    A real-valued m-ary relation on a normed space $E$ is a function
+    \begin{equation*}
+        \crlR:E^m\rightarrow [-\infty, \infty]
+    \end{equation*}
+    which is uniformly continuous on every bounded subset of $E^m$.    
+\end{definition}
+
+\begin{definition}[normed space structure]
+    A normed space structure is a structure of the form
+    \begin{equation*}
+        \mathbf{E} = (E, f_i, \crlR_j : i\in I, j\in J),
+    \end{equation*}
+    where
+    \begin{itemize}
+        \item $E$ is a normed space over the field of real numbers.
+        \item Each $f_i$ if a function $f_i : E^m\rightarrow E$ for some positive integer $m$, and $f_i$ is uniformly continuous on every bounded subset of $E^m$.
+        \item Each $\crlR_j$ is a real-valued relation.
+    \end{itemize}
+\end{definition}
+Complete normed space structures are \textit{Banach Space Structures}.
+\begin{definition}[Linear Isometry]
+    Given two normed vector spaces $X$ and $Y$, a linear isometry is a linear map $T:X\rightarrow Y$ if it preserves the norm, i.e. $\|Tx\|_Y = \|x\|_X \: \forall x\in X$.
+\end{definition}
+\subsection{o-minimality approach (Convergence of function spaces over o-minimal structures) cite Margaret Thomas paper}
+\subsection{Reasonable effectiveness of model theory in mathematics (cite this)}
+\section{Stuff with Eric}
+\section{Proof space stuff?}
