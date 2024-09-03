@@ -11,14 +11,14 @@
 % For more info see `README.md`
 \documentclass[firstyr, withindex, glossary]{cam-thesis}
 
-
 % Citations using numbers
 \usepackage[numbers]{natbib}
 
 % Math packages
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+
+% Text packages
+\usepackage{xcolor}
 
 % Math symbols
 \newcommand{\R}{\mathbb{R}}
@@ -31,6 +31,10 @@
 % Theorem styles
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{prop}{Proposition}[section]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
