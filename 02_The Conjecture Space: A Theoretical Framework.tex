@@ -50,6 +50,19 @@ relationship is defined in the usual way.
     and the general model theory of different kinds of orders? In particular, can I find a link to o-minimality maybe? Super speculative of course.
 \end{remark}
 
+Approximations are built inductively in the following way:
+\begin{align*}
+    & \varphi & & \text{ Approximations of }\varphi\\\\
+    & ||t||\leq M & & ||t||\leq N, \text{ where } N > M\\
+    & \crlR(t_1,...,t_m)\leq M & & \crlR(t_1,...,t_m)\leq N, \text{ where } N > M\\
+    & \exists x(||x||\leq M \wedge \sigma) & & \exists x(||x||\leq N \wedge \sigma^{'}), \text{ where } N > M \text{ and } \sigma^{'} \text{ is an approximation of }\sigma
+\end{align*}
+with similar rules of disjunction and atomic positive bounded formulas of the opposite type. $\varphi < \varphi^{'}$ if $\varphi^{'}$ is an approximation of $\varphi$ and the relation $ < $ is a partial order in $L$. The sets
+\begin{equation*}
+    [\phi, \psi) = \{\sigma : \phi \leq \sigma < \psi\}, \quad \phi < \psi
+\end{equation*}
+form a basis for the order topology on $L$.
+
 \begin{lemma}[Perturbation Lemma]
     For every positive bounded $L$-formula, $\varphi(x_1,...,x_n)$, 
     every $\varphi^{'}>\varphi$ and every $M > 0$, there exists $\delta > 0$ such that:
@@ -76,6 +89,12 @@ So $\mathbf{X}$ approximately satisfies a set $\Gamma(x_1,...,x_n)$ of positive 
     This notion of approximate satisfaction rather than the usual notion of satisfaction provides the correct semantics for a model-theoretic analysis of Banach space structures.
 \end{remark}
 
+Read through the beginning section of Iovino's book related to $\crlU$, ultraproducts, ultrafilters etc. for Banach space structures.
+TODO: Include definition of filter and ultrafilter if it feels necessary later.
+
+Don't understand the banach space model theory compactness theorem yet (As in the proof). Moving on to see if this stuff is going to be useful.
+
+Is the stuff on defining a real-valued relation useful?
 \subsection{o-minimality approach}
 
 (Convergence of function spaces over o-minimal structures) cite Margaret Thomas paper
@@ -292,4 +311,26 @@ Here I attempt a proof of lemma \ref{fin-comp-eval} which is the crucial part of
 
 \subsection{Reasonable effectiveness of model theory in mathematics (cite this)}
 \section{Stuff with Eric}
-\section{Proof space stuff?}
+\section{Theorem spaces}
+Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
+I define the ``space of theorems'', $\mathfrak{T}$ is the space of mathematical theorems. Note that this is a subset of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria, i.e.,
+there are no counter-examples to the theorem on any domain.
+$\mathfrak{T}$ itself contains a furthermore rigorous subset, $\mathfrak{T}_F$, the ``space of formal theorems''. $\mathfrak{T}_F$ is the set of theorems that have been formalized in any formal system. Clearly $\mathfrak{T}_F\subset\mathfrak{T}$. A potential upside of working with $\mathfrak{T}_F$ is that their is a growing database of formalized theorems due to the widespread interest and ingenuity of the formalization community \cite{formalization_examples}.
+Moreover a number of recent results have been published by training models by learning on datasets of formal theorems \cite{Deepmind_stuff}. A natural direction of inquiry is what is the relationship between these spaces? What is the connexion, if any, between the elements of these spaces?
+\\\par
+It is clear that $\mathfrak{T}_F\subset\mathfrak{T}\subset\mathfrak{Conj}$. The datasets based on $\mathfrak{T}_F$ can be leveraged for a variety of learning techniques. These models have achieved state-of-the-art accuracies on solving benchmark mathematics problems such as miniF2F, ProofNet, MATH and competition problem datasets such as IMO 2024 and the recently introduced PutnamBench. Improving AI models' ability to solve these tasks with formally verified proofs
+is an extremely active and fruitful area of research. However, I argue that there is still a huge obstruction to these models proving helpful for research and discovery in mathematics. I expand on this issue in an article I am currently working on (preprint to be available soon). 
+
+\textcolor{red}{
+An essential feature in applications of formalization and formal datasets is that an informal proof/solution already exists. Informal in this context refers to the notion of a formal proof as verified by a theorem proving system. Note that while the ability to formalize is at the heart of the field of mathematics and acceptance of proofs,
+it is not a target that the working mathematician ever seeks to achieve in practice. The working mathematician's goal is to find proofs at the level of certainty that is accepted by the mathematical community and is fruitful to the progress of the discipline as a whole. Formal proofs as produced by systems such as Lean, Isabelle, Coq etc., although conceptually crucial, are often unintelligble to humans and well beyond the level of rigour that is needed by the community. Many formalization details are simply unnecessary and
+intuitively already understood and internalized by mathematicians. Moreover, details of formalization can on occasion be extremely tedious and don't provide further insight into the problem.
+\\
+“My intellect never quite recovered from the strain of
+writing [Principia Mathematica]. I have been ever since
+definitely less capable of dealing with difficult
+abstractions than I was before.” (Russell, Autobiography)
+However, formalization is quickly becoming widely accepted by the mathematical community and is quickly becoming the expected standard for published research \cite{Tao, formalization_projects_to_check_shit}
+}
+
+This could be in mathematical literature or in the case of competition problems, human mathematicians have constructed them such that a model solution exists. 
