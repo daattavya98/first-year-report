@@ -1,4 +1,6 @@
 \chapter{The Conjecture Space: A theoretical framework} 
+\subsection{Machine learning over the conjecture space}
+\subsection{Theory of conjecture space}
 \section{Relevant functional analysis stuff}
 cite (Challenger paper) Might be able to extend the conjecture/relation space to a Banach lattice and not just a Banach space.
 \section{A primer on Model Theory}
@@ -32,11 +34,312 @@ Let $[-\infty, \infty]$ denote the set $\R\cup\{-\infty, \infty\}$ with the foll
         \item Each $\crlR_j$ is a real-valued relation.
     \end{itemize}
 \end{definition}
-Complete normed space structures are \textit{Banach Space Structures}.
-\begin{definition}[Linear Isometry]
-    Given two normed vector spaces $X$ and $Y$, a linear isometry is a linear map $T:X\rightarrow Y$ if it preserves the norm, i.e. $\|Tx\|_Y = \|x\|_X \: \forall x\in X$.
+
+Complete normed space structures are \textit{Banach Space Structures}. One can now define a suitable \textit{language} for normed space structures by
+ensuring the following: function and relation symbols for each function and relation in the structure, moduli of uniform continuity for each such symbol on each bounded subset
+and bounds for the function symbol on each bounded subset. (skipping technical details for now)
+
+% \begin{definition}[Linear Isometry]
+%     Given two normed vector spaces $X$ and $Y$, a linear isometry is a linear map $T:X\rightarrow Y$ if it preserves the norm, i.e. $\|Tx\|_Y = \|x\|_X \: \forall x\in X$.
+% \end{definition}
+
+Now, we make an analogous definition of well-formed formulas. Namely, the \textit{postive bounded formulas} on these Banach space structures. Interpretation and the syntax-semantics
+relationship is defined in the usual way.
+
+\begin{remark}
+    \textbf{APPROXIMATION OF FORMULAS: } There is an interesting notion of approximation of positive bounded formulas, defined by relaxing the norm estimates in the orginal positive bounded formula.
+    This defines a partial order and induces a order topology. Interestingly, it seems like this order might be connected to the boundary of the conjecture space? I hypothesize. Also, is there a link between this order topology
+    and the general model theory of different kinds of orders? In particular, can I find a link to o-minimality maybe? Super speculative of course.
+\end{remark}
+
+Approximations are built inductively in the following way:
+\begin{align*}
+    & \varphi & & \text{ Approximations of }\varphi\\\\
+    & ||t||\leq M & & ||t||\leq N, \text{ where } N > M\\
+    & \crlR(t_1,...,t_m)\leq M & & \crlR(t_1,...,t_m)\leq N, \text{ where } N > M\\
+    & \exists x(||x||\leq M \wedge \sigma) & & \exists x(||x||\leq N \wedge \sigma^{'}), \text{ where } N > M \text{ and } \sigma^{'} \text{ is an approximation of }\sigma
+\end{align*}
+with similar rules of disjunction and atomic positive bounded formulas of the opposite type. $\varphi < \varphi^{'}$ if $\varphi^{'}$ is an approximation of $\varphi$ and the relation $ < $ is a partial order in $L$. The sets
+\begin{equation*}
+    [\phi, \psi) = \{\sigma : \phi \leq \sigma < \psi\}, \quad \phi < \psi
+\end{equation*}
+form a basis for the order topology on $L$.
+
+\begin{lemma}[Perturbation Lemma]
+    For every positive bounded $L$-formula, $\varphi(x_1,...,x_n)$, 
+    every $\varphi^{'}>\varphi$ and every $M > 0$, there exists $\delta > 0$ such that:
+    if $\mathbf{X}$ is a Banach space $L$-structure and $a_1,...,a_n$ are elements of the universe of $\mathbf{X}$ such that
+    \begin{equation*}
+        \mathbf{X}\models \bigwedge_{1\leq i\leq n} ||a_i||\leq M \wedge \varphi[a_1,...,a_n],
+    \end{equation*}
+    then whenever $b_1,...,b_n$ are elements of the universe of $\mathbf{X}$ satisfying
+    \begin{equation*}
+        \max_{1\leq i\leq n} ||a_i - b_i|| < \delta,
+    \end{equation*}
+    we have
+    \begin{equation*}
+        \mathbf{X}\models\varphi^{'}[b_1,...,b_n]
+    \end{equation*}
+\end{lemma}
+
+\begin{definition}[Approximate Satisfaction]
+    $\mathbf{X}$ approximately satisfies $\varphi[a_1,...,a_n]$, written as $\mathbf{X}\models_{\mathcal{A}}\varphi[a_1,...,a_n]$ if for every approximation $\varphi^{'}$ of $\varphi$, $\mathbf{X}\models\varphi^{'}[a_1,...,a_n]$.
 \end{definition}
-\subsection{o-minimality approach (Convergence of function spaces over o-minimal structures) cite Margaret Thomas paper}
+
+So $\mathbf{X}$ approximately satisfies a set $\Gamma(x_1,...,x_n)$ of positive bounded formulas \textit{iff} $\mathbf{X}\models\Gamma_{+}[a_1,...,a_n]$ where $\Gamma_{+}$ is the set of all approximations of formulas in $\Gamma$.
+\begin{remark}
+    This notion of approximate satisfaction rather than the usual notion of satisfaction provides the correct semantics for a model-theoretic analysis of Banach space structures.
+\end{remark}
+
+Read through the beginning section of Iovino's book related to $\crlU$, ultraproducts, ultrafilters etc. for Banach space structures.
+TODO: Include definition of filter and ultrafilter if it feels necessary later.
+
+Don't understand the banach space model theory compactness theorem yet (As in the proof). Moving on to see if this stuff is going to be useful.
+
+Is the stuff on defining a real-valued relation useful?
+\subsection{o-minimality approach}
+
+(Convergence of function spaces over o-minimal structures) cite Margaret Thomas paper
+
+First copying in my previous work on o-minimality stuff
+
+\begin{definition}[Structure]
+    A \textbf{structure} $S$ on the real line consists of a boolean algebra
+\end{definition}
+
+Consider the simple case of our evaluation domain being the integer points from 1 to 100 in 1-dimension represented by $\mathbb{D}$.
+
+That is, the domain I'm interested in is simply the finite union of points from 1 to 100 (can extend this to the interval later). Clearly, as this is a finite union of points, it is a definable set in $\mathcal{S}^1$ on the simplest o-minimal structure $\R_{\text{alg}}$.
+Now consider functions from number theory act on singletons to give singletons as output. Suppose we consider the prime counting function $\pi(x)$ and Euler totient function $\varphi(x)$. Now, for integers $n > 30$, $\pi(n) < \varphi(n)$. (This is an inequality that was found by the conjecture machine)
+Suppose we consider $A\subset\mathbb{D}$ where
+
+\begin{equation*}
+    A = \{x | x\in (30, 100) \text{and} x\in\N \}
+\end{equation*}
+
+By definition, $A\subset\mathbb{D}$ and hence $A\in\mathcal{S}^1 \implies $ definable.
+Now take the function $f: n\mapsto\varphi(n) - \pi(n)$ acting on the set A defined above. Now $\pi(A)\subset\mathbb{D}, \varphi(A)\subset\mathbb{D}$ and `-' is a closed operation on $\mathbb{D}$. Thus $\varphi(A) - \pi(A)$ must be in $\mathbb{D}$ and hence $f(A)\subset\mathbb{D}$.
+From the second axiom in the definition of o-minimal structures,
+
+\begin{equation*}
+    A \in \mathcal{S}_n\implies A \times\R\in\mathcal{S}_{n+1} \text{ and } \R \times A\in\mathcal{S}_{n+1}
+\end{equation*}
+
+So if we consider the graph of f, $\Gamma(f)\subseteq\R^2$, we have that $\Gamma(f)$ is a set of points $(p,q)$ where $p\in P\subset\mathbb{D}$ and $q\in Q$ where $Q\in\mathbb{D}$. (As $f(A)\in\mathbb{D}$ from above)
+
+Now we know that $P\in\mathcal{S}_1, Q\in\mathcal{S}_1$. Thus by lemma 2.2 (i) [LVD]
+\begin{equation*}
+    A\in\mathcal{S}_m \text{ and } B\in\mathcal{S}_n \implies A\times B\in\mathcal{S}_{m+n}
+\end{equation*}
+
+$\Gamma(f)\in\mathcal{S}_2\implies$ \textbf{f is definable}.
+
+In fact, we can say much more. Consider that we are working with n-latent dimensions (so functions acting on n-variables) that evaluate to a single integer. $\mathbb{D}^n = \mathbb{D}\times\mathbb{D}...\times\mathbb{D}$ is in $\mathcal{S}_n$ as $\mathbb{D}\in\mathcal{S}_1$ and lemma above. Thus our domain is a definable set. 
+\textbf{This automatically implies that any function $f:\mathbb{D}^n\mapsto\mathbb{D}$ is definable by the extension of above.}
+
+Now for the utility of this procedure, we need to extend the definitions to allow for intervals. By the definition of o-minimality, intervals are allowed in $\mathcal{S}_1$. We can simply take our domain to be
+
+\begin{equation*}
+    \mathbb{D} = \bigcup_{i\in\mathcal{I}} \{d\}, (a,b)
+\end{equation*}
+where I is an index set and \textbf{necessarily must be finite}.
+
+In this case, the above analysis with appropriate lemmas applies. That is \textbf{any function $f:\mathbb{D}^n\mapsto\mathbb{D}$ is definable. Since we have definable functions, we can apply the monotinicity theorem.}
+Some properties for definable functions:
+\begin{itemize}
+    \item For \textbf{ definable } $f:A\mapsto B$, $f(A), f^{-1}(B)$ are definable. This implies (non-constant) periodic functions are not allowed.
+    \\
+    Ex: $\sin{x}$ is not allowed as the pre-image of any point is an infinite set and hence not definable.
+\end{itemize}
+
+\begin{theorem}[Monotinicity]
+    Let $f:(a,b)\mapsto R$ be a definable function on the interval $(a,b).$ Then there are points $a_1 < ... < a_k$ in $(a,b)$ such that on each sub-interval $(a_j, a_{j+1})$ with $a_0 = a, a_{k+1} = b$, the function is either constant, or strictly monotone and continuous.
+\end{theorem}
+
+\begin{proof}
+    Uses following key lemma:
+    \begin{lemma}
+    \label{monotone-lemma}
+        Let $f: (a, b)\mapsto R$ be a definable function. There exists a subinterval of $(a,b)$ on which $f$ is constant, or there exists a subinterval on which $f$ is strictly monotone and continuous.
+    \end{lemma}
+    \begin{proof}
+        \textit{Suppose there is no subinterval of $(a, b)$ on which $f$ is constant}
+        Claim: \textit{There exists a subinterval on which $f$ is injective}
+        From the assumption that there is no subinterval on which $f$ is constant, we know $\forall y\in R, f^{-1}(y) \text{ is finite}$ otherwise $f^{-1}(y)$ would contain an interval where $f$ is constant, i.e., $f(x) = y \text{ for all $x$ in this interval}$.\\ Now $(a, b)$ is infinite (as it is an interval) and $f^{-1}(y)$ must be finite $\forall y \in R$. This implies that the only possibility for $(a,b)$ to be an interval is that $f((a,b))$ is infinite (because if it wasn't we can never exhaust the interval $(a,b)$). Now since $f$ is a definable function, $f((a,b))$ is a definable set. Hence, it must contain an interval, let us call it $J$. ( Definable set in an o-minimal structure).\\ The function $g: J\mapsto(a, b)$ defined by $g(y) = \text{min}(f^{-1}(y))$ is definable and satisfies $f \circ g = \text{Id}_J$ (Easily checked: Domain and co-domain are definable sets, the graph is definable by the definition of the function. Also as $J$ is an interval and $(a, b)$ an interval and $J\subset f((a,b))$, this implies that $\text{min}(f^{-1}(y))$ is \textit{ sufficient} to produce the entirety of the interval $J$ which is why the composition is identity.)\\ Now $g$ is injective by construction which implies that $g(J)$ is infinite (as $J$ is an interval) and contains a subinterval of $(a,b)$. Let us call it $I$. Now $f$ must be injective on $I$ (think carefully of what a point on $I$ is) and $g \circ f|_I = \text{Id}_I$ again by definition.
+        \textit{There exists a subinterval on which f is strictly monotone}
+        
+        Use the injective subinterval $I$ from previous step. We can partition $I \setminus \{x\}$ into definable sets for any $x\in I$ as follows:
+        \begin{align*}
+            I_+ &= \{y\in I; f(y) > f(x)\} \\
+            I_- &= \{y\in I; f(y) < f(x)\}
+        \end{align*}
+
+        Now, since this is an interval, there must exist $\epsilon > 0$ such that $(x-\epsilon, x)$ and $(x, x+\epsilon)$ is contained in $I_+$ or $I_-$. 
+        These two choices give four possibilities: $\phi_{+,+}(x), \phi_{+,-}(x), \phi_{-,+}(x), \phi_{-,-}(x)$
+        For example $\phi_{+,+}(x)$ is
+        \begin{equation*}
+            \exists\; \epsilon\; \forall \;y \in I \Big( (x-\epsilon<y<x\implies f(y)>f(x)) \; \& \; (x<y<x+\epsilon\implies f(y)>f(x)) \Big)
+        \end{equation*} and so on for the others. 
+        To me it seems like we can just think of this set as the set of local minima.
+        The crucial and slightly tricky claim now is that $\phi_{+,+}$ and $\phi_{-,-}$ are finite. Proving one is enough, the other follows by $f\mapsto -f$.
+        Suppose $\phi_{+,+}$ is not finite and holds on some interval (could be a sub-interval of $I$) $I'$. Now consider the set:
+        \begin{equation*}
+            B = \{x\in I';\forall y\in I', y>x\implies f(y) > f(x)\}
+        \end{equation*}
+        B cannot contain an interval. This is because, the function $f$ would be strictly increasing on any interval in B which contradicts $\phi_{+,+}$. Hence B is finite. B is some sort of collection of the minimas and this statement is actually quite clear.
+        \\ wlog, we can just consider the max element in B (again quite clear) and look at the set \newline $(\text{max}(B), \infty)\cap I$. And for $B\neq\emptyset$, we have
+        \begin{equation}
+        \label{prop}
+            \forall x \in I\;\exists y\in I \;(y>x \text{ and } f(y) < f(x))
+        \end{equation}
+        Note: Taking only $\text{max }(B)$ in the intersection above removes precisely those points that would contradict this. Take care of the importance that it's an open interval.
+        \begin{equation*}
+            C_x = \{y\in I \; ; \; y>x \text{ and } f(y) < f(x)\} \text{ for some } x \in I
+        \end{equation*}
+        $C_x$ is a definable set and from property above we know that it is non-empty. Also, it cannot be finite, because if it was, it's maximum element would contradict property \ref{prop} which should hold for all $x$ in the interval.
+        \par But now, there is some element $z\in C_x$ with $z > x$ where $f(z) > f(x)$ because $f > f(x)$ on some interval $(x, x + \epsilon)$. Similarly, this $z$ is also in the set $\phi_{+, +}$. Therefore there is some interval $(z - \epsilon, z)$ where $f > f(x)$ but also an interval $(z, z + \epsilon)$ where $f < f(x)$ since this interval lies in $C_x$. Therefore, the formula $\Psi_{+,-}(z)$ holds. That is we have the following property:
+        \begin{equation}
+        \label{prop2}
+            \forall x \in I\; \exists z \in I\; (x < z \text{ and } \Psi_{+, -}(z))
+        \end{equation}
+        Now consider the definable function $h: -I\mapsto R$ defined by $h(x) = f(-x)$. The property $\phi_{+,+}$ holds for $h$ on $-I$. By the whole above procedure, we can now see that $\Psi_{-,+}$ holds for \textbf{$f$} on some subinterval. But $\Psi_{+,-}$ must also hold on this same subinterval. \textbf{CONTRADICTION}
+        \par $\phi_{+,+}$ and $\phi_{-,-}$ are finite (like the local minima and local maxima) so if we ``remove" them and look at the smaller subinterval, either $\phi_{+,-}$ ( respectively $\phi_{-,+}$) holds which means $f$ is strictly decreasing (respectively strictly increasing) and hence strictly monotone.
+        \par Claim: \textit{There is a subinterval on which $f$ is monotone and continuous} \\Need to show the continuity part here, have already shown that it is monotone. The definable set $f(I)$ is infinite and contains an interval $J$. The inverse image of this interval, $f^{-1}(J)$ must be the interval $(\text{inf}(f^{-1}(J)), \text{sup}(f^{-1}(J)))$ as $f$ is strictly monotone. $f$ is a strictly monotone bijection from this interval onto $J$. The pre-image of a sub-interval of $J$ is a sub-interval of $I$ $\implies$ $f$ is continuous.
+    \end{proof}
+    \textit{Monotinicity theorem from above}
+    \par Lemma \ref{monotone-lemma} does most of the work here. It shows that we have the required sub-intervals. What we need to show now is that we can ``connect" them in some way that maintains the desired behaviour and covers the entire domain.
+    \\ Let $X_{=}$ (resp. $X_\nearrow$, $X_\searrow$) be the definable set of $x\in (a, b)$ such that $f$ is constant (resp. strictly increasing, strictly decreasing). We know such a set necessarily exits because of lemma \ref{monotone-lemma}. \par The set 
+    \begin{equation}
+    \label{mn-set}
+        (a, b) \;\backslash (X_=\cup X_\nearrow \cup X_\searrow)
+    \end{equation}
+    must be finite because if it is not finite, then it contains an interval. On this interval lemma \ref{monotone-lemma} would be violated. Hence \ref{mn-set} is finite. This implies that there is a subdivision $a = a_0 < a_1 < ... < a_k = b$ such that each $(a_i, a_{i+1})$ is contained in one of $X_=, X_\nearrow, X_\searrow$. Now, $f$ is continuous on each of these intervals (again from lemma \ref{monotone-lemma}). \par For $x\in (a_i, a_{i+1})$, take the definable set $D_x = \{y\in(a_i, a_{i+1}): x < y \text{ and } f = f(x)\}$ [Respectively, $f > f(x), f < f(x)$ ] on $(x,y)$. The definable set $D_x$ is non-empty and it's least upper bound must be $a_{i+1}$ otherwise we get a contradiction on the sub-interval $(l.u.b, a_{i+1})$ where $l.u.b$ is the least upper bound. Hence, this implies that $f$ is constant or strictly monotone on $(a_i, a_{i+1})$.
+\end{proof}
+
+\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set \ref{mn-set}. Hence the subdivisions are open and as we know that the set \ref{mn-set} is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma \ref{monotone-lemma} would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma \ref{monotone-lemma}. The question is, what is a clever way to test the condition I am suggesting.}
+\par
+\textcolor{blue}{Is this problem similar to finding level sets?}
+
+\textcolor{green}{\textbf{KEY HYPOTHESIS: DO WE HAVE AN O-MINIMAL STRUCTURE RELATED TO THE CONJECTURE SPACE, SUCH THAT,``GOOD/IMPORTANT" CONJECTURES 
+ARE FUNDAMENTALLY RELATED TO THE O-MINIMAL/ ALGEBRAIC GEOMETRY OF THE SPACE IN TERMS OF STRATIFICATIONS, FINITENESS ETC.?}
+}
+
+Some preliminary ``evidence" (or why the idea came into my mind) is because of how the loss boundary for Robin's criteria for the Riemann Hypothesis might be resembling the kind of behaviour I would expect for the subdivisions of a definable function in an o-minimal structure in accordance with the monotonicity theorem.
+
+\subsection{Extensions of above}
+Is there a link between our conjecture being potentially true (i.e. our defined loss function being zero) and the conjecture being a definable function?
+\par A smaller hypothesis is that this might be true, and the logic motivating this is to extend the above proof showing that $\varphi(x) - \pi(x)$ is definable on the chosen domain. A key idea in that logic (which I want to think through a bit further to make more rigorous) is that the entire range of the function, $f(A)$ is definable. Thus the graph of the function is a subset of a definable set and hence must be definable. Is this correct? Seems so: Consider any point $x\in\Gamma(f)$. Since $\Gamma(f)\subset P\times Q$ (where $P\times Q\in S_2$), the point $x\in P\times Q$. Hence, $x$ is a member of a definable set. As $x$ is an arbitrary member of $\Gamma(f)$, $\Gamma(f)$ must be definable.
+
+\textbf{NOTE: This uses the fact the range of the function/conjecture is definable which we will need to show or consider an o-minimal structure guaranteeing this.}
+
+Now, to think about the extension, we can require that our domain is necessarily only a positive interval along each dimension (so each interval of the k-cells). \textit{Then a necessary condition for our possible conjecture to be a definable function, is that the loss is zero.} The interesting question here is whether this is a sufficient condition? Even further, does there exist an iff, two-way relationship between being a possible conjecture (i.e. zero loss) and the conjecture being definable?
+
+\textbf{Proof attempt}
+
+Consider the o-minimal expansion of the real closed field represented by $\R_{an, exp}$ where an: restricted analytic functions and exp: exponentiation. We also have defined the setup of the conjecture framework (domain is compact subset of $\R^n$, looking at continuous functions etc.) \par\textbf{\textit{Claim: Conjectures are definable functions}}
+
+
+\begin{proof}
+    Let our domain be represented by $\Omega$. $\Omega$ is a compact subset of $\R^n$. Thus by the Heine-Borel theorem, $\Omega$ must be closed and bounded.\\ By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\R^n:|x - a| < r\}$. This implies that the interior of our domain, $int(\Omega)$, is contained in $B$, i.e., $int(\Omega)\subset B$. Therefore, $\forall p\in int(\Omega), |p - a| < r$ where the distance is standard Euclidean distance over $\R^n$.\textit{ Hence $int(\Omega)$ is a definable set} (As it is a semi-algebraic set). 
+
+    The closure of a definable set is definable. Thus $\Omega = cl(\Omega) = cl(int(\Omega))$ is a definable set.
+
+    Now, conjectures over $\Omega$ are defined as functions, $h(x) = f(x) - g(x)$ such that one of
+    \begin{equation*}
+        \begin{cases}
+            h(x) > 0 & \forall x \in \Omega \\
+            h(x) = 0 & \forall x \in \Omega \\
+            h(x) < 0 & \forall x \in \Omega 
+        \end{cases}    
+    \end{equation*}
+    is true. (Note: This will generally be encoded by requiring that the loss function is zero over the \textit{entirety} of the domain, i.e., no counter-examples. It might also be interesting to consider the case with a finite number of counter examples in extensions of this.)
+    \par Without loss of generality, we can consider the case of $h(x) > 0 \:\forall x\in\Omega$. A quick way to see that this is sufficient: The sets $h(x) = 0$ and $h(x) < 0 $ are definable subsets of $\Omega$ \textit{iff} $h(x) > 0$ is a definable subset of $\Omega$. This follows from the closure of the boolean algebra /structure axioms.
+    \textcolor{red}{Challenger pointed out a very relevant correction here regarding the complement operation. $\forall\xleftrightarrow{}\exists$. Have to update the argument to reflect this. I think everything still works fine since I can consider the case $h(x) < 0$ in exactly the same way as $h(x) > 0$, just with signs flipped.}
+    
+    \textit{Case: $h(x) > 0$}
+    \par Consider first the example presented in the notes above with $h(x) = \varphi(x) - \pi(x)$ as motivation for the approach. Note: In that case, we considered a restricted domain where we knew the expression to be true (on $A$ and not $\mathbb{D} = \Omega$). This worked since all the sets involved were definable by construction in any o-minimal structure.\\
+    Now, I enumerate the different possibilities below:
+    \begin{itemize}
+        \item $f(x), g(x)$ are definable in $\R_{an,exp}$
+        Definable sets in $\R_{an,exp}$ are the vanishing locus of equations of the form 
+        $P(x_1, ..., x_n, f_1,..., f_m, \exp{x_1},..., \exp{x_m})$ where $P$ is a polynomial and the $f_i(x_1,...,x_n)$ are restricted analytic functions. As $f(x)$ and $g(x)$ are definable, represent their graphs as the vanishing locus of polynomials of the above form, $F$ and $G$. The graph of $h(x) = f(x) - g(x)$ is thus the vanishing locus of $H = F - G$ which is definable (As the difference of polynomials is a polynomial).
+        \item One of or both $f(x)$ and $g(x)$ are \textit{not} definable (In the usual sense on $\R_{an,exp}$).
+        For this case, consider the following lemma:
+
+        \begin{lemma}[Finiteness of computer evaluations]
+        \label{fin-comp-eval}
+            Consider \textit{any} function, $f:\Omega^\text{comp}\mapsto\R$. We call $f$ a \textit{finitely evaluated function} if $\Omega^\text{comp}$ is the previously defined domain now implemented on a computer up to \textit{arbitrary} precision. $f$ is \textit{computationally definable. Computationally definable functions are definable functions up to arbitrary precision.}
+        \end{lemma}
+        I present an attempt at a proof of this lemma below but for now assume that it is true. In this case, simply consider $h(x) = f(x) - g(x)$ as a finitely evaluated function. By the above lemma, $h(x)$ is definable up to arbitrary precision.
+    \end{itemize}
+    We have shown that $h(x) > 0$ is a definable function. Hence proved.
+\end{proof}
+
+Here I attempt a proof of lemma \ref{fin-comp-eval} which is the crucial part of this argument.
+
+\begin{proof}
+    First consider the case where $n = 1$. As we are in an o-minimal structure, $\Omega$ is a finite union of intervals and points.
+    \begin{itemize}
+        \item Case 1: $\Omega$ is a finite union of singletons
+
+        If $\Omega$ is a finite union of singletons, $\Omega^\text{comp} = \Omega$ (As $\Omega^\text{comp}$ can simply be written as a list of these singletons). 
+        \textcolor{red}{Note: Another useful correction Challenger pointed out - This is not true if $\Omega$ contains singletons that need an \textit{infinite} number of digits to express.}
+        
+        Suppose $\Omega^\text{comp}$ is the set
+        \begin{equation*}
+            \Omega^\text{comp} = \{(a_i) : i\in I\} 
+        \end{equation*}
+        where $I$ is a finite index set (i.e. $I = \{1, 2, ..., k\}$) and each $a_i$ (term in the domain) is a real number up to arbitrary precision in floating point arithmetic.
+        Thus for any
+        \begin{equation*}
+            f:\Omega^\text{comp}\mapsto\R
+        \end{equation*}
+        as defined in the lemma, we associate a \textit{definable} subset of $\R$ to each $a_i$ in the domain (This works as $f(a_i)$ is always definable as it is not an infinite union of finite subsets of $\R$). Therefore, the range of $f$, $f(\Omega^\text{comp})$ is a \textit{finite} union (as $\Omega^\text{comp}$ is finite) of definable subsets of $\R\implies f(\Omega^\text{comp})$ is definable.
+        \par Now, the domain and range of $f$ are definable. All that is left to check is the graph of $f$,
+        \begin{equation*}
+            \Gamma(f) = \{(a_i, f(a_i)): a_i\in\Omega^\text{comp}\}
+        \end{equation*}
+        My construction now is that $\Gamma(f)$ can be represented as the vanishing locus of a \textit{strictly finite} number of polynomials, where each polynomial associates $f(a_i)$ to $a_i$. That is,
+        \begin{equation}
+        \label{hypo}
+            \Gamma(f) = \exists a_{i_1}\exists a_{i_2}...\exists a_{i_k}\: P(a_{i_1}f(a_{i_1}))P(a_{i_2}f(a_{i_2}))....P(a_{i_n}f(a_{i_k}))
+        \end{equation}
+        The set in equation \ref{hypo} is definable.
+        \item Case 2: $\Omega$ contains intervals
+
+        Any interval can be \textit{discretized} to arbitrary precision as a list of singletons (by varying number of points considered/step size). Perform this procedure on each interval on $\Omega$. This operation is precisely possible since $\Omega$ contains only a finite number of intervals due to o-minimality. We are left with a finite union of singletons. $\Omega^\text{comp}$ is precisely this finite union and we reduce to Case 1.
+    \end{itemize}
+\end{proof}
+
 \subsection{Reasonable effectiveness of model theory in mathematics (cite this)}
 \section{Stuff with Eric}
-\section{Proof space stuff?}
+Setting up machine learning on the conjecture space where the goal is to implement heuristics of interestingness and understand how to choose our function boxes.
+Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
+\section{Theorem spaces}
+Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
+I define the ``space of theorems'', $\mathfrak{T}$ is the space of mathematical theorems. Note that this is a subset of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria, i.e.,
+there are no counter-examples to the theorem on any domain.
+$\mathfrak{T}$ itself contains a furthermore rigorous subset, $\mathfrak{T}_F$, the ``space of formal theorems''. $\mathfrak{T}_F$ is the set of theorems that have been formalized in any formal system. Clearly $\mathfrak{T}_F\subset\mathfrak{T}$. A potential upside of working with $\mathfrak{T}_F$ is that their is a growing database of formalized theorems due to the widespread interest and ingenuity of the formalization community \cite{formalization_examples}.
+Moreover a number of recent results have been published by training models by learning on datasets of formal theorems \cite{Deepmind_stuff}. A natural direction of inquiry is what is the relationship between these spaces? What is the connexion, if any, between the elements of these spaces?
+\\\par
+It is clear that $\mathfrak{T}_F\subset\mathfrak{T}\subset\mathfrak{Conj}$. The datasets based on $\mathfrak{T}_F$ can be leveraged for a variety of learning techniques. These models have achieved state-of-the-art accuracies on solving benchmark mathematics problems such as miniF2F, ProofNet, MATH and competition problem datasets such as IMO 2024 and the recently introduced PutnamBench. Improving AI models' ability to solve these tasks with formally verified proofs
+is an extremely active and fruitful area of research. However, I argue that there is still a huge obstruction to these models proving helpful for research and discovery in mathematics. I expand on this issue in an article I am currently working on (preprint to be available soon). 
+
+\textcolor{red}{
+An essential feature in applications of formalization and formal datasets is that an informal proof/solution already exists. Informal in this context refers to the notion of a formal proof as verified by a theorem proving system. Note that while the ability to formalize is at the heart of the field of mathematics and acceptance of proofs,
+it is not a target that the working mathematician ever seeks to achieve in practice. The working mathematician's goal is to find proofs at the level of certainty that is accepted by the mathematical community and is fruitful to the progress of the discipline as a whole. Formal proofs as produced by systems such as Lean, Isabelle, Coq etc., although conceptually crucial, are often unintelligble to humans and well beyond the level of rigour that is needed by the community. Many formalization details are simply unnecessary and
+intuitively already understood and internalized by mathematicians. Moreover, details of formalization can on occasion be extremely tedious and don't provide further insight into the problem.
+\\
+“My intellect never quite recovered from the strain of
+writing [Principia Mathematica]. I have been ever since
+definitely less capable of dealing with difficult
+abstractions than I was before.” (Russell, Autobiography)
+However, formalization is quickly becoming widely accepted by the mathematical community and is quickly becoming the expected standard for published research \cite{Tao, formalization_projects_to_check_shit}.
+Increasing specialization making reviewing almost impossible, mistakes in math literature etc and the utility of previously models increasing.
+}
+The existence of solutions to problems in these datasets and ``informal'' proofs in literature are essential for these models to work as the existence of solutions and proofs \textbf{implies} that there is a configuration of axioms and deduction rules in your chosen formalization system that verifiably solves the problem/proves the theorem at hand.
+The knowledge of the existence of such a solution/proof can by definition not exist for \textbf{new} research. Moreover, the set of possible formal statements is closed. This is because every element of $\mathfrak{T}_F$ is characterized by a specific \textit{deduction} in your chosen system of axioms and inference rules. All possible formal statements can be reached by such a process
+and this is a direct consequence of the definition of well-formed formulas and the unique readability theorem of well-formed formulas. If one works in classical logic, every well-formed formula in a given interpretation can only be either true or false. This implies that the concept of ``conjectures'' cannot exist in such a framework. By definition any well-formed formula is either true or false
+and any statement that is not a well-formed formula simply cannot be parsed. The process of mathematical discovery has never proceeded in a ground up manner where every statement made is a logical consequence of the previous statements and framework that one is working in. The ability to conjecture or atleast ask questions (without knowing the answer) is crucial to research in any field. As such, I would argue that it is extremely unlikely
+to discover new, non-trivial mathematical results while being restricted to only making completely rigorous formal \textit{deductions}. However, including a ``pedantic'' formalizer as an agent in the process of discovery can be very meaningful. Also one can imagine that with increasing computational abilities, computers will be able to explore the infinite space of deductions at a much larger scale than human mathematicians and produce
+complex well-formed formulas that could be very interesting. However, it is currently unclear if those formulas could be understood by humans and perhaps it would be necessary to develop ``translators'' in tandem. While a fertile area of research, this is not the focus of my current work and PhD project. I believe that there is much to be gained by trying to learn from the predominant methods of mathematical discovery and trying to incorporate these into the AI models that are currently being developed.

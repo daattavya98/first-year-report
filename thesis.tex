@@ -11,14 +11,14 @@
 % For more info see `README.md`
 \documentclass[firstyr, withindex, glossary]{cam-thesis}
 
-
 % Citations using numbers
 \usepackage[numbers]{natbib}
 
 % Math packages
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+
+% Text packages
+\usepackage{xcolor}
 
 % Math symbols
 \newcommand{\R}{\mathbb{R}}
@@ -27,10 +27,15 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\crlR}{\mathcal{R}}
+\newcommand{\crlU}{\mathcal{U}}
 
 % Theorem styles
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{prop}{Proposition}[section]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -119,20 +124,11 @@ spanning two lines}
 
 \input{02_The Conjecture Space: A Theoretical Framework.tex}
 
-\chapter{Applications and Case Studies}
-\section{HEI}
-\section{``abc''}
-\section{Stuff with Deepro, introducing lemmas to help proof formalizers}
+\input{03_Applications.tex}
 
 \chapter{Progress Report}
 \section{Overview}
-\subsection{Machine learning over the conjecture space}
-\subsubsection{Basic Setup + GP's? Symbolic pipeline?}
-\subsection{Theory of conjecture space}
-\subsection{HEI}
-\subsection{``abc''}
-\subsection{Deepro stuff}
-\section{Current Plan}
+\section{Current Progress}
 \section{Future Plan}
 \section{Timeline}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
