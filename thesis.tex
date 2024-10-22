@@ -8,6 +8,7 @@
 %   times       - uses the `Times` font.
 %   backrefs    - add back references in the Bibliography section
 %
+
 % For more info see `README.md`
 \documentclass[firstyr, withindex, glossary]{cam-thesis}
 
@@ -15,10 +16,13 @@
 \usepackage[numbers]{natbib}
 
 % Math packages
-\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{amsmath, amssymb, amsthm, mathtools, commath}
 
 % Text packages
 \usepackage{xcolor}
+
+% Table packages
+\usepackage{makecell, longtable}
 
 % Math symbols
 \newcommand{\R}{\mathbb{R}}
@@ -28,10 +32,14 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\crlR}{\mathcal{R}}
 \newcommand{\crlU}{\mathcal{U}}
+\newcommand{\crlC}{\mathcal{C}}
 
 % Theorem styles
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+
+\theoremstyle{definition}
+\newtheorem{conjecture}{Conjecture}[section]
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
@@ -126,11 +134,7 @@ spanning two lines}
 
 \input{03_Applications.tex}
 
-\chapter{Progress Report}
-\section{Overview}
-\section{Current Progress}
-\section{Future Plan}
-\section{Timeline}
+\input{04_Progress Report.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% References:
 %%
@@ -153,7 +157,7 @@ spanning two lines}
 
 \appendix
 
-\input{app_FOL_First-order-logic.tex}
+\input{app_conj_space.tex}
 
 \chapter{daf}
 

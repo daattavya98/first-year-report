@@ -1,6 +1,31 @@
 \chapter{A Collection of Applications}
-In my PhD, I plan to tackle the question of ``AI guided mathematical discovery'' through a hybrid approach of building theory and targeted applications. The ultimate goal is to tie together the theory and applications in a natural way; the applications being a demonstration of the effectiveness of the theory.
-\section{HEI}
-\section{``abc''}
-\section{Stuff with Deepro, introducing lemmas to help proof formalizers}
-\section{Basic Setup + GP's? Symbolic pipeline?}
+In my PhD, I plan to tackle the question of ``AI guided mathematical discovery'' through a hybrid approach of building theory and targeted applications. The ultimate goal is to tie together the theory and applications in a natural way; the applications being a demonstration of the effectiveness of the theory. As such, during the first year of my PhD I have worked on a number
+of applications under the 
+\section{Holographic Entropy Inequalities}
+\section{Explorations around the ``abc'' conjecture}
+
+The abc conjecture is a fundamental problem in number theory that relates the prime factorizations of three integers $a$, $b$, and $c$ when $a + b = c$. Given integers with no common prime factors, the conjecture states the following \cite{masser1985open}:
+\begin{conjecture}[abc conjecture]
+    \label{abc}
+    For every $\epsilon > 0$, there is a constant $k_\epsilon$ such that if $a,b,c$ are coprime and $c = a + b$, then $c\leq k_\epsilon d^{(1 + \epsilon)}$, where $d$ is the product of the distinct prime factors of $a, b$ and $c$.
+\end{conjecture}
+It's openness is somewhat debated due to many claims of a correct proof. Nevertheless, it has profound connections to many other problems in number theory and areas of mathematics. I am currently working on studying the properties of a newly-defined object (Proposed by Professor Minhyong Kim), \emph{weighted average multiplicity function} $\text{WAM}(n, s)$,
+which is intimately connected to the abc conjecture. The goal is to understand the abc conjecture deeper by studying the properties of and formulating conjectures about this new object.
+
+\begin{definition}[Weighted Average Multiplicity]
+    Let $n$ be a positive integer with the prime factorization 
+    \[
+    n = \prod_{i=1}^{\omega(n)} p_i^{\alpha_i},
+    \]
+    where $p_i$ are distinct primes and $\alpha_i$ are the corresponding multiplicities.
+    \emph{Weighted Average Multiplicity}, $\text{WAM}(n, s)$, is defined as:
+    \[
+    \text{WAM}(n, s) = \frac{\sum_{i=1}^{\omega(n)} \alpha_i (\log p_i)^s}{\sum_{i=1}^{\omega(n)} (\log p_i)^s}.
+    \]
+\end{definition}
+
+where $s$ is a complex number.
+
+\section{Conjectures as sub-goals in proof formalization}
+    As part of a MPhil project that I supervised, we explored the idea of using conjectures as sub-goals to aid the process of formal theorem proving. The basic concept is that
+    good conjectures can make it easier to prove the original theorem, in a manner analogous to a ``cut'' or intermediate goal in sequent calculi which are known to exponentially reduce the length of proofs \cite{}.

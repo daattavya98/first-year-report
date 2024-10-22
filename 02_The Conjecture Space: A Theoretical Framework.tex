@@ -1,9 +1,52 @@
-\chapter{The Conjecture Space: A theoretical framework} 
-\subsection{Machine learning over the conjecture space}
-\subsection{Theory of conjecture space}
-\section{Relevant functional analysis stuff}
-cite (Challenger paper) Might be able to extend the conjecture/relation space to a Banach lattice and not just a Banach space.
-\section{A primer on Model Theory}
+\chapter{A theoretical framework}
+\textit{Conjecture space and interestingness}\\
+\textit{Multi-agent systems for mathematical discovery (Nature of mathematical discovery discussed in introduction in detail)}
+
+\section{The Conjecture Space}
+
+The conjecture space was introduced in \cite{mishraConjGen2023} by Mishra et. al. This framework can be utilized as a tool to study conjectures that can be expressed as inequalities involving continuous functions.
+Here I make analogous definitions with a very slight generalization of what was initially introduced in that article.
+
+\begin{definition}[Relation Space]
+    \label{def:space-relations}
+    Let $\Omega\in\R^n$ be a compact subset. Let $C(\Omega)$ denote the Banach space of continuous, real-valued functions on $\Omega$, equipped with the supremum norm, i.e.
+    \begin{equation*}
+        \norm{f}_{C(\Omega)} := \sup_{x\in\Omega} \left|f(x)\right|    
+    \end{equation*}
+    where a real-valued function is
+    \begin{equation*}
+        f:\Omega\rightarrow\R
+    \end{equation*}
+    We will call this Banach space as the \textit{Relation Space}, $\crlR$
+\end{definition}
+
+Following on from the definition of the Relation space ~\ref{def:space-relations}, we can define the \textit{Conjecture Space} as follows:
+\begin{definition}[Conjecture Space]
+    Let $f\in\crlR$. $f$ is an element of the \textit{Conjecture Space} if and only if $f(x) < 0 \;\forall x\in\Omega$ of $f(x) > 0 \; \forall x\in\Omega$.
+    The set $\crlC = \crlC_{<}\cup\crlC_{>}$ is called the \textit{Conjecture Space} where $\crlC_{<} = \{f\in\crlR\;|\; f(x)<0\;\forall x\in\Omega\}$ and $\crlC_{>} = \{f\in\crlR\;|\;f(x)>0\;\forall x\in\Omega\}$.
+    $\crlC_{<}$ and $\crlC_{>}$ are disjoint convex sets.
+\end{definition}
+
+There are some useful properties of $\crlC$ building upon \cite{mishraConjGen2023}. (Please see appendix ~\ref{app:conj-space} for further details).
+\begin{itemize}
+    \item $\crlC$ is an open subset of $\crlR$ and hence a Banach manifold. $\crlC_{<}$ and $\crlC_{>}$ are homeomorphic. (Note that $\crlC$ is not a Banach space. For example, it is not closed under addition)
+    \item $\crlC$ forms an abelian group under (pointwise) multiplication. Moreover, $\crlC$ and $\crlC_{>}$ are topological groups with the subspace topology inherited from $\crlR$. 
+\end{itemize}
+
+\begin{lemma}[Action by $\text{Homeo}(\R^*)$]
+    \label{lemma:homeo-action}
+    $\crlC$ admits a group action $\mathsf{A}: \text{Homeo}(\R^*)\times\crlC\mapsto\crlC$ by elements of the group $\text{Homeo}(\R^*)$ defined by $\mathsf{A}(g,f) := g\circ f$\\
+    Every $g\in\text{Homeo}(\R^*)$ defines a homeomorphism $\mu_g : \crlC\mapsto\crlC$ by $\mu_g(f) = \mathsf{A}(g,f)$. The restriction of $\mu_g$ on each of the connected components $\crlC_{<}$ and $\crlC_{>}$ is also a homeomorphism 
+    with exactly one of the two cases holding: (i) $\mu_g(\crlC_{>}) = \crlC_{>},\; \mu_g(\crlC_{<}) = \crlC_{<}$ or (ii) $\mu_g(\crlC_{>}) = \crlC_{<},\; \mu_g(\crlC_{<}) = \crlC_{>}$.
+\end{lemma}
+
+Based on ~\ref{lemma:homeo-action}, we can define a notion of \textit{equivalent} conjectures.
+\begin{definition}[Equivalent Conjectures]
+    Two conjectures $f_1,f_2\in\crlC$ are said to be \textit{equivalent} if there exists a homeomorphism $h\in\text{Homeo}(\R^*)$ such that $\mathsf{A}(h, f_1) = f_2$.
+
+% \subsection{Relevant functional analysis stuff}
+% cite (Challenger paper) Might be able to extend the conjecture/relation space to a Banach lattice and not just a Banach space.
+\subsection{A primer on Model Theory}
 For the remainder of this section, I assume familiarity with the basic definitions and results from first-order logic. Please see appendix ~\ref{app:FOL} for a brief overview.
 \subsection{Model theory of Banach Spaces}
 cite Jose Iovino's stuff. Making notes here so I keep track of them.
@@ -310,12 +353,7 @@ Here I attempt a proof of lemma \ref{fin-comp-eval} which is the crucial part of
         Any interval can be \textit{discretized} to arbitrary precision as a list of singletons (by varying number of points considered/step size). Perform this procedure on each interval on $\Omega$. This operation is precisely possible since $\Omega$ contains only a finite number of intervals due to o-minimality. We are left with a finite union of singletons. $\Omega^\text{comp}$ is precisely this finite union and we reduce to Case 1.
     \end{itemize}
 \end{proof}
-
-\subsection{Reasonable effectiveness of model theory in mathematics (cite this)}
-\section{Stuff with Eric}
-Setting up machine learning on the conjecture space where the goal is to implement heuristics of interestingness and understand how to choose our function boxes.
-Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
-\section{Theorem spaces}
+\subsection{Theorem spaces}
 Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
 I define the ``space of theorems'', $\mathfrak{T}$ is the space of mathematical theorems. Note that this is a subset of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria, i.e.,
 there are no counter-examples to the theorem on any domain.
@@ -338,8 +376,24 @@ However, formalization is quickly becoming widely accepted by the mathematical c
 Increasing specialization making reviewing almost impossible, mistakes in math literature etc and the utility of previously models increasing.
 }
 The existence of solutions to problems in these datasets and ``informal'' proofs in literature are essential for these models to work as the existence of solutions and proofs \textbf{implies} that there is a configuration of axioms and deduction rules in your chosen formalization system that verifiably solves the problem/proves the theorem at hand.
-The knowledge of the existence of such a solution/proof can by definition not exist for \textbf{new} research. Moreover, the set of possible formal statements is closed. This is because every element of $\mathfrak{T}_F$ is characterized by a specific \textit{deduction} in your chosen system of axioms and inference rules. All possible formal statements can be reached by such a process
-and this is a direct consequence of the definition of well-formed formulas and the unique readability theorem of well-formed formulas. If one works in classical logic, every well-formed formula in a given interpretation can only be either true or false. This implies that the concept of ``conjectures'' cannot exist in such a framework. By definition any well-formed formula is either true or false
-and any statement that is not a well-formed formula simply cannot be parsed. The process of mathematical discovery has never proceeded in a ground up manner where every statement made is a logical consequence of the previous statements and framework that one is working in. The ability to conjecture or atleast ask questions (without knowing the answer) is crucial to research in any field. As such, I would argue that it is extremely unlikely
-to discover new, non-trivial mathematical results while being restricted to only making completely rigorous formal \textit{deductions}. However, including a ``pedantic'' formalizer as an agent in the process of discovery can be very meaningful. Also one can imagine that with increasing computational abilities, computers will be able to explore the infinite space of deductions at a much larger scale than human mathematicians and produce
-complex well-formed formulas that could be very interesting. However, it is currently unclear if those formulas could be understood by humans and perhaps it would be necessary to develop ``translators'' in tandem. While a fertile area of research, this is not the focus of my current work and PhD project. I believe that there is much to be gained by trying to learn from the predominant methods of mathematical discovery and trying to incorporate these into the AI models that are currently being developed.
+The knowledge of the existence of such a solution/proof can by definition not exist for \textbf{new} research. Moreover, the set of possible formal statements is closed. This is because every element of $\mathfrak{T}_F$ is characterized by a specific \textit{deduction}\footnote[1]{A deduction from a set of sentences $\Gamma$ is a finite sequence \textbf{D} of formulas such that whenever a formula $A$ occurs in the sequence \textbf{D}, then either (i) $A\in\Gamma$, (ii) $A$ is an axiom (iii) A follows from the allowed inference rules applied to a sequence of formulas already appearing in \textbf{D}} in your chosen system of axioms and inference rules. 
+If one works in classical logic, every well-formed formula in a given interpretation can only be either true or false. This implies that the concept of ``conjectures'' cannot exist in such a framework. By definition any well-formed formula is either true or false
+and any statement that is not a well-formed formula simply cannot be parsed. Historically, mathematics has never developed in a ground up manner where every statement made is a logical consequence of previous statements. The ability to conjecture and pose questions (without knowing the answer) is crucial to mathematical research and creativity. As such, I would argue that it is unlikely to discover new, non-trivial mathematical results while being restricted to only making completely rigorous formal \textit{deductions}. Such a feat would be unprecedented.
+However, including a ``pedantic'' formalizer as an agent in the process of discovery could be very meaningful. Also one can imagine that with increasing computational abilities, computers will be able to explore the infinite space of deductions at a much larger scale than human mathematicians and produce
+complex, well-formed formulas that could be interesting. However, it is currently unclear if those formulas could be understood by humans and perhaps it would be necessary to develop ``translators'' in tandem. While a fertile area of research, this is not the focus of my current work and PhD. I believe that there is much to be gained by trying to learn from the predominant methods of mathematical discovery and trying to incorporate these into the AI models that are currently being developed.
+
+\subsection{Reasonable effectiveness of model theory in mathematics (cite this)}
+
+\section{Interestingness}
+talk about information content, entropy stuff here. Include what the issue with entropy directly is, some of the GP stuff maybe. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
+
+\section{Implementation}
+\subsection{Basic Setup + GP's? Symbolic pipeline?}
+Describe first my codebase and results. Then talk about stuff with Eric(where it's at, current work and hopefully package soon) and finally symbolic pipeline things.
+\subsection{Stuff with Eric}
+Setting up machine learning on the conjecture space where the goal is to implement heuristics of interestingness and understand how to choose our function boxes.
+Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
+
+\section{Agent based math discovery}
+Talk about how this is my plan in the future. First working on proof-of-concept and then hopefully new stuff.
+Different agents working with different criteria of interestingness and different policies.
