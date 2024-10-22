@@ -22,12 +22,12 @@ Here I make analogous definitions with a very slight generalization of what was 
 
 Following on from the definition of the Relation space ~\ref{def:space-relations}, we can define the \textit{Conjecture Space} as follows:
 \begin{definition}[Conjecture Space]
-    Let $f\in\crlR$. $f$ is an element of the \textit{Conjecture Space} if and only if $f(x) < 0 \;\forall x\in\Omega$ of $f(x) > 0 \; \forall x\in\Omega$.
+    Let $f\in\crlR$. $f$ is an element of the \textit{Conjecture Space} if and only if $f(x) < 0 \;\forall x\in\Omega$ or $f(x) > 0 \; \forall x\in\Omega$.
     The set $\crlC = \crlC_{<}\cup\crlC_{>}$ is called the \textit{Conjecture Space} where $\crlC_{<} = \{f\in\crlR\;|\; f(x)<0\;\forall x\in\Omega\}$ and $\crlC_{>} = \{f\in\crlR\;|\;f(x)>0\;\forall x\in\Omega\}$.
     $\crlC_{<}$ and $\crlC_{>}$ are disjoint convex sets.
 \end{definition}
 
-There are some useful properties of $\crlC$ building upon \cite{mishraConjGen2023}. (Please see appendix ~\ref{app:conj-space} for further details).
+There are some useful properties of $\crlC$ building upon \cite{mishraConjGen2023}. (Please see appendix \ref{app:conj-space} for further details).
 \begin{itemize}
     \item $\crlC$ is an open subset of $\crlR$ and hence a Banach manifold. $\crlC_{<}$ and $\crlC_{>}$ are homeomorphic. (Note that $\crlC$ is not a Banach space. For example, it is not closed under addition)
     \item $\crlC$ forms an abelian group under (pointwise) multiplication. Moreover, $\crlC$ and $\crlC_{>}$ are topological groups with the subspace topology inherited from $\crlR$. 
@@ -42,107 +42,50 @@ There are some useful properties of $\crlC$ building upon \cite{mishraConjGen202
 
 Based on ~\ref{lemma:homeo-action}, we can define a notion of \textit{equivalent} conjectures.
 \begin{definition}[Equivalent Conjectures]
-    Two conjectures $f_1,f_2\in\crlC$ are said to be \textit{equivalent} if there exists a homeomorphism $h\in\text{Homeo}(\R^*)$ such that $\mathsf{A}(h, f_1) = f_2$.
+    Two conjectures $f_1,f_2\in\crlC$ are said to be \textit{equivalent} if there exists a homeomorphism $h\in\text{Homeo}(\R^*)$ such that $\mathsf{A}(h, f_1) = f_2$. We write this as $f_1\sim f_2$.
+\end{definition}    
+
+\begin{prop}
+    Equivalence of conjectures forms an equivalence relation under the group action $\mathsf{A}$.
+\end{prop}
+\begin{proof}
+    I check the three required properties explicitly.
+    \begin{itemize}
+        \item \textbf{Reflexivity:} $f\sim f$ as $\mathsf{A}(\mathsf{I}, f) = \mathsf{I}\circ f = f$ where $\mathsf{I}$ is the identity homeomorphism.
+        \item \textbf{Symmetry:} 
+            \begin{align*}
+                f_1\sim f_2 &\implies \exists h\in\text{Homeo}(\R^*) \text{ such that } \mathsf{A}(h, f_1) = f_2\\
+                &h\in\text{Homeo}(\R^*)\implies \exists h^{-1}\in\text{Homeo}(\R^*) \text{ such that } \mathsf{A}(h^{-1}, f_2) = f_1\\
+                &\implies f_2\sim f_1
+            \end{align*}
+        \item \textbf{Transitivity:}
+            \begin{align*}
+                f_1\sim f_2 &\implies \exists h_1\in\text{Homeo}(\R^*) \text{ such that } \mathsf{A}(h_1, f_1) = f_2\\
+                f_2\sim f_3 &\implies \exists h_2\in\text{Homeo}(\R^*) \text{ such that } \mathsf{A}(h_2, f_2) = f_3\\
+                &\implies \mathsf{A}(h_2, \mathsf{A}(h_1, f_1)) = f_3\\
+                &\implies \mathsf{A}(h_2\circ h_1, f_1) = f_3\\
+                &\implies f_1\sim f_3    
+            \end{align*}
+    \end{itemize}
+\end{proof}
+
+Now crucially, we want to ensure that our notion of \textit{equivalence} doesn't make the conjecture space trivial, that is, there is more than one equivalence class under this relation. This is equivalent to the existence of more than one orbit under the group action $\mathsf{A}$.
+The next result ensures this.
+
+\begin{theorem}[Orbit Characterization]
+    Let $f_1, f_2\in\crlC$. $f_1,f_2$ belong to different orbits of $\mathsf{A}$, if there exist distinct points $x,y\in\Omega$ such that either (i)$f_1(x) = f_1(y)$ and $f_2(x)\neq f_2(y)$ or (ii)$f_1(x)\neq f_1(y)$ and $f_2(x) = f_2(y)$. The converse holds when $\Omega$ is path-connected.
+\end{theorem}
+
 
 % \subsection{Relevant functional analysis stuff}
 % cite (Challenger paper) Might be able to extend the conjecture/relation space to a Banach lattice and not just a Banach space.
-\subsection{A primer on Model Theory}
-For the remainder of this section, I assume familiarity with the basic definitions and results from first-order logic. Please see appendix ~\ref{app:FOL} for a brief overview.
-\subsection{Model theory of Banach Spaces}
-cite Jose Iovino's stuff. Making notes here so I keep track of them.
-To be able to apply model theoretic ideas to the conjecture space, we will need a series of definitions to talk about the relevant objects.\\
+\section{Connections to model theory}
+A major portion of my first year has been devoted to learn about model theory and explore if there are connections to and tools from model theory that can be used to analyze the conjecture space in a systematic way. I would first like to motivate the reasons to explore this direction before diving into the technical details and questions that arose from this study.
 
-Let $[-\infty, \infty]$ denote the set $\R\cup\{-\infty, \infty\}$ with the following topology: The open intervals $(a,b)$ for $a,b\in \R$. The basic neigbourhoods of $-\infty, \infty$ are of the form $[-\infty, a]$ and $(a,\infty]$ respectively for $a\in \R$.
-\begin{remark}
-    There is a uniform structure compatible with this topology that has a countable base, $\mathfrak{U}$.
-\end{remark}
-
-\begin{definition}[Real-valued m-ary relation]
-    A real-valued m-ary relation on a normed space $E$ is a function
-    \begin{equation*}
-        \crlR:E^m\rightarrow [-\infty, \infty]
-    \end{equation*}
-    which is uniformly continuous on every bounded subset of $E^m$.    
-\end{definition}
-
-\begin{definition}[normed space structure]
-    A normed space structure is a structure of the form
-    \begin{equation*}
-        \mathbf{E} = (E, f_i, \crlR_j : i\in I, j\in J),
-    \end{equation*}
-    where
-    \begin{itemize}
-        \item $E$ is a normed space over the field of real numbers.
-        \item Each $f_i$ if a function $f_i : E^m\rightarrow E$ for some positive integer $m$, and $f_i$ is uniformly continuous on every bounded subset of $E^m$.
-        \item Each $\crlR_j$ is a real-valued relation.
-    \end{itemize}
-\end{definition}
-
-Complete normed space structures are \textit{Banach Space Structures}. One can now define a suitable \textit{language} for normed space structures by
-ensuring the following: function and relation symbols for each function and relation in the structure, moduli of uniform continuity for each such symbol on each bounded subset
-and bounds for the function symbol on each bounded subset. (skipping technical details for now)
-
-% \begin{definition}[Linear Isometry]
-%     Given two normed vector spaces $X$ and $Y$, a linear isometry is a linear map $T:X\rightarrow Y$ if it preserves the norm, i.e. $\|Tx\|_Y = \|x\|_X \: \forall x\in X$.
-% \end{definition}
-
-Now, we make an analogous definition of well-formed formulas. Namely, the \textit{postive bounded formulas} on these Banach space structures. Interpretation and the syntax-semantics
-relationship is defined in the usual way.
-
-\begin{remark}
-    \textbf{APPROXIMATION OF FORMULAS: } There is an interesting notion of approximation of positive bounded formulas, defined by relaxing the norm estimates in the orginal positive bounded formula.
-    This defines a partial order and induces a order topology. Interestingly, it seems like this order might be connected to the boundary of the conjecture space? I hypothesize. Also, is there a link between this order topology
-    and the general model theory of different kinds of orders? In particular, can I find a link to o-minimality maybe? Super speculative of course.
-\end{remark}
-
-Approximations are built inductively in the following way:
-\begin{align*}
-    & \varphi & & \text{ Approximations of }\varphi\\\\
-    & ||t||\leq M & & ||t||\leq N, \text{ where } N > M\\
-    & \crlR(t_1,...,t_m)\leq M & & \crlR(t_1,...,t_m)\leq N, \text{ where } N > M\\
-    & \exists x(||x||\leq M \wedge \sigma) & & \exists x(||x||\leq N \wedge \sigma^{'}), \text{ where } N > M \text{ and } \sigma^{'} \text{ is an approximation of }\sigma
-\end{align*}
-with similar rules of disjunction and atomic positive bounded formulas of the opposite type. $\varphi < \varphi^{'}$ if $\varphi^{'}$ is an approximation of $\varphi$ and the relation $ < $ is a partial order in $L$. The sets
-\begin{equation*}
-    [\phi, \psi) = \{\sigma : \phi \leq \sigma < \psi\}, \quad \phi < \psi
-\end{equation*}
-form a basis for the order topology on $L$.
-
-\begin{lemma}[Perturbation Lemma]
-    For every positive bounded $L$-formula, $\varphi(x_1,...,x_n)$, 
-    every $\varphi^{'}>\varphi$ and every $M > 0$, there exists $\delta > 0$ such that:
-    if $\mathbf{X}$ is a Banach space $L$-structure and $a_1,...,a_n$ are elements of the universe of $\mathbf{X}$ such that
-    \begin{equation*}
-        \mathbf{X}\models \bigwedge_{1\leq i\leq n} ||a_i||\leq M \wedge \varphi[a_1,...,a_n],
-    \end{equation*}
-    then whenever $b_1,...,b_n$ are elements of the universe of $\mathbf{X}$ satisfying
-    \begin{equation*}
-        \max_{1\leq i\leq n} ||a_i - b_i|| < \delta,
-    \end{equation*}
-    we have
-    \begin{equation*}
-        \mathbf{X}\models\varphi^{'}[b_1,...,b_n]
-    \end{equation*}
-\end{lemma}
-
-\begin{definition}[Approximate Satisfaction]
-    $\mathbf{X}$ approximately satisfies $\varphi[a_1,...,a_n]$, written as $\mathbf{X}\models_{\mathcal{A}}\varphi[a_1,...,a_n]$ if for every approximation $\varphi^{'}$ of $\varphi$, $\mathbf{X}\models\varphi^{'}[a_1,...,a_n]$.
-\end{definition}
-
-So $\mathbf{X}$ approximately satisfies a set $\Gamma(x_1,...,x_n)$ of positive bounded formulas \textit{iff} $\mathbf{X}\models\Gamma_{+}[a_1,...,a_n]$ where $\Gamma_{+}$ is the set of all approximations of formulas in $\Gamma$.
-\begin{remark}
-    This notion of approximate satisfaction rather than the usual notion of satisfaction provides the correct semantics for a model-theoretic analysis of Banach space structures.
-\end{remark}
-
-Read through the beginning section of Iovino's book related to $\crlU$, ultraproducts, ultrafilters etc. for Banach space structures.
-TODO: Include definition of filter and ultrafilter if it feels necessary later.
-
-Don't understand the banach space model theory compactness theorem yet (As in the proof). Moving on to see if this stuff is going to be useful.
-
-Is the stuff on defining a real-valued relation useful?
+% \input{Banach_space_model_theory_notes.tex}
 \subsection{o-minimality approach}
 
-(Convergence of function spaces over o-minimal structures) cite Margaret Thomas paper
+cite Margaret Thomas paper \cite{thomasConvergenceResultsFunction2012}
 
 First copying in my previous work on o-minimality stuff
 

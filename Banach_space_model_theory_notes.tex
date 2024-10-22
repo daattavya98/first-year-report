@@ -1,0 +1,92 @@
+\section{Model theory of Banach Spaces}
+cite Jose Iovino's stuff. Making notes here so I keep track of them.
+To be able to apply model theoretic ideas to the conjecture space, we will need a series of definitions to talk about the relevant objects.\\
+
+Let $[-\infty, \infty]$ denote the set $\R\cup\{-\infty, \infty\}$ with the following topology: The open intervals $(a,b)$ for $a,b\in \R$. The basic neigbourhoods of $-\infty, \infty$ are of the form $[-\infty, a]$ and $(a,\infty]$ respectively for $a\in \R$.
+\begin{remark}
+    There is a uniform structure compatible with this topology that has a countable base, $\mathfrak{U}$.
+\end{remark}
+
+\begin{definition}[Real-valued m-ary relation]
+    A real-valued m-ary relation on a normed space $E$ is a function
+    \begin{equation*}
+        \crlR:E^m\rightarrow [-\infty, \infty]
+    \end{equation*}
+    which is uniformly continuous on every bounded subset of $E^m$.    
+\end{definition}
+
+\begin{definition}[normed space structure]
+    A normed space structure is a structure of the form
+    \begin{equation*}
+        \mathbf{E} = (E, f_i, \crlR_j : i\in I, j\in J),
+    \end{equation*}
+    where
+    \begin{itemize}
+        \item $E$ is a normed space over the field of real numbers.
+        \item Each $f_i$ if a function $f_i : E^m\rightarrow E$ for some positive integer $m$, and $f_i$ is uniformly continuous on every bounded subset of $E^m$.
+        \item Each $\crlR_j$ is a real-valued relation.
+    \end{itemize}
+\end{definition}
+
+Complete normed space structures are \textit{Banach Space Structures}. One can now define a suitable \textit{language} for normed space structures by
+ensuring the following: function and relation symbols for each function and relation in the structure, moduli of uniform continuity for each such symbol on each bounded subset
+and bounds for the function symbol on each bounded subset. (skipping technical details for now)
+
+% \begin{definition}[Linear Isometry]
+%     Given two normed vector spaces $X$ and $Y$, a linear isometry is a linear map $T:X\rightarrow Y$ if it preserves the norm, i.e. $\|Tx\|_Y = \|x\|_X \: \forall x\in X$.
+% \end{definition}
+
+Now, we make an analogous definition of well-formed formulas. Namely, the \textit{postive bounded formulas} on these Banach space structures. Interpretation and the syntax-semantics
+relationship is defined in the usual way.
+
+\begin{remark}
+    \textbf{APPROXIMATION OF FORMULAS: } There is an interesting notion of approximation of positive bounded formulas, defined by relaxing the norm estimates in the orginal positive bounded formula.
+    This defines a partial order and induces a order topology. Interestingly, it seems like this order might be connected to the boundary of the conjecture space? I hypothesize. Also, is there a link between this order topology
+    and the general model theory of different kinds of orders? In particular, can I find a link to o-minimality maybe? Super speculative of course.
+\end{remark}
+
+Approximations are built inductively in the following way:
+\begin{align*}
+    & \varphi & & \text{ Approximations of }\varphi\\\\
+    & ||t||\leq M & & ||t||\leq N, \text{ where } N > M\\
+    & \crlR(t_1,...,t_m)\leq M & & \crlR(t_1,...,t_m)\leq N, \text{ where } N > M\\
+    & \exists x(||x||\leq M \wedge \sigma) & & \exists x(||x||\leq N \wedge \sigma^{'}), \text{ where } N > M \text{ and } \sigma^{'} \text{ is an approximation of }\sigma
+\end{align*}
+with similar rules of disjunction and atomic positive bounded formulas of the opposite type. $\varphi < \varphi^{'}$ if $\varphi^{'}$ is an approximation of $\varphi$ and the relation $ < $ is a partial order in $L$. The sets
+\begin{equation*}
+    [\phi, \psi) = \{\sigma : \phi \leq \sigma < \psi\}, \quad \phi < \psi
+\end{equation*}
+form a basis for the order topology on $L$.
+
+\begin{lemma}[Perturbation Lemma]
+    For every positive bounded $L$-formula, $\varphi(x_1,...,x_n)$, 
+    every $\varphi^{'}>\varphi$ and every $M > 0$, there exists $\delta > 0$ such that:
+    if $\mathbf{X}$ is a Banach space $L$-structure and $a_1,...,a_n$ are elements of the universe of $\mathbf{X}$ such that
+    \begin{equation*}
+        \mathbf{X}\models \bigwedge_{1\leq i\leq n} ||a_i||\leq M \wedge \varphi[a_1,...,a_n],
+    \end{equation*}
+    then whenever $b_1,...,b_n$ are elements of the universe of $\mathbf{X}$ satisfying
+    \begin{equation*}
+        \max_{1\leq i\leq n} ||a_i - b_i|| < \delta,
+    \end{equation*}
+    we have
+    \begin{equation*}
+        \mathbf{X}\models\varphi^{'}[b_1,...,b_n]
+    \end{equation*}
+\end{lemma}
+
+\begin{definition}[Approximate Satisfaction]
+    $\mathbf{X}$ approximately satisfies $\varphi[a_1,...,a_n]$, written as $\mathbf{X}\models_{\mathcal{A}}\varphi[a_1,...,a_n]$ if for every approximation $\varphi^{'}$ of $\varphi$, $\mathbf{X}\models\varphi^{'}[a_1,...,a_n]$.
+\end{definition}
+
+So $\mathbf{X}$ approximately satisfies a set $\Gamma(x_1,...,x_n)$ of positive bounded formulas \textit{iff} $\mathbf{X}\models\Gamma_{+}[a_1,...,a_n]$ where $\Gamma_{+}$ is the set of all approximations of formulas in $\Gamma$.
+\begin{remark}
+    This notion of approximate satisfaction rather than the usual notion of satisfaction provides the correct semantics for a model-theoretic analysis of Banach space structures.
+\end{remark}
+
+Read through the beginning section of Iovino's book related to $\crlU$, ultraproducts, ultrafilters etc. for Banach space structures.
+TODO: Include definition of filter and ultrafilter if it feels necessary later.
+
+Don't understand the banach space model theory compactness theorem yet (As in the proof). Moving on to see if this stuff is going to be useful.
+
+Is the stuff on defining a real-valued relation useful?
