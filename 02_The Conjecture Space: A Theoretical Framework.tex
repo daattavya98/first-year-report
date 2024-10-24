@@ -258,14 +258,24 @@ The basic setup is as follows (For notation and definitions please see \ref{sec:
                 \State Update Loss: $\mathfrak{L}(\alpha, \mathcal{F}, \Omega[b]) \gets (1 - \omega(\alpha, \mathcal{F}, \Omega[b])^2)^2$
             \EndFor
         \EndFor
-        \State \textbf{Output:} Optimized coefficients $\alpha$
+        \State \textbf{Output:} Human-readable conjecture: $\sum_{i = 1}^{|\mathcal{F}|}\alpha_i f_i$
         \end{algorithmic}
         \end{algorithm}   
     \item 
         \textbf{Output:} The output is a set of human-readable conjectures (in symbolic form). They have exactly zero loss over the chosen $\Omega$.
-    
 \end{itemize}
- 
+
+Examples of conjectures I have found using this setup:
+
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{Field} & \textbf{Conjectures} \\
+    \hline
+    Number Theory & \\
+    \hline
+    Algebraic Geometry & \\
+    \hline
+\end{tabular}
 
 \subsection{Expanding parameterization with Symbolic Regression}
 \subsection{Stuff with Eric, GP's?}

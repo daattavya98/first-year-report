@@ -318,6 +318,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
@@ -337,7 +338,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm7.t
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm7.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm5.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm
 INPUT ./03_Applications.tex
 INPUT ./03_Applications.tex
 INPUT 03_Applications.tex
@@ -348,7 +348,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecti0600.tfm
 INPUT ./thesis.bbl
 INPUT ./thesis.bbl
 INPUT thesis.bbl
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ectt1200.tfm
 INPUT ./app_conj_space.tex
 INPUT ./app_conj_space.tex
 INPUT app_conj_space.tex
@@ -386,4 +385,3 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb
