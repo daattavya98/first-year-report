@@ -236,16 +236,30 @@ The basic setup is as follows (For notation and definitions please see \ref{sec:
             \label{def:signum-loss}
             I first define the `signum value' of an $(\alpha, \mathcal{F})$ pair as follows:
             \begin{equation*}
-                \omega(\alpha, \mathcal{F}) = \frac{1}{|\Omega|}\sum_{x\in\Omega} \sgn\left(\sum_{i=1}^{|\mathcal{F}|}\alpha_i f_i(x)\right)
+                \omega(\alpha, \mathcal{F}, \Omega) = \frac{1}{|\Omega|}\sum_{x\in\Omega} \sgn\left(\sum_{i=1}^{|\mathcal{F}|}\alpha_i f_i(x)\right)
             \end{equation*}
             where $\sgn$ is the signum function. The signum loss is then defined as:
             \begin{equation*}
-                \mathfrak{L}(\alpha,\mathcal{F}) = 1 - \omega(\alpha, \mathcal{F})^2
+                \mathfrak{L}(\alpha,\mathcal{F}, \Omega) = (1 - \omega(\alpha, \mathcal{F})^2)^2
             \end{equation*}
-            where $\sgn$ is the signum function. For simplicity of notation,
         \end{definition}
         \begin{algorithm}
         \caption{Pseudo-code for SGD with Signum Loss}\label{alg:SGD}
+        \begin{algorithmic}
+        \State \textbf{Input:} Domain $\Omega$, function box $\mathcal{F}$, learning rate $\eta$, number of iterations $N$, batch-size $b$
+        \State \textbf{Parameterise:} Initialise $\alpha$ randomly. Split $\Omega$ into $b$ batches.
+        \For{$i = 1$ to $N$}
+            \For{$j = 1$ to $b$}
+                \If{$\mathfrak{L}(\alpha, \mathcal{F}, \Omega[b]) < $ tol}
+                    \State Return $\alpha$
+                \EndIf
+                \State Compute the gradient $\nabla\mathfrak{L}(\alpha, \mathcal{F}, \Omega[b])$ 
+                \State Update coefficients: $\alpha \gets \alpha - \eta \nabla\mathfrak{L}(\alpha, \mathcal{F})$
+                \State Update Loss: $\mathfrak{L}(\alpha, \mathcal{F}, \Omega[b]) \gets (1 - \omega(\alpha, \mathcal{F}, \Omega[b])^2)^2$
+            \EndFor
+        \EndFor
+        \State \textbf{Output:} Optimized coefficients $\alpha$
+        \end{algorithmic}
         \end{algorithm}   
     \item 
         \textbf{Output:} The output is a set of human-readable conjectures (in symbolic form). They have exactly zero loss over the chosen $\Omega$.
