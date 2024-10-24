@@ -265,17 +265,26 @@ The basic setup is as follows (For notation and definitions please see \ref{sec:
         \textbf{Output:} The output is a set of human-readable conjectures (in symbolic form). They have exactly zero loss over the chosen $\Omega$.
 \end{itemize}
 
-Examples of conjectures I have found using this setup:
+Examples of conjectures I have found using this setup:\\
 
 \begin{tabular}{|c|c|}
+    \label{table:conjectures}
     \hline
-    \textbf{Field} & \textbf{Conjectures} \\
+    \textbf{Sub-discipline} & \textbf{Conjectures} \\
     \hline
-    Number Theory & \\
+    Number Theory & \makecell{$6\sigma(x) + 2li(x) + 1 \geq 0$ \\ $\varphi(x) - \pi(x) \geq 0$ \\ $\sigma(x) + 2H(x) + 1 \geq 0$ \\ $\sigma(x) - Robin(x)\geq 0$} \\
     \hline
     Algebraic Geometry & \\
     \hline
 \end{tabular}
+\\\\
+I am omitting other conjectures involving the same functions to cover a larger diversity of functions and avoid redundancies (For example, conjectures that would be directly implied by those presented above). 
+\begin{remark}
+    The conjectures presented above are not necessarily true. However, it is guaranteed that they are true on the amount of data presented to the machine. These conjectures are also not necessarily new or interesting. In general, we will cover all kinds of conjectures with this approach. This higlights the crucial importance of
+    finding heuristics for interestingness and being able to classify conjectures. 
+\end{remark}
+
+The conjectures presented in \ref{table:conjectures} are merely for illustration. The utility of this implementation can be seen through a variety of applications I have been working on \ref{chap:applications}.
 
 \subsection{Expanding parameterization with Symbolic Regression}
 \subsection{Stuff with Eric, GP's?}
