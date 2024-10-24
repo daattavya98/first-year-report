@@ -108,32 +108,21 @@ Importantly, definability and o-minimality in particular are thought of as reali
 Some of the central questions I am interested in potentially link contemporary model theory to mathematical discovery:
 \begin{itemize}
     \item Are there well understood meta-mathematical (model theoretic) tools that can be incorporated to improve our math discovery system?
-    \item Is an emphasis on `tameness' be useful for a math discovery system?
+    \item Is an emphasis on `tameness' useful for a math discovery system?
 \end{itemize}
 
 
 % \input{Banach_space_model_theory_notes.tex}
-\subsection{o-minimality approach}
+\subsection{Connexions between o-minimality and \texorpdfstring{$\mathcal{C}$}{C}}
 
 cite Margaret Thomas paper \cite{thomasConvergenceResultsFunction2012}
-
-\begin{theorem}[Monotinicity]
-    Let $f:(a,b)\mapsto R$ be a definable function on the interval $(a,b).$ Then there are points $a_1 < ... < a_k$ in $(a,b)$ such that on each sub-interval $(a_j, a_{j+1})$ with $a_0 = a, a_{k+1} = b$, the function is either constant, or strictly monotone and continuous.
-\end{theorem}
 
 % \input{o-minimal_details.tex}
 
 Consider $\R_{alg}$, the simplest o-minimal structure whose definable sets are exactly the semi-algebraic sets.
 
-\begin{definition}[Semialgebraic]
-    A semialgebraic set in $\R^n$ is by definition a finite union of sets of the form
-    \begin{equation*}
-        \{x\in\R^n : f(x) = 0, g_1(x)>0,...,g_k(x)>0\}
-    \end{equation*}
-    where $f$ and $g$'s are real polynomials in $n$ variables.
-\end{definition}
-
-We are interested in elements of the Relation space, $\crlR$, that is, $C^0$ real-valued functions, $f:\Omega\mapsto\R$, where $\Omega$ is a compact subset of $\R^n$.
+We are interested in elements of the Relation space, $\crlR$.
+These are $C^0$ real-valued functions, $f:\Omega\mapsto\R$, where $\Omega$ is a compact subset of $\R^n$.
 \\\\
 \textcolor{red}{I think the following example might be quite trivial but illustrates the concept}.
 \\\\
@@ -167,14 +156,14 @@ $\Gamma(f)\in\mathcal{S}_2\implies$ \textbf{f is definable}.
 This can be generalized for any tuple of singletons (in an analogous manner) and thus any function $f:\mathbb{D}^n\mapsto\mathbb{D}$ would be definable. For this to be potentially interesting, we want to extend the analysis to generic domains, meaning that we want to include finite unions of intervals and not just singletons.
 \\\\
 Generic Case:\\
-$\Omega$ is a compact subset of $\real^n$. Thus by the Heine-Borel theorem, $\Omega$ must be closed and bounded. By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\real^n:|x - a| < r\}$. \\$B(a, r)$ is definable in $\real_{alg}$ implying $\Omega$ is definable in our structure.
+$\Omega$ is a compact subset of $\R^n$. Thus by the Heine-Borel theorem \cite{Caradus_1967}, $\Omega$ must be closed and bounded. By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\R^n:|x - a| < r\}$. \\$B(a, r)$ is definable in $\R_{alg}$, by the following first-order formula:
 
 \begin{equation*}
-    \exists r\;\forall x\in\Omega \quad (x - a) < r\; \vee \; (a - x) > r
+    \exists r\;\forall x \quad (x - a) < r\; \vee \; (a - x) > r
 \end{equation*}
 
-Above is a finite union of intervals
-\\\\
+This implies $\Omega$ is definable in our structure.\\\\
+
 Now consider a  finite set of $C^0$ real-valued functions, $f:\Omega\mapsto\real$, $\mathcal{F} = \{f_1,...,f_k\}$. We also need a corresponding tuple of coefficients $\alpha = (\alpha_1,...,\alpha_k)$ and each $\alpha\in\real$.
 
 These are the functions we want to base our conjectures on and the optimization problem is finding the possible tuples $\alpha$ such that our signum-based loss is exactly zero. This is equivalent to the following condition:
@@ -270,11 +259,15 @@ I describe the setup, current state and future ideas below.
 \subsection{Basic Setup}
 The basic setup is as follows (For notation and definitions please see \ref{sec:conj-space}). My chosen programming language is Python along with standard libraries such as NumPy, SymPy etc. 
 \begin{itemize}
-    \item \textbf{Input:} There are two allowed modes of input: (i) The domain, $\Omega$, and a `function box' := $[f_1, f_2,...,f_m]$ where each $f_i$ is a real-valued, continous function: 
+    \item \textbf{Input:} There are two allowed modes of input: (i)Providing both the domain, $\Omega$, and a `function box' := $[f_1, f_2,...,f_m]$ where each $f_i$ is a real-valued, continous function, (ii) Providing a finite set of real-valued function evaluations (Continuity is ensured in a trivial manner by attaching the discrete topology to this set. $\Omega$ is implicitly decided). In case (i), multiple implementations of $\Omega$ are supported: 
           \begin{itemize}
             \item[$\blacktriangleright$] As a discrete set of points (Either specifically chosen based on the problem, or randomly from a distribution)
-            \item[$\blacktriangleright$] As an interval box, $\mathcal{I}^n = [min, max]\times_1...\times_n[min, max]$ with a choice of range and arbitrary precision (with number of points).
+            \item[$\blacktriangleright$] As an interval box, $\mathcal{I}^n = [min, max]\times_1...\times_n[min, max]$ with a choice of range and arbitrary precision (by varying the number of points).
           \end{itemize}
+          In case (i), I utilize SymPy \cite{10.7717/peerj-cs.103} implementations of the functions where available or write a custom implementation that is compatible with SymPy. In case (ii), a symbol is assigned to the function evaluations and manipulated as a SymPy symbol. The function box consists of all such symbols.
+    \item \textbf{Optimization:} In the first implementation, we associate a tuple of real-valued parameters $[\alpha_1,...\alpha_{\text{size of function box}}]$ to the function box. Our optimization problem is as follows:
+    
+    \item \textbf{Output:} The output is a set of human-readable conjectures (in symbolic form). They have exactly zero loss over the chosen $\Omega$.
     
 \end{itemize}
  
