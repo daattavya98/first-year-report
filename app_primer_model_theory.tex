@@ -8,6 +8,11 @@ For the purpose of this appendix I assume some basic terminology from first-orde
     Then a set $A\subseteq M^n$ is \textit{definable} in $\mathcal{M}$ with parameters from $X$ if and only if there exists a formula $\varphi[x_1,x_2,...,x_n,y_1,...,y_m]$ and elements $b_1,...,b_m\in X$ such that for all $a_1,...,a_n\in M, (a_1,...,a_n)\in A$ if and only if $\mathcal{M}\models\varphi[a_1,...,a_n,b_1,...,b_m]$
 \end{definition}
 
+\begin{definition}[Definable function \cite{Dries_1998}]
+    \label{def:definable-function}
+    Consider definable sets $X, Y$ in some structure. The function $f:X\mapsto Y$ is definable iff the graph of $f$ is a definable subset of $X\times Y$.
+\end{definition}
+
 \begin{definition}[Elementary Equivalence \cite{changModelTheory1990}]
     \label{def:elementary-equivalence}
     Let $\mathcal{L}$ be a first-order language. Consider $\mathcal{L}$ models $\mathcal{A}, \mathcal{B}$. $\mathcal{A}$ and $\mathcal{B}$ are \textit{elementary equivalent} if they have the same true $\mathcal{L}$-sentences, i.e., for every $\mathcal{L}$-sentence, $\varphi, \mathcal{A}\models\varphi \text{ iff }\mathcal{B}\models\varphi$. Then $\mathcal{A}\equiv\mathcal{B}$ 
@@ -27,4 +32,36 @@ For o-minimal structures, we have the following theorem:
     \label{thm:monotonicity}
     Let $f:(a,b)\mapsto R$ be a definable function on the interval $(a,b).$ Then there are points $a_1 < ... < a_k$ in $(a,b)$ such that on each sub-interval $(a_j, a_{j+1})$ with $a_0 = a, a_{k+1} = b$, the function is either constant, or strictly monotone and continuous.
 \end{theorem}
+
+The following is an example of a conjecture as a definable function, illustrating the ideas presented in \ref{sec:ominimal-connexions}
+\begin{exmp}
+    Consider the simple case of $n=1$ with $\Omega$ being the set of integers from 1 to 1000, represented by $\mathbb{D}$.
+    As this is a finite union of singletons, it is definable in $\R_{alg}$. Now consider functions from number theory acting on singletons to give singletons as output. (Equipping $\mathbb{D}$ with the discrete topology ensures continuity). Suppose we consider the prime counting function $\pi(x)$ and Euler totient function $\varphi(x)$. Now, for integers $x > 90$, $\pi(x) < \varphi(x)$. (This is an inequality that was found by the conjecture machine and confirmed to be true from some number theory literature \cite{moser1951}).
+
+    Suppose we consider $A\subset\mathbb{D}$ where
+    \begin{equation*}
+        A = \{90, 91,....,1000\}
+    \end{equation*}
+    that is the set of singletons from 90 till 1000. (This choice ensures that the inequality under consideration is true and thus the function we consider below is a ``conjecture" as per our definition).
+
+    By definition, $A\subset\mathbb{D}$ and hence $A\in\mathcal{S}^1 \implies $ definable.
+    \\\\
+    Now take the function $f: n\mapsto\varphi(n) - \pi(n)$ acting on the set A defined above. $\pi(A)\subset\mathbb{D}, \varphi(A)\subset\mathbb{D}$ and `-' is a closed operation on $\mathbb{D}$. Thus $\varphi(A) - \pi(A)$ must be in $\mathbb{D}$ and hence $f(A)\subset\mathbb{D}$.
+    \\\\
+    From the second axiom in the definition of o-minimal structures,
+
+    \begin{equation*}
+        A \in \mathcal{S}_n\implies A \times\real\in\mathcal{S}_{n+1} \text{ and } \real \times A\in\mathcal{S}_{n+1}
+    \end{equation*}
+    \\
+    So if we consider the graph of $f$, $\Gamma(f)\subseteq\mathbb{D}^2$, we have that $\Gamma(f)$ is a set of points $(p,q)$ where $p\in P\subset\mathbb{D}$ and $q\in Q$ where $Q\in\mathbb{D}$. (As $f(A)\in\mathbb{D}$ from above.
+    \\\\
+    Now we know that $P\in\mathcal{S}_1, Q\in\mathcal{S}_1$. Thus by lemma 2.2 (i) [LVD]
+    \begin{equation*}
+        A\in\mathcal{S}_m \text{ and } B\in\mathcal{S}_n \implies A\times B\in\mathcal{S}_{m+n}
+    \end{equation*}
+    $\Gamma(f)\in\mathcal{S}_2\implies$ \textbf{f is definable}.
+
+    This can be generalized for any tuple of singletons (in an analogous manner) and thus any function $f:\mathbb{D}^n\mapsto\mathbb{D}$ would be definable. For this to be potentially interesting, we want to extend the analysis to generic domains, meaning that we want to include finite unions of intervals and not just singletons.
+\end{exmp} 
 

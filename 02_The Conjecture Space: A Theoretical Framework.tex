@@ -81,7 +81,7 @@ The next result ensures this.
 
 % \subsection{Relevant functional analysis stuff}
 % cite (Challenger paper) Might be able to extend the conjecture/relation space to a Banach lattice and not just a Banach space.
-\section{Connections to model theory}
+\section{Connexions to model theory}
 A major portion of my first year has been devoted to learn about model theory. I am trying to explore if there are connections to and tools from model theory that can be used to analyze the conjecture space in a systematic way and extend the formalism to a more general setting, i.e., beyond inequalities of continuous functions.
 \subsection{Why model theory?}
 In \cite{baldwin2020reasonable}, Baldwin contrasts Wigner's famous observations in \cite{wigner1990unreasonable} about the `unreasonable' effectiveness of mathematics in the natural sciences with the reasonable effectiveness of model theory across various areas of mathematics. Baldwin describes three key reasons for this effectiveness.
@@ -114,111 +114,73 @@ Some of the central questions I am interested in potentially link contemporary m
 
 % \input{Banach_space_model_theory_notes.tex}
 \subsection{Connexions between o-minimality and \texorpdfstring{$\mathcal{C}$}{C}}
-
-cite Margaret Thomas paper \cite{thomasConvergenceResultsFunction2012}
-
+\label{sec:ominimal-connexions}
+The analysis below is limited to the implementation of the conjecture space
+on a computer (See \ref{sec:implementation} for further details).\\ 
+This means I only consider a \textit{finite} number of continuous functions. Thus $\mathcal{R}$ and $\mathcal{C}$ will be \textit{finite}-dimensional Banach spaces rather than infinite-dimensional. This greatly simplifies the analysis. However, after conversations with Professor Jonathan Kirby (Reader in mathematical logic at University of East Anglia) and Professor Anuj Dawar (Department of Computer Science and Technology, University of Cambridge), it is very likely that to fully utilise tools from model theory, we have to extend our analysis to the more general, infinite-dimensional case.
+This is a major area of interest that I plan to work on during the coming terms, potentially in collaboration with Professor Kirby and Professor Dawar. I present the current state of the analysis below.\\
 % \input{o-minimal_details.tex}
 
-Consider $\R_{alg}$, the simplest o-minimal structure whose definable sets are exactly the semi-algebraic sets.
-
-We are interested in elements of the Relation space, $\crlR$.
+Consider $\R_{alg}$\cite{Dries_1998}, the simplest o-minimal structure whose definable sets are exactly the semi-algebraic sets (See \ref{def:semialgebraic-set}). We are interested in analysing elements of the Relation space, $\crlR$.
 These are $C^0$ real-valued functions, $f:\Omega\mapsto\R$, where $\Omega$ is a compact subset of $\R^n$.
-\\\\
-\textcolor{red}{I think the following example might be quite trivial but illustrates the concept}.
-\\\\
-Consider the simple case of $n=1$ with $\Omega$ being the set of integers from 1 to 1000, represented by $\mathbb{D}$.
-As this is a finite union of singletons, it is definable in $\R_{alg}$. Now consider functions from number theory acting on singletons to give singletons as output. (Equipping $\mathbb{D}$ with the discrete topology ensures continuity). Suppose we consider the prime counting function $\pi(x)$ and Euler totient function $\varphi(x)$. Now, for integers $x > 90$, $\pi(x) < \varphi(x)$. (This is an inequality that was found by the conjecture machine and confirmed to be true from some number theory literature \cite{moser1951}).
 
-Suppose we consider $A\subset\mathbb{D}$ where
-\begin{equation*}
-    A = \{30, 31,....,100\}
-\end{equation*}
-that is the set of singletons from 30 till 100. (This choice ensures that the inequality under consideration is true and thus the function we consider below is a ``conjecture" as per our definition).
-
-By definition, $A\subset\mathbb{D}$ and hence $A\in\mathcal{S}^1 \implies $ definable.
-\\\\
-Now take the function $f: n\mapsto\varphi(n) - \pi(n)$ acting on the set A defined above. $\pi(A)\subset\mathbb{D}, \varphi(A)\subset\mathbb{D}$ and `-' is a closed operation on $\mathbb{D}$. Thus $\varphi(A) - \pi(A)$ must be in $\mathbb{D}$ and hence $f(A)\subset\mathbb{D}$.
-\\\\
-From the second axiom in the definition of o-minimal structures,
-
-\begin{equation*}
-    A \in \mathcal{S}_n\implies A \times\real\in\mathcal{S}_{n+1} \text{ and } \real \times A\in\mathcal{S}_{n+1}
-\end{equation*}
-\\
-So if we consider the graph of $f$, $\Gamma(f)\subseteq\mathbb{D}^2$, we have that $\Gamma(f)$ is a set of points $(p,q)$ where $p\in P\subset\mathbb{D}$ and $q\in Q$ where $Q\in\mathbb{D}$. (As $f(A)\in\mathbb{D}$ from above.
-\\\\
-Now we know that $P\in\mathcal{S}_1, Q\in\mathcal{S}_1$. Thus by lemma 2.2 (i) [LVD]
-\begin{equation*}
-    A\in\mathcal{S}_m \text{ and } B\in\mathcal{S}_n \implies A\times B\in\mathcal{S}_{m+n}
-\end{equation*}
-$\Gamma(f)\in\mathcal{S}_2\implies$ \textbf{f is definable}.
-
-This can be generalized for any tuple of singletons (in an analogous manner) and thus any function $f:\mathbb{D}^n\mapsto\mathbb{D}$ would be definable. For this to be potentially interesting, we want to extend the analysis to generic domains, meaning that we want to include finite unions of intervals and not just singletons.
-\\\\
-Generic Case:\\
-$\Omega$ is a compact subset of $\R^n$. Thus by the Heine-Borel theorem \cite{Caradus_1967}, $\Omega$ must be closed and bounded. By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\R^n:|x - a| < r\}$. \\$B(a, r)$ is definable in $\R_{alg}$, by the following first-order formula:
+By the Heine-Borel theorem \cite{Caradus_1967}, $\Omega$ must be closed and bounded. By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\R^n:|x - a| < r\}$. \\$B(a, r)$ is definable in $\R_{alg}$, by the following first-order formula:
 
 \begin{equation*}
     \exists r\;\forall x \quad (x - a) < r\; \vee \; (a - x) > r
 \end{equation*}
 
-This implies $\Omega$ is definable in our structure.\\\\
+This implies $\Omega$ is definable in our structure.
 
-Now consider a  finite set of $C^0$ real-valued functions, $f:\Omega\mapsto\real$, $\mathcal{F} = \{f_1,...,f_k\}$. We also need a corresponding tuple of coefficients $\alpha = (\alpha_1,...,\alpha_k)$ and each $\alpha\in\real$.
+Now consider a  finite set of $C^0$ real-valued functions, $f:\Omega\mapsto\R$. This will be called the function box: $\mathcal{F} = \{f_1,...,f_k\}$. Associated to $\mathcal{F}$ is a tuple of coefficients, $\alpha = (\alpha_1,...,\alpha_k)$ where each $\alpha_i\in\R$.
 
-These are the functions we want to base our conjectures on and the optimization problem is finding the possible tuples $\alpha$ such that our signum-based loss is exactly zero. This is equivalent to the following condition:
+The elements of $\mathcal{F}$ are the functions we want to appear in our conjectures. The optimization problem is finding the possible tuples $\alpha$ such that our loss is exactly zero. This is equivalent to the following condition:
 \begin{equation}
-\label{loss}
+    \label{loss}
     \alpha_1f_1(x)+\alpha_2f_2(x)+.....+\alpha_nf_n(x) > 0 \quad\forall x\in\Omega
 \end{equation}
 
+We now have the following possibilities:
 \begin{itemize}
-    \item All $f_i$'s are definable functions: In this case, as a linear combination of definable functions will necessarily be definable, conjectures are definable.
-    \item \textit{Approximation of functions}: Suppose one or more of the $f_i$'s are not definable. When calculating the signum-loss as in \ref{loss}, on any computing system, we are necessarily restricted to a \textit{finite} number of computations because $\Omega$ will always be finite. In this case, all of the $f_i$'s become discrete.
-    \\\\ By almost a trivial argument, the I think the following should be true:
-
-    Suppose the implementation of $\Omega$ on the computing system is represented by $\Omega^{comp}$. This is the set
-    \begin{equation*}
-        \Omega^{comp} = \{(a_i) : i\in I\} 
-    \end{equation*}
-    where $I$ is a finite index set (i.e. $I = \{1, 2, ..., k\}$ and each $a_i$ (term in the domain) is a real number up to arbitrary precision in floating point arithmetic.
-    For any
-    \begin{equation*}
-        f:\Omega^{comp}\mapsto\real
-    \end{equation*}
-    $f(\Omega^{comp})$ is a \textit{finite} union (as $\Omega^{comp}$ is finite) of definable subsets of $\real\implies f(\Omega^{comp})$ is definable.
-    \par Now, the domain and range of $f$ are definable and the graph of $f$ is a finite union of points,
-    \begin{equation*}
-        \Gamma(f) = \{(a_i, f(a_i)): a_i\in\Omega^{comp}\}
-    \end{equation*}
-    Hence the discrete version of $f_i$'s are definable.
+    \item All $f_i$'s are definable functions (See \ref{def:definable-function}): In this case, as a linear combination of definable functions will necessarily be definable, conjectures are definable.
+    \item \textit{Approximation of functions}: Suppose one or more of the $f_i$'s are not definable. When calculating the loss as in \ref{loss}, on any computing system, we are necessarily restricted to a \textit{finite} number of computations.
+          This is because $\Omega$ will always be finite. In this case, all of the $f_i$'s become discrete. By almost a trivial argument, we have the following:\\
+        Suppose the implementation of $\Omega$ on the computing system is represented by $\Omega^{comp}$. This is the set
+        \begin{equation*}
+            \Omega^{comp} = \{(a_i) : i\in \mathbb{N}\} 
+        \end{equation*}
+        and each $a_i$ (term in the domain) is a real number up to arbitrary precision in floating point arithmetic.
+        For any
+        \begin{equation*}
+            f:\Omega^{comp}\mapsto\R,
+        \end{equation*}
+        $f(\Omega^{comp})$ is a \textit{finite} subset of $\R^n$. A finite subset of $\R^n$ is trivially definable in $\R_{alg}$. Thus the domain and co-domain of $f$ are definable.
+        \par Now, the graph of $f$ is a finite union of points,
+        \begin{equation}
+            \label{eq:graph}
+            \Gamma(f) = \{(a_i, f(a_i)): a_i\in\Omega^{comp}\}
+        \end{equation}
+        As this is again a finite subset of $\R^n$, the discrete versions of $f_i$'s are definable.
 \end{itemize}
 
-The above argument seems quite trivial to me but I'm curious if it might still lead to any interesting developments in our setting.\\
-Now after a very helpful discussion with Anuj, Ioannis and Challenger, I think the following observation might be interesting:
-When dealing with these discrete functions (which we always have when implementing on a computing system), we can consider them to no longer be functions but simply constants (tuples) as the evaluation domain ($\Omega^{comp}$) is fixed. So we can append our language with constants, $c_1,...,c_n$, where each $c_i$ represents $f_i(\Omega^{comp})$. The object we are then trying to study is the definable set satisfying the following formula:
+From the above results, we can consider an alternate formulation for implementing the conjecture space. When dealing with discrete functions, we can replace them by their graphs as in \ref{eq:graph}. Now they are simply constants. We can now append $c_1,...,c_n$, to our first-order language where each $c_i$ represents a $f_i(\Omega^{comp})$. The conjecture space in this case simplifies to the definable set satisfying the following formula:
 
-\begin{equation*}
+\begin{equation}
+    \label{eq:def-conj-space}
     \exists\alpha_1\alpha_2....\alpha_n\quad\alpha_1c_1+\alpha_2c_2+...+\alpha_nc_n > 0
-\end{equation*}
+\end{equation}
 
-This definable set is the conjecture space. Some of the questions we want to explore: 
+Some of the questions to explore are: 
 \begin{itemize}
-    \item How can we study definable sets in this setting? Are their certain properties that are useful to analyze?
-    \item Is there any connection between `meta-properties' of the conjecture space (interesting/trivial conjecture for example) and fundamental o-minimal geometric properties of this definable set (from finiteness, stratifications, decompositions etc.) \\ The goal is then to try to leverage these connections in a meaningful way
+    \item Are there model theoretic tools we can apply to the definable set in \ref{eq:def-conj-space}?
+    \item Is there any connection between `meta-properties' of the conjectures (interesting/trivial conjectures for example) and o-minimal properties of this definable set (finiteness, stratifications, decompositions etc. \cite{Dries_1998}) Can these connections be leveraged in a meaningful way?
 \end{itemize}
 
-
-
-\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set. Hence the subdivisions are open and as we know that the set is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma. The question is, what is a clever way to test the condition I am suggesting.}
-\par
-\textcolor{blue}{Is this problem similar to finding level sets?}
-
-\textcolor{green}{\textbf{KEY HYPOTHESIS: DO WE HAVE AN O-MINIMAL STRUCTURE RELATED TO THE CONJECTURE SPACE, SUCH THAT,``GOOD/IMPORTANT" CONJECTURES 
-ARE FUNDAMENTALLY RELATED TO THE O-MINIMAL/ ALGEBRAIC GEOMETRY OF THE SPACE IN TERMS OF STRATIFICATIONS, FINITENESS ETC.?}
-}
-
-Some preliminary ``evidence" (or why the idea came into my mind) is because of how the loss boundary for Robin's criteria for the Riemann Hypothesis might be resembling the kind of behaviour I would expect for the subdivisions of a definable function in an o-minimal structure in accordance with the monotonicity theorem.
+As mentioned in the introduction to this section, the above analysis can potentially become a lot more interesting once we can analyse the infinite dimensional case. I believe that the convergence results presented in \cite{thomasConvergenceResultsFunction2012} is a promising starting point to extend this analysis.
+\begin{remark}
+    Another possible source of model theory connections is to work with continuous logic rather than discrete logic and utilise results from model theory on Banach spaces \cite{yaacovModelTheoryMetric2008}. Continuous first-order logic (CFO) is a generalisation of first-order logic (FOL) (Simply consider any structure in FOL as a metric structure where the underlying metric $d$ is discrete, i.e, $d(a, b) = 1$ for distinct $a, b$). Basic results that hold in CFO can be framed as generalisations of corresponding results in FOL. 
+    This direction might turn out to be more fruitful as Banach spaces are more natural objects in this setting. I am currently working through \cite{yaacovModelTheoryMetric2008} and attempting to incorporate these ideas in an application, \ref{sec:abc-conjecture}.   
+\end{remark}
 
 \section{Theorem spaces}
 Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
@@ -253,21 +215,40 @@ complex, well-formed formulas that could be interesting. However, it is currentl
 \section{Interestingness}
 
 \section{Implementation}
-Another major portion of work during my first year has been on an implementation of the conjecture space. The goal is to have a pipeline that domain experts are able to use as an exploratory tool.
+\label{sec:implementation}
+Another major portion of work during my first year has been implementing the conjecture space. The goal is to have a pipeline that domain experts are able to use as an exploratory tool.
 I describe the setup, current state and future ideas below.
 
 \subsection{Basic Setup}
-The basic setup is as follows (For notation and definitions please see \ref{sec:conj-space}). My chosen programming language is Python along with standard libraries such as NumPy, SymPy etc. 
+The basic setup is as follows (For notation and definitions please see \ref{sec:conj-space} and \ref{sec:ominimal-connexions}). My chosen programming language is Python along with standard libraries such as NumPy, SymPy etc. 
 \begin{itemize}
-    \item \textbf{Input:} There are two allowed modes of input: (i)Providing both the domain, $\Omega$, and a `function box' := $[f_1, f_2,...,f_m]$ where each $f_i$ is a real-valued, continous function, (ii) Providing a finite set of real-valued function evaluations (Continuity is ensured in a trivial manner by attaching the discrete topology to this set. $\Omega$ is implicitly decided). In case (i), multiple implementations of $\Omega$ are supported: 
+    \item 
+        \textbf{Input:} There are two allowed modes of input: (i)Providing both the domain, $\Omega$, and function box $\mathcal{F}$ (ii) Providing a finite set of real-valued function evaluations (Note: This is the discrete function graphs as in \ref{eq:graph}). Multiple implementations of $\Omega$ are supported: 
           \begin{itemize}
-            \item[$\blacktriangleright$] As a discrete set of points (Either specifically chosen based on the problem, or randomly from a distribution)
+            \item[$\blacktriangleright$] As a discrete set of points (Can be useful if there are specific points/regions where a function is known to have interesting behaviour. For example, many number theoretic functions have intereseting behaviour at very large primes.)
             \item[$\blacktriangleright$] As an interval box, $\mathcal{I}^n = [min, max]\times_1...\times_n[min, max]$ with a choice of range and arbitrary precision (by varying the number of points).
           \end{itemize}
-          In case (i), I utilize SymPy \cite{10.7717/peerj-cs.103} implementations of the functions where available or write a custom implementation that is compatible with SymPy. In case (ii), a symbol is assigned to the function evaluations and manipulated as a SymPy symbol. The function box consists of all such symbols.
-    \item \textbf{Optimization:} In the first implementation, we associate a tuple of real-valued parameters $[\alpha_1,...\alpha_{\text{size of function box}}]$ to the function box. Our optimization problem is as follows:
-    
-    \item \textbf{Output:} The output is a set of human-readable conjectures (in symbolic form). They have exactly zero loss over the chosen $\Omega$.
+          In case (i), I utilize SymPy \cite{10.7717/peerj-cs.103} implementations of the functions where available or write a custom implementation that is compatible with SymPy. In case (ii), a symbol is assigned to the function evaluations and manipulated as a SymPy symbol. The function box then consists of all such symbols.
+    \item 
+        \textbf{Optimization:} As described in \ref{loss}, the optimization problem is finding tuples $\alpha = (\alpha_1,...,\alpha_{|\mathcal{F}|})$, such that the loss is zero. Let $\alpha_{init}\in\R^{|\mathcal{F}|}$ be an initial, randomly chosen tuple of coefficients.
+        There are multiple options for loss functions, that satisfy the condition in \ref{loss}. I focus on a differentiable, signum-based loss function that is amenable to a number of different learning algorithms.
+        \begin{definition}[Signum Loss]
+            \label{def:signum-loss}
+            I first define the `signum value' of an $(\alpha, \mathcal{F})$ pair as follows:
+            \begin{equation*}
+                \omega(\alpha, \mathcal{F}) = \frac{1}{|\Omega|}\sum_{x\in\Omega} \sgn\left(\sum_{i=1}^{|\mathcal{F}|}\alpha_i f_i(x)\right)
+            \end{equation*}
+            where $\sgn$ is the signum function. The signum loss is then defined as:
+            \begin{equation*}
+                \mathfrak{L}(\alpha,\mathcal{F}) = 1 - \omega(\alpha, \mathcal{F})^2
+            \end{equation*}
+            where $\sgn$ is the signum function. For simplicity of notation,
+        \end{definition}
+        \begin{algorithm}
+        \caption{Pseudo-code for SGD with Signum Loss}\label{alg:SGD}
+        \end{algorithm}   
+    \item 
+        \textbf{Output:} The output is a set of human-readable conjectures (in symbolic form). They have exactly zero loss over the chosen $\Omega$.
     
 \end{itemize}
  

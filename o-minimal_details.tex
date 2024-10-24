@@ -192,3 +192,13 @@ Here I attempt a proof of lemma \ref{fin-comp-eval} which is the crucial part of
         Any interval can be \textit{discretized} to arbitrary precision as a list of singletons (by varying number of points considered/step size). Perform this procedure on each interval on $\Omega$. This operation is precisely possible since $\Omega$ contains only a finite number of intervals due to o-minimality. We are left with a finite union of singletons. $\Omega^\text{comp}$ is precisely this finite union and we reduce to Case 1.
     \end{itemize}
 \end{proof}
+
+\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set. Hence the subdivisions are open and as we know that the set is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma. The question is, what is a clever way to test the condition I am suggesting.}
+\par
+\textcolor{blue}{Is this problem similar to finding level sets?}
+
+\textcolor{green}{\textbf{KEY HYPOTHESIS: DO WE HAVE AN O-MINIMAL STRUCTURE RELATED TO THE CONJECTURE SPACE, SUCH THAT,``GOOD/IMPORTANT" CONJECTURES 
+ARE FUNDAMENTALLY RELATED TO THE O-MINIMAL/ ALGEBRAIC GEOMETRY OF THE SPACE IN TERMS OF STRATIFICATIONS, FINITENESS ETC.?}
+}
+
+Some preliminary ``evidence" (or why the idea came into my mind) is because of how the loss boundary for Robin's criteria for the Riemann Hypothesis might be resembling the kind of behaviour I would expect for the subdivisions of a definable function in an o-minimal structure in accordance with the monotonicity theorem.

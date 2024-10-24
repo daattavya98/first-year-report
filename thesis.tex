@@ -20,6 +20,9 @@
 % Math packages
 \usepackage{amsmath, amssymb, amsthm, mathtools, commath}
 
+% Algorithm packages
+\usepackage{algorithm, algpseudocode}
+
 % Text packages
 \usepackage{xcolor}
 
@@ -35,8 +38,12 @@
 \newcommand{\crlR}{\mathcal{R}}
 \newcommand{\crlU}{\mathcal{U}}
 \newcommand{\crlC}{\mathcal{C}}
+\DeclareMathOperator{\sgn}{sgn}
 
 % Theorem styles
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 
