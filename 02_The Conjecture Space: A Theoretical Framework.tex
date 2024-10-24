@@ -4,8 +4,9 @@
 
 \section{The Conjecture Space}
 
-The conjecture space was introduced in \cite{mishraConjGen2023} by Mishra et. al. This framework can be utilized as a tool to study conjectures that can be expressed as inequalities involving continuous functions.
-Here I make analogous definitions with a very slight generalization of what was initially introduced in that article.
+The conjecture space was introduced in \cite{mishraConjGen2023} by Mishra et.al. This framework can be utilized as a tool to study conjectures that can be expressed as inequalities involving continuous functions. This is a starting point to explore the notion 
+of a space of conjectures as a meta-mathematical tool that can be used for mathematical dicovery across sub-disciplines. One of the major goals of my thesis is to try to extend the formalism beyond inequalities involving continuous functions and cover wider classes of mathematical statements. 
+I describe the conjecture space along with some useful results that help setup the arguments in this report below (\textit{In preparation: Challenger Mishra, Rahul Sarkar and Daattavya Aggarwal}).
 
 \begin{definition}[Relation Space]
     \label{def:space-relations}
@@ -85,21 +86,29 @@ A major portion of my first year has been devoted to learn about model theory. I
 In \cite{baldwin2020reasonable}, Baldwin contrasts Wigner's famous observations in \cite{wigner1990unreasonable} about the `unreasonable' effectiveness of mathematics in the natural sciences with the reasonable effectiveness of model theory across various areas of mathematics. Baldwin describes three key reasons for this effectiveness.
 I believe these complement the conceptual framework of mathematical discovery that I am proposing for my thesis. These are as follows:
 \begin{itemize}
-    \item Representing an area of mathematics as the study of a collection of similar structures for a fixed vocabulary. 
-    \item Restriction to \textit{definable} subsets rather than all subsets of the structure.
-    \item \textit{Stability theory} highlights combinatorial features that are present in very distinct areas of mathematics. 
+    \item Representing an area of mathematics as the study of a collection of similar structures for a fixed vocabulary. Model theory has made rigorous the concept of \textit{interpretations}. This lets us compare these similar structures and know when they are equivalent, through notions like \textit{elementary equivalence}\footnote[1]{Please see \ref{def:elementary-equivalence}}.
+    \item Restriction to \textit{definable}\footnote[2]{Please see \ref{def:definable-set}} subsets rather than all subsets of the structure.
+    \item Results from \textit{Stability theory} which highlight combinatorial features that are present in very distinct areas of mathematics. 
 \end{itemize} 
-The crucial argument is captured by part of Baldwin's theses on contemporary model theory which expands upon the points listed above \cite{Baldwin_2018}
+
+The crucial argument is captured by part of Baldwin's theses in \cite{Baldwin_2018} on contemporary model theory and the philosophy of mathematical practice.
 \begin{itemize}
     \item The focus of contemporary model theory is utilizing formalization of \textit{specific} mathematical areas to investigate mathematical problems in general and issues in the philosophy of mathematics (methodology, axiomatization, compactness etc.)
     \item Modern model theory allows us to systematically compare \textit{local} formalizations for distinct mathematical areas allowing us to organize them and analyze mathematical practice.
 \end{itemize}
 
-I believe the essential features captured by the above for the purpose of mathematical discovery (and designing a conjecturing system) is the focus on \textit{local} formalizations and comparisons between them.  
-\begin{definition}[Definable set \cite{changModelTheory1990}]
-    Let $\mathcal{L}$ be a first-order language, $\mathcal{M}$ an $\mathcal{L}$-structure with domain $M$, $X$ a fixed subset of $M$ and $n$ a natural number. \\
-    Then a set $A\subseteq M^n$ is \textit{definable} in $\mathcal{M}$ with parameters from $X$ if and only if there exists a formula $\varphi[x_1,x_2,...,x_n,y_1,...,y_m]$ and elements $b_1,...,b_m\in X$ such that for all $a_1,...,a_n\in M, (a_1,...,a_n)\in A$ if and only if $\mathcal{M}\models\varphi[a_1,...,a_n,b_1,...,b_m]$
-\end{definition}
+I believe this focus on \textit{local} formalizations of specific areas is an essential feature of a math discovery system. This emulates the process of working mathematicians and avoids some of the shortcomings of global formalization. The decisive advantage of model theory is the ability to \textit{systematically compare} these formalizations and \textit{classify theories}\footnote[3]{A formal theory is a set of sentences in a formal language \cite{changModelTheory1990}}.
+These are \textit{meta-mathematical tools} (Initially coined by the famous logician Tarski). They allow us to study these local theories as mathematical objects themselves. \\
+Restriction to \textit{definable} subsets is natural and desirable in most of mathematics. Speaking loosely, `definable' objects in a structure are those which arise naturally, that is, when pathological cases are disallowed. As an example, focus on definable sets has led to understanding the method of quantifier elimination \cite{robinsonApplicationSymbolicLogic1952,TarskiDecisionMethod} which has wide ranging applications in algebra and field theory.
+Stability theory has led to a  new direction that is epistemologically fruitful: the classification of complete, first-order theories into finitely many kinds. This allows for comparisons amongst local formalizations as described above.\\
+A combination of these tools led to the discovery of \textit{o-minimality} in the 1980s \cite{pillayDefinableSetsOrdered1986, DENDRIES198497}. o-minimality has had successful applications in arithmetic geometry \cite{binyaminiWilkiesConjecturePfaffian2022,binyaminiBoundsRationalPoints2023}, analysis \cite{pilaOminimalityAndreOortConjecture2011}, hodge theory and recently even string theory \cite{douglasTamenessQuantumField2022,grimmComplexityTameQuantum2023,grimmFinitenessTheoremsCounting2023,grimmTamenessStringsDistance2022}!  
+Some of the central questions I am interested in potentially link contemporary model theory to mathematical discovery:
+\begin{itemize}
+    \item Are there well understood meta-mathematical tools that can be incorporated in our math discovery system?
+    \item 
+\end{itemize}
+
+
 % \input{Banach_space_model_theory_notes.tex}
 \subsection{o-minimality approach}
 
@@ -173,8 +182,7 @@ These are the functions we want to base our conjectures on and the optimization 
 
 \begin{itemize}
     \item All $f_i$'s are definable functions: In this case, as a linear combination of definable functions will necessarily be definable, conjectures are definable.
-    \item \textit{Approximation of functions}: Suppose one or more of the $f_i$'s are not definable. When calculating the signum-loss as in \ref{loss},
-    on any computing system, we are necessarily restricted to a \textit{finite} number of computations because $\Omega$ will always be finite. In this case, all of the $f_i$'s become discrete.
+    \item \textit{Approximation of functions}: Suppose one or more of the $f_i$'s are not definable. When calculating the signum-loss as in \ref{loss}, on any computing system, we are necessarily restricted to a \textit{finite} number of computations because $\Omega$ will always be finite. In this case, all of the $f_i$'s become discrete.
     \\\\ By almost a trivial argument, the I think the following should be true:
 
     Suppose the implementation of $\Omega$ on the computing system is represented by $\Omega^{comp}$. This is the set
@@ -194,10 +202,8 @@ These are the functions we want to base our conjectures on and the optimization 
     Hence the discrete version of $f_i$'s are definable.
 \end{itemize}
 
-The above argument seems quite trivial to me but I'm curious if it might still lead to any interesting developments in our setting.
-
+The above argument seems quite trivial to me but I'm curious if it might still lead to any interesting developments in our setting.\\
 Now after a very helpful discussion with Anuj, Ioannis and Challenger, I think the following observation might be interesting:
-
 When dealing with these discrete functions (which we always have when implementing on a computing system), we can consider them to no longer be functions but simply constants (tuples) as the evaluation domain ($\Omega^{comp}$) is fixed. So we can append our language with constants, $c_1,...,c_n$, where each $c_i$ represents $f_i(\Omega^{comp})$. The object we are then trying to study is the definable set satisfying the following formula:
 
 \begin{equation*}
@@ -212,7 +218,7 @@ This definable set is the conjecture space. Some of the questions we want to exp
 
 
 
-\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set \ref{mn-set}. Hence the subdivisions are open and as we know that the set \ref{mn-set} is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma \ref{monotone-lemma} would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma \ref{monotone-lemma}. The question is, what is a clever way to test the condition I am suggesting.}
+\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set. Hence the subdivisions are open and as we know that the set \ref{mn-set} is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma \ref{monotone-lemma} would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma \ref{monotone-lemma}. The question is, what is a clever way to test the condition I am suggesting.}
 \par
 \textcolor{blue}{Is this problem similar to finding level sets?}
 
@@ -232,7 +238,7 @@ $\mathfrak{T}$ itself contains a furthermore rigorous subset, $\mathfrak{T}_F$, 
 Moreover a number of recent results have been published by training models by learning on datasets of formal theorems \cite{Deepmind_stuff}. A natural direction of inquiry is what is the relationship between these spaces? What is the connexion, if any, between the elements of these spaces?
 \\\par
 It is clear that $\mathfrak{T}_F\subset\mathfrak{T}\subset\mathfrak{Conj}$. The datasets based on $\mathfrak{T}_F$ can be leveraged for a variety of learning techniques. These models have achieved state-of-the-art accuracies on solving benchmark mathematics problems such as miniF2F, ProofNet, MATH and competition problem datasets such as IMO 2024 and the recently introduced PutnamBench. Improving AI models' ability to solve these tasks with formally verified proofs
-is an extremely active and fruitful area of research. However, I argue that there is still a huge obstruction to these models proving helpful for research and discovery in mathematics. I expand on this issue in an article I am currently working on (preprint to be available soon). 
+is an extremely active and fruitful area of research. However, I argue that there is an obstruction to these models proving helpful for research and discovery in mathematics. I expand on this issue in an article I am currently working on (preprint to be available soon). 
 
 \textcolor{red}{
 An essential feature in applications of formalization and formal datasets is that an informal proof/solution already exists. Informal in this context refers to the notion of a formal proof as verified by a theorem proving system. Note that while the ability to formalize is at the heart of the field of mathematics and acceptance of proofs,

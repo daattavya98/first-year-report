@@ -1,0 +1,14 @@
+\chapter{A primer on Model Theory}
+\label{chap:model-theory}
+For the purpose of this appendix I assume some basic terminology from first-order logic and present some definitions and results from model theory.
+
+\begin{definition}[Definable set \cite{changModelTheory1990}]
+    \label{def:definable-set}
+    Let $\mathcal{L}$ be a first-order language, $\mathcal{M}$ an $\mathcal{L}$-structure with domain $M$, $X$ a fixed subset of $M$ and $n$ a natural number. \\
+    Then a set $A\subseteq M^n$ is \textit{definable} in $\mathcal{M}$ with parameters from $X$ if and only if there exists a formula $\varphi[x_1,x_2,...,x_n,y_1,...,y_m]$ and elements $b_1,...,b_m\in X$ such that for all $a_1,...,a_n\in M, (a_1,...,a_n)\in A$ if and only if $\mathcal{M}\models\varphi[a_1,...,a_n,b_1,...,b_m]$
+\end{definition}
+
+\begin{definition}[Elementary Equivalence \cite{changModelTheory1990}]
+    \label{def:elementary-equivalence}
+    Let $\mathcal{L}$ be a first-order language. Consider $\mathcal{L}$ models $\mathcal{A}, \mathcal{B}$. $\mathcal{A}$ and $\mathcal{B}$ are \textit{elementary equivalent} if they have the same true $\mathcal{L}$-sentences, i.e., for every $\mathcal{L}$-sentence, $\varphi, \mathcal{A}\models\varphi \text{ iff }\mathcal{B}\models\varphi$. Then $\mathcal{A}\equiv\mathcal{B}$ 
+\end{definition}
