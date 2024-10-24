@@ -3,7 +3,7 @@
 \textit{Multi-agent systems for mathematical discovery (Nature of mathematical discovery discussed in introduction in detail)}
 
 \section{The Conjecture Space}
-
+\label{sec:conj-space}
 The conjecture space was introduced in \cite{mishraConjGen2023} by Mishra et.al. This framework can be utilized as a tool to study conjectures that can be expressed as inequalities involving continuous functions. This is a starting point to explore the notion 
 of a space of conjectures as a meta-mathematical tool that can be used for mathematical dicovery across sub-disciplines. One of the major goals of my thesis is to try to extend the formalism beyond inequalities involving continuous functions and cover wider classes of mathematical statements. 
 I describe the conjecture space along with some useful results that help setup the arguments in this report below (\textit{In preparation: Challenger Mishra, Rahul Sarkar and Daattavya Aggarwal}).
@@ -23,6 +23,7 @@ I describe the conjecture space along with some useful results that help setup t
 
 Following on from the definition of the Relation space ~\ref{def:space-relations}, we can define the \textit{Conjecture Space} as follows:
 \begin{definition}[Conjecture Space]
+    \label{def:conj-space}
     Let $f\in\crlR$. $f$ is an element of the \textit{Conjecture Space} if and only if $f(x) < 0 \;\forall x\in\Omega$ or $f(x) > 0 \; \forall x\in\Omega$.
     The set $\crlC = \crlC_{<}\cup\crlC_{>}$ is called the \textit{Conjecture Space} where $\crlC_{<} = \{f\in\crlR\;|\; f(x)<0\;\forall x\in\Omega\}$ and $\crlC_{>} = \{f\in\crlR\;|\;f(x)>0\;\forall x\in\Omega\}$.
     $\crlC_{<}$ and $\crlC_{>}$ are disjoint convex sets.
@@ -102,12 +103,12 @@ These are \textit{meta-mathematical tools} (Initially coined by the famous logic
 Restriction to \textit{definable} subsets is natural and desirable in most of mathematics. Speaking loosely, `definable' objects in a structure are those which arise naturally, that is, when pathological cases are disallowed. As an example, focus on definable sets has led to understanding the method of quantifier elimination \cite{robinsonApplicationSymbolicLogic1952,TarskiDecisionMethod} which has wide ranging applications in algebra and field theory.
 Stability theory has led to a  new direction that is epistemologically fruitful: the classification of complete, first-order theories into finitely many kinds. This allows for comparisons amongst local formalizations as described above.\\
 A combination of these tools led to the discovery of \textit{o-minimality} in the 1980s \cite{pillayDefinableSetsOrdered1986, DENDRIES198497}. o-minimality has had successful applications in arithmetic geometry \cite{binyaminiWilkiesConjecturePfaffian2022,binyaminiBoundsRationalPoints2023}, analysis \cite{pilaOminimalityAndreOortConjecture2011}, hodge theory and recently even string theory \cite{douglasTamenessQuantumField2022,grimmComplexityTameQuantum2023,grimmFinitenessTheoremsCounting2023,grimmTamenessStringsDistance2022}!
-Importantly, definability and o-minimality in particular are thought of as realizations of `tameness' \cite{acampoGrothendieckTameTopology2016, piekoszTameTopology2023} which might have useful implications for mathematical discovery.
+Importantly, definability and o-minimality in particular are thought of as realizations of `tameness' and Grothendieck's `tame topology' \cite{acampoGrothendieckTameTopology2016, piekoszTameTopology2023}.
 \par
 Some of the central questions I am interested in potentially link contemporary model theory to mathematical discovery:
 \begin{itemize}
-    \item Are there well understood meta-mathematical tools that can be incorporated in our math discovery system?
-    \item 
+    \item Are there well understood meta-mathematical (model theoretic) tools that can be incorporated to improve our math discovery system?
+    \item Is an emphasis on `tameness' be useful for a math discovery system?
 \end{itemize}
 
 
@@ -220,7 +221,7 @@ This definable set is the conjecture space. Some of the questions we want to exp
 
 
 
-\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set. Hence the subdivisions are open and as we know that the set \ref{mn-set} is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma \ref{monotone-lemma} would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma \ref{monotone-lemma}. The question is, what is a clever way to test the condition I am suggesting.}
+\textcolor{red}{From my understanding, these $a_i$ are the points that are contained in set. Hence the subdivisions are open and as we know that the set is finite, $k$ is some finite integer. The question now is how to find these $a_i$. My guess is we need some condition on $f$ ``near" the $a_i$'s. One thing seems fairly easy to check, if the nature of $f$ changes at some point $x_0$, that is, on some interval before $x_0$, $f$ is let's say constant and on an interval immediately succeeding $x_0$, $f$ becomes strictly increasing or decreasing, $x_0$ must be one of the $a_i$. This is because if I consider any interval containing $x_0$, then lemma would fail. Aha! My hypothesis is that the $a_i$ are \textit{precisely} those points. As any other point can be subsumed into an interval surrounding it since that interval would satisfy lemma. The question is, what is a clever way to test the condition I am suggesting.}
 \par
 \textcolor{blue}{Is this problem similar to finding level sets?}
 
@@ -230,9 +231,7 @@ ARE FUNDAMENTALLY RELATED TO THE O-MINIMAL/ ALGEBRAIC GEOMETRY OF THE SPACE IN T
 
 Some preliminary ``evidence" (or why the idea came into my mind) is because of how the loss boundary for Robin's criteria for the Riemann Hypothesis might be resembling the kind of behaviour I would expect for the subdivisions of a definable function in an o-minimal structure in accordance with the monotonicity theorem.
 
-\subsection{Extensions of above}
-
-\subsection{Theorem spaces}
+\section{Theorem spaces}
 Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
 I define the ``space of theorems'', $\mathfrak{T}$ is the space of mathematical theorems. Note that this is a subset of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria, i.e.,
 there are no counter-examples to the theorem on any domain.
@@ -263,14 +262,28 @@ However, including a ``pedantic'' formalizer as an agent in the process of disco
 complex, well-formed formulas that could be interesting. However, it is currently unclear if those formulas could be understood by humans and perhaps it would be necessary to develop ``translators'' in tandem. While a fertile area of research, this is not the focus of my current work and PhD. I believe that there is much to be gained by trying to learn from the predominant methods of mathematical discovery and trying to incorporate these into the AI models that are currently being developed.
 
 \section{Interestingness}
-talk about information content, entropy stuff here. Include what the issue with entropy directly is, some of the GP stuff maybe. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
 
 \section{Implementation}
-\subsection{Basic Setup + GP's? Symbolic pipeline?}
-Describe first my codebase and results. Then talk about stuff with Eric(where it's at, current work and hopefully package soon) and finally symbolic pipeline things.
-\subsection{Stuff with Eric}
+Another major portion of work during my first year has been on an implementation of the conjecture space. The goal is to have a pipeline that domain experts are able to use as an exploratory tool.
+I describe the setup, current state and future ideas below.
+
+\subsection{Basic Setup}
+The basic setup is as follows (For notation and definitions please see \ref{sec:conj-space}). My chosen programming language is Python along with standard libraries such as NumPy, SymPy etc. 
+\begin{itemize}
+    \item \textbf{Input:} There are two allowed modes of input: (i) The domain, $\Omega$, and a `function box' := $[f_1, f_2,...,f_m]$ where each $f_i$ is a real-valued, continous function: 
+          \begin{itemize}
+            \item[$\blacktriangleright$] As a discrete set of points (Either specifically chosen based on the problem, or randomly from a distribution)
+            \item[$\blacktriangleright$] As an interval box, $\mathcal{I}^n = [min, max]\times_1...\times_n[min, max]$ with a choice of range and arbitrary precision (with number of points).
+          \end{itemize}
+    
+\end{itemize}
+ 
+
+\subsection{Expanding parameterization with Symbolic Regression}
+\subsection{Stuff with Eric, GP's?}
 Setting up machine learning on the conjecture space where the goal is to implement heuristics of interestingness and understand how to choose our function boxes.
 Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
+talk about information content, entropy stuff here. Include what the issue with entropy directly is, some of the GP stuff maybe. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
 
 \section{Agent based math discovery}
 Talk about how this is my plan in the future. First working on proof-of-concept and then hopefully new stuff.
