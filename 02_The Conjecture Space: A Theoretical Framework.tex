@@ -277,19 +277,20 @@ Examples of conjectures I have found using this setup:
             \hline
             Number Theory & \makecell{$6\sigma(x) + 2li(x) + 1 \geq 0$ \\ $\varphi(x) - \pi(x) \geq 0$ \\ $\sigma(x) + 2H(x) + 1 \geq 0$ \\ $\sigma(x) - Robin(x)\geq 0$} \\
             \hline
-            Algebraic Geometry & \makecell{dim 3: $5d_1 + 4d_2 + 4d_3 > 8$ \\ dim 4: $6d_2 + 4d_3 + 15d_4 > 4d_1 + 2$}\\
+            Algebraic Geometry & \makecell{dim 3: $5h^*_1 + 4h^*_2 + 4h^*_3 > 8$ \\ dim 4: $6h^*_2 + 4h^*_3 + 15h^*_4 > 4h^*_1 + 2$}\\
             \hline
         \end{tabular}
         \label{table:conjectures}    
     \end{table}
-The number theoretic conjectures are based on input type (i) of our setup where both a domain $\Omega$ and function box $\mathcal{F}$ are provided. \\
-The algebraic geometry conjectures are based on input type (ii). Given a \textit{lattice polytope}\begin{footnote}[1]{Let $N\cong\mathbb{Z}^d$ be a lattice of rank $d$ and let $N_\R := N\otimes_{\mathbb{Z}}\R\cong\R^d$. A convex Polytope $P\subset N_\R$ is a \textit{lattice polytope} if its vertices are all elements of $N$}.\\ 
+The number theoretic conjectures are based on input type (i) of our setup where both a domain $\Omega$ and function box $\mathcal{F}$ are provided.
+The algebraic geometry conjectures are based on input type (ii). The input data in this case was purely combinatorial information about lattice polytopes (without needing an explicit function box $\mathcal{F}$ and domain $\Omega$). I provide background for these conjectures while discussing the associated application (See \ref{sec:ehrhart}).
+
 I am omitting other conjectures involving the same functions to cover a larger diversity of functions and avoid redundancies (For example, conjectures that would be directly implied by those presented above). 
+
 \begin{remark}
     The conjectures in table \ref{table:conjectures} are not necessarily true (Over the entire domain of function definition). However, it is guaranteed that they are true on the amount of data presented to the machine. These conjectures are also not necessarily new or interesting. In general, we will cover all kinds of conjectures with this approach. This higlights the importance of
     finding heuristics for interestingness and being able to classify conjectures. The utility of this implementation can be seen through a variety of applications I have been working on \ref{chap:applications}. Previously this approach has been succesful in reproducing well-known conjectures (such as Hardy-Littlewood's second conjecture \cite{mishraConjGen2023}) and new results involving finite simple groups \cite{heLearningBeSimple2023}.
 \end{remark}
-
 
 
 \subsection{Expanding parameterization with Symbolic Regression}
