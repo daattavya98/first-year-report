@@ -19,17 +19,18 @@ The conjectures in table \ref{table:conjectures} are potentially useful pieces o
 
 \section{Holographic Entropy Inequalities}
 
-\section{Explorations around the ``abc'' conjecture}
+\section{Explorations around the \texorpdfstring{$abc$}{abc}-conjecture}
 \label{sec:abc-conjecture}
-The abc conjecture is a fundamental problem in number theory that relates the prime factorizations of three integers $a$, $b$, and $c$ when $a + b = c$. Given integers with no common prime factors, the conjecture states the following \cite{masser1985open}:
-\begin{conjecture}[abc conjecture]
+The $abc$-conjecture is a fundamental problem in number theory that relates the prime factorizations of three integers $a$, $b$, and $c$ when $a + b = c$. Given integers with no common prime factors, the conjecture states the following \cite{masser1985open}:
+\begin{conjecture}[$abc$ conjecture]
     \label{abc}
     For every $\epsilon > 0$, there is a constant $k_\epsilon$ such that if $a,b,c$ are coprime and $c = a + b$, then $c\leq k_\epsilon d^{(1 + \epsilon)}$, where $d$ is the product of the distinct prime factors of $a, b$ and $c$.
 \end{conjecture}
 It's openness is somewhat debated due to many claims of a correct proof. Nevertheless, it has profound connections to many other problems in number theory and areas of mathematics. I am currently working on studying the properties of a newly-defined object (Proposed by Professor Minhyong Kim), \emph{weighted average multiplicity function} $\text{WAM}(n, s)$,
-which is intimately connected to the abc conjecture. The goal is to understand the abc conjecture deeper by studying the properties of and formulating conjectures about this new object.
+which is intimately connected to the $abc$-conjecture. The goal is to understand the $abc$-conjecture deeper by studying the properties of and formulating conjectures about this new object. This is an ongoing collaboration with Professor Minhyong Kim, Dr. Challenger Mishra and Viktor Mirjanic.
 
 \begin{definition}[Weighted Average Multiplicity]
+    \label{def:wam}
     Let $n$ be a positive integer with the prime factorization 
     \[
     n = \prod_{i=1}^{\omega(n)} p_i^{\alpha_i},
@@ -40,8 +41,50 @@ which is intimately connected to the abc conjecture. The goal is to understand t
     \text{WAM}(n, s) = \frac{\sum_{i=1}^{\omega(n)} \alpha_i (\log p_i)^s}{\sum_{i=1}^{\omega(n)} (\log p_i)^s}.
     \]
 \end{definition}
-
 where $s$ is a complex number.
+\\
+We can reformulate the $abc$-conjecture in the following way:
+\begin{conjecture}
+    \label{abc_wam}
+    The limsup of $\text{WAM}(n,1)$ over all $abc$-triples is equal to 3.
+\end{conjecture}
+The initial goal was to utilise the symbolic implementation of the conjecture space (see \ref{sec:symbolic-implement}) to find expressions that bound $\text{WAM}(n,s)$.
+However, experimentation in this direction revealed a number of interesting features of $\text{WAM}(n,s)$ which we have been able to use to produce new conjectures and prove simple theorems.
+Amongst many others, some simple properties (that were discovered while trying to find symbolic conjectures) are:
+\begin{itemize}
+    \item For large $s$, $\text{WAM}(n, s)$ converges to the exponent of the largest prime:
+          \begin{equation*}
+                \lim_{s\to\infty} \text{WAM}(n, s) = \max_i \alpha_i.
+          \end{equation*}
+    \item Consider $Real(s) < 1$. Then when $n$ ranges over $abc$-triples, we prove the following asymptotic behaviour:
+            \begin{equation*}
+                \limsup_{n\to\infty} |\text{WAM}(n, s)| = +\infty.
+            \end{equation*}
+    \item For $s$ in the complex plane, $\text{WAM}(n, s)$ has a large number of isolated poles as shown in figure \ref{fig:div} and \ref{fig:wam_complex_plane_zoomed} below. 
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/wam_divergence_plane.png}
+        \caption{Large section of the complex plane, where $\max$ is taken over 50000 triples. }
+        \label{fig:div}
+    \end{subfigure}
+    \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/wam_divergence_zoom.png}
+        \caption{Zoomed in region with poles, where $\max$ is taken over $5\times 10^5$ triples.}
+        \label{fig:wam_complex_plane_zoomed}
+    \end{subfigure}
+    \caption{Heatmap of $\log_{10} \max_n \abs{\text{WAM}(n,s)}$ in the complex plane, where $n$ ranges over $abc$ triples with $c\sim10^{18}$. Bright colors correspond to poles of $\text{WAM}$ for individual $n$, which are then accumulated with $\max$.}
+\end{figure}
+This pattern of poles is reminiscent of various zeta functions and this is an area we are actively exploring. (\textbf{Note:} Divergence to $+\infty$ in the left half plane is not visible because we are taking a max over finitely many triples.)
+We are currently exploring the connections to zeta functions, the behaviour of $\text{WAM}(n,s)$ on non $abc$-triples and the region $Real(s) > 1$ amongst many other intriguing questions. We are incorporating this new found knowledge about $\text{WAM}(n,s)$ into our symbolic search for conjectures.
+\begin{remark}
+    This project highlights an important methodological point in the process of mathematical discovery. There are certain properties that we had to naturally examine \textit{because} we were trying to find conjectures about this new object.
+\end{remark}
 
 \section{Conjectures as sub-goals in proof formalization}
     As part of a MPhil project that I supervised, we explored the idea of using conjectures as sub-goals to aid the process of formal theorem proving. The basic concept is that

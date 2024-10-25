@@ -1,0 +1,26 @@
+\draw[->] (-3.8, 0) -- (3.8, 0) node[above left] {\Large $\Re(s)$};
+\draw[->] (0, -3.8) -- (0, 3.8) node[right] {\Large $\Im(s)$};
+
+\clip (-3.5,-3.5) rectangle (3.5,3.5);
+
+% Re s < 1
+\draw [pattern={Lines[angle=45,distance=8pt]},pattern color=blue, thick] 
+(-5,-5) rectangle (1,5);
+\node [fill=white,rounded corners=2pt,inner sep=1pt, thick] at (-2.5,1) {\LARGE \textcolor{blue}{ $\mathbf{+\infty}$}};
+
+% Re s = 1
+\draw[-, dashed, blue, line width=1mm] (1,5) -- (1,0.2);
+\draw[-, dashed, blue, line width=1mm] (1,-0.2) -- (1,-5);
+\node(circ)[circle,draw, blue, line width=1mm] at (1,0){}; 
+
+% Poles clouds
+\node [cloud, draw,cloud puffs=14,cloud puff arc=120, minimum width = 4cm, minimum height = 7cm,red, line width=1mm] at (0,4) {};
+\node [cloud, draw,cloud puffs=14,cloud puff arc=120, minimum width = 4cm, minimum height = 7cm,red, line width=1mm] at (0,-4) {};
+
+% Poles arrows
+\node(poles) [fill=white,rounded corners=2pt,inner sep=1pt, thick]  at (2.5,1.2) {\LARGE \textcolor{red}{Poles}};
+\draw[->, red,  line width=0.5mm] (poles.west) -- (0.5, 2.5);
+\draw[->, red,  line width=0.5mm] (poles.west) -- (0.5, -3);
+
+% Pointer to s = 1
+\draw[->, blue,  line width=0.5mm] ($(poles.west) - (0.5, 2.5) + (circ)$) -- (circ.south east) node[at start, yshift=-2mm, blue] {\Large $s=1$};
