@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex thesis"] 1729886775.98225 "thesis.aux" "thesis.bbl" "thesis" 1729886808.78469 0
-  "./thesis.bib" 1729883539.6745 36406 2311800392bfb8aecea6c933d1b12f2e ""
+["bibtex thesis"] 1729982952.88684 "thesis.aux" "thesis.bbl" "thesis" 1729982954.23554 0
+  "./thesis.bib" 1729982369.27141 60846 6bb049c0900e1dd36abca394e9ea2ede ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "thesis.aux" 1729886808.51294 13832 7d89bdf0d6aa1317423f12a6dd32fa67 "pdflatex"
+  "thesis.aux" 1729982953.95422 15788 76f72fb517099897b177b1274da8ac69 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["makeindex thesis.idx"] 1729886257.18771 "thesis.idx" "thesis.ind" "thesis" 1729886808.78457 0
-  "thesis.idx" 1729886807.78099 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex thesis.idx"] 1729981437.98143 "thesis.idx" "thesis.ind" "thesis" 1729982954.23546 0
+  "thesis.idx" 1729982953.21033 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "thesis.ilg"
   "thesis.ind"
   (rewritten before read)
-["pdflatex"] 1729886807.52918 "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" "thesis.pdf" "thesis" 1729886808.78479 0
-  "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" 1729885248.2826 4468 ab6892c2878dc7f977b1299cb09c3206 ""
+["pdflatex"] 1729982952.97285 "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" "thesis.pdf" "thesis" 1729982954.23564 0
+  "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" 1729969848.68043 4468 ab6892c2878dc7f977b1299cb09c3206 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -71,9 +71,11 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb" 1248133631 24393 3b7eb51a67a0a62aec5849271bdb9c2e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -210,9 +212,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1723715907.432 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1723715867 8221429 73ab4332030546c587fcd8e15f34ccb2 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "01_Introduction.tex" 1729884009.73694 5299 95075819ae95d375a77febaf6d2589c7 ""
+  "01_Introduction.tex" 1729897155.18233 5371 191e97624cd11be3b471c032518706fa ""
   "02_The Conjecture Space: A Theoretical Framework.tex" 1729869179.85521 33012 241f0d1ae11d662ad33c23a92c49f9b8 ""
-  "03_Applications.tex" 1729886807.3287 7424 4cadff02cfc5a21f5fbf1811358fc639 ""
+  "03_Applications.tex" 1729982949.82787 13274 fc24bd1ddff37f432940437726402747 ""
   "04_Progress Report.tex" 1729804785.64546 3261 8c9858487a352e362b8de96c47309231 ""
   "CollegeShields/CUni.pdf" 1724165562.82365 71776 e4dfefa7564ecf4eab7ab56e6dd0bb16 ""
   "CollegeShields/CUniNoText.pdf" 1724165562.82419 47260 a4e24e7a7c978d4e63809665c5a4349f ""
@@ -221,13 +223,13 @@
   "cam-thesis.cls" 1725277029.63038 17758 00840eb8073c8d46f01f5f22691f1c77 ""
   "plots/wam_divergence_plane.png" 1729885156.39448 372020 b40b8342919a605e20b2bbc66ca31b4b ""
   "plots/wam_divergence_zoom.png" 1729885169.35784 165302 289873429ee912715d108cc8c11d0586 ""
-  "thesis.aux" 1729886808.51294 13832 7d89bdf0d6aa1317423f12a6dd32fa67 "pdflatex"
-  "thesis.bbl" 1729886776.07861 11978 d02a881156f168e660400118fc89178e "bibtex thesis"
+  "thesis.aux" 1729982953.95422 15788 76f72fb517099897b177b1274da8ac69 "pdflatex"
+  "thesis.bbl" 1729982952.97039 17042 c672cd6904c48514e57c6fbfcbda692b "bibtex thesis"
   "thesis.gls" 0 -1 0 ""
-  "thesis.ind" 1729886257.25632 0 d41d8cd98f00b204e9800998ecf8427e "makeindex thesis.idx"
-  "thesis.out" 1729886808.51444 6221 b308b6f74cec46e942ca6c22890a95e4 "pdflatex"
-  "thesis.tex" 1729885248.2826 4468 ab6892c2878dc7f977b1299cb09c3206 ""
-  "thesis.toc" 1729886808.51467 2831 c2ebbff9a5ab46ab14eed207043d3ca1 "pdflatex"
+  "thesis.ind" 1729981438.05122 0 d41d8cd98f00b204e9800998ecf8427e "makeindex thesis.idx"
+  "thesis.out" 1729982953.95522 5919 9af875931ee77153f58ed3a410876081 "pdflatex"
+  "thesis.tex" 1729969848.68043 4468 ab6892c2878dc7f977b1299cb09c3206 ""
+  "thesis.toc" 1729982953.95543 2714 154ccd84712891431a790f0578061ace "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.glo"

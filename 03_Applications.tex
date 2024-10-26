@@ -2,6 +2,9 @@
 \label{chap:applications}
 In my PhD, I plan to tackle the question of ``AI guided mathematical discovery'' through a hybrid approach of building theory and targeted applications. The ultimate goal is to tie together the theory and applications in a natural way; the applications being a demonstration of the effectiveness of the theory. As such, during the first year of my PhD I have began work on a number of
 applications in different areas with conjecturing being a key theme in the project.
+\par
+The following applications are in extremely diverse areas with no apparent commonality and differing mathematical structures. These are all very interesting problems in their own right, but I would like to emphasize that the goal of this thesis isn't necessarily to make advances in multiple different problems. Rather, the underlying motivation is to understand the process of conjecturing and mathematical discovery through examples. The primary aim is to identify heuristics of interestingness and a methodology of discovery that is relatively successful \textit{independent} of the specific area being explored. Additionally, we can analyse different attributes of our approach through these applications (namely: discovering new conjectures and the relationship between conjectures and formal theorem proving).
+Ultimately, this can form a positive feedback loop, where the theory can be refined and improved based on results from applications, leading to a more effective system when applied to new problems.
 
 \section{Inequalities in Ehrhart Theory}
 \label{sec:ehrhart}
@@ -18,6 +21,26 @@ The polynomial $h^*_P(t) = h^*_0 + h^*_1t + ... + h^*_st^s$ is the $h^*-polynomi
 The conjectures in table \ref{table:conjectures} are potentially useful pieces of information to understand this question in higher dimensions.
 
 \section{Holographic Entropy Inequalities}
+\label{sec:holographic}
+The discovery of the AdS/CFT correspondence \cite{maldacenaLargeNLimitSuperconformal1999} and the holographic principle \cite{susskindWorldHologram1995} are undoubtedly two of the most impactful advances in theoretical physics at the dawn of the millenia. Entanglement is playing an increasingly important role in understanding holography. In the specific context of the AdS/CFT corresponding,
+the Ryu-Takayanagi proposal \cite{RT_Entropy_2006} hints at a connection between the entanglement in the boundary CFT with the emergence of the bulk AdS geometry.\\ The entanglement entropy of a region in the boundary CFT is given by:
+\begin{equation*}
+    S(X) = \frac{\text{area}\chi}{4G_N},
+\end{equation*} 
+where $\chi$ is the Ryu-Takayanagi surface for $X$ and $G_N$ is Newton's constant \cite{baoPropertiesContractionMap2024}.\\
+The general approach to understanding this connection is to divide the system into multiple subsystems and consider the relationship between the entanglement entropies of these subsystems. Interestingly in \citeyear{haydenHolographicMutualInformation2013} it was discovered that the entanglement entropies of these subsystems are more constrained than generic quantum states. These constraints can be represented as inequalities amongst the entanglement entropies, namely, holographic entropy inequalities (HEIs).
+\begin{exmp}[Subadditivity]
+    \label{ex:subadditivity}
+    For two subsystems $A, B$ of a boundary CFT, their entropies must satisfy:
+    \begin{equation*}
+        S(A) + S(B) \geq S(AB).
+    \end{equation*} 
+    where $S(AB)$ is the entropy of their union, i.e., $A\cup B\equiv AB$.
+\end{exmp}
+\par
+Over the last 10 years, a major focus of this community has been to classify and discover all known inequalities in a varying number of boundary sub-systems. For $n\geq 6$ subsystems, the full set of HEIs are not known but recent work is increasing the number of known inequalities \cite{hernandez-cuencaHolographicEntropyInequalities2023a}. My focus with this project has been to produce new HEIs in $n\geq 6$ regions. This is done through an implementation of case (ii) of the basic setup (See \ref{sec:implementation}) by providing entropy data. For optimization, I have used both a stochastic gradient descent and genetic algorithm based approach.
+It is known that certain HEIs are priviliged over others; namely those satsifying properties such as balance and superbalance \cite{heSuperbalanceHolographicEntropy2020} These are known to hold greater physical significance.
+\par The main motivation for this project is thus to investigate whether we can find these inequalities on the conjecture space. If so, how do we distinguish between priviliged and non-priviliged inequalities? Can we transfer classifications of this type to other mathematical structures and the conjecture space at large?
 
 \section{Explorations around the \texorpdfstring{$abc$}{abc}-conjecture}
 \label{sec:abc-conjecture}
@@ -83,9 +106,16 @@ Amongst many others, some simple properties (that were discovered while trying t
 This pattern of poles is reminiscent of various zeta functions and this is an area we are actively exploring. (\textbf{Note:} Divergence to $+\infty$ in the left half plane is not visible because we are taking a max over finitely many triples.)
 We are currently exploring the connections to zeta functions, the behaviour of $\text{WAM}(n,s)$ on non $abc$-triples and the region $Real(s) > 1$ amongst many other intriguing questions. We are incorporating this new found knowledge about $\text{WAM}(n,s)$ into our symbolic search for conjectures.
 \begin{remark}
-    This project highlights an important methodological point in the process of mathematical discovery. There are certain properties that we had to naturally examine \textit{because} we were trying to find conjectures about this new object.
+    This project highlights an important methodological point in the process of mathematical discovery. There are certain properties of $\text{WAM}(n,s)$ that we had to naturally examine \textit{because} we were trying to find conjectures.
 \end{remark}
 
 \section{Conjectures as sub-goals in proof formalization}
-    As part of a MPhil project that I supervised, we explored the idea of using conjectures as sub-goals to aid the process of formal theorem proving. The basic concept is that
-    good conjectures can make it easier to prove the original theorem, in a manner analogous to a ``cut'' or intermediate goal in sequent calculi which are known to exponentially reduce the length of proofs \cite{}.
+I supervised Deepro Choudhary's MPhil project, where we explored the idea of using conjectures as sub-goals to aid the process of formal theorem proving.  
+The program of formal theorem proving is based on the Curry-Howard isomorphism \cite{Howard1980-HOWTFN-2} which posits an equivalence between a mathematical proof and certain kinds of computer programs. Colloquially, ``a proof is a program and the formula it proves is the type of the program''.
+As discussed in previous chapters, formalisation of mathematics has become a major area of research for both the mathematics and computer science community.
+\par
+The basic proposal of this project was to use conjectures as a stepping stone while formalising theorems. This would be in a manner analogous to a `cut'\footnote[1]{A `cut' is a rule of inference in sequent calculus} or informally, an intermediate goal. 
+The cut-elimination theorem was proved by the famous logician Gentzen in \cite{gentzenUntersuchungenUeberLogische1935}. It states that any sequent\footnote[2]{A sequent is conditional assertion. Suppose $A_1,\dots,A_m\;\vdash\; B_1,\dots,B_n$. This is a sequent if when all $A_1,\dots,A_m$ are true, at least one of $B_1,\dots,B_n$ is true.} that can be proved in sequent calculus without cuts can also be proved with cuts. 
+This has turned out to be influential in all modern proof systems. Cuts are known to exponentially reduce the size of the search space \cite{Boolos1984,ed8c6549bwf9}.\\ The goal of automated theorem proving (`autoformalisation') is to solve mathematics problems by first translating them into the formal syntax of a chosen proof assistant and then use this assistant to produce a formal, verified proof. There have been a flurry of results in this field, propelled by the advent of LLMs which have made progress in translating human mathematics into formal syntax \cite{wuAutoformalizationLargeLanguage, jiangDraftSketchProve2023, jiangLISA2021}.
+\par
+In this project, we were able to show slight improvement over the previous state-of-the-art performance on the GSM8k and MiniF2F datasets \cite{GSM8k,Minif2f}. This establishes an initial proof-of-concept of utilising conjectures as sub-goals in formalisation. We are currently working on running a larger scale analysis to ensure statistical significance of our results and submit this work to a conference.
