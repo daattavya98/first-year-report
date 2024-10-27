@@ -309,15 +309,33 @@ An example of a conjecture found by this implementation:
 where $\varphi$ is the Euler totient function and $\Omega$ is the prime omega function. The function box in this example is $\mathcal{F} = \{\varphi, \Omega, Primorial\}$. 
 $\exp,\cos$ and $x$ are unary parameters. $+,*$ are binary parameters. These choices ensure that continuity is maintained and that equation \ref{eq:symbolic-conj} is an element of $\mathcal{C}$. This allows for a wider class of expressions than the basic setup and I am currently utilising this implementation in some applications.
 
-\section{Interestingness}
+I am currently updating the implementation in section \ref{sec:basic-setup} to be more efficient when scaling to larger amounts of data. Specifically, I am refactoring the system to be compatible with JAX \cite{jax2018github}. The tangible goal is to publish this pipeline as a package and make it accessible to the community.
+
+\section{Interestingness and multi-agent based discovery}
 \label{sec:interestingness}
+As described in section \ref{sec:intrst-conj-agents}, `interesting' conjectures typically have a variety of properties.\\
+Currently, a key focus is the `information content' (IC) of a conjecture. We propose two main apsects of the IC of a conjecture that are helpful in our context. The first is a \textit{`local'} notion of IC of a conjecture. We propose that on the conjecture space $\mathcal{C}$, tight inequalities contain more information.
+\begin{definition}[Tight inequality]
+    \label{def:tight-ineq}
+    Let $f_1, f_2\in\mathcal{C}_>$ be two conjectures. $f_1$ is \textit{tighter} than $f_2$ if:
+    \begin{equation*}
+        \min(f_1(x), f_2(x)) = f_1(x) \text{ for } x\in\Omega
+    \end{equation*}
+\end{definition}
+This is a \textit{local} notion in the sense that for a given implementation of $\mathcal{C}$ (for instance, section \ref{sec:implementation}), the tightness of an inequality is with reference to the other possible inequalities in the function box $\mathcal{F}$. We have preliminary evidence that inequality conjectures that are accepted as `interesting' by the mathematical community, tend to be tighter than their counterparts. \\
+The second aspect is the \textit{surprisingness} of a conjecture. As described by \citeauthor{bengioMachineLearningInformation2024} in \cite{bengioMachineLearningInformation2024}, a possible implementation of surprisal is the following:
+Consider a math discovery model that has actively learned \cite{activeLeanringSurvey} a set of mathematical statements, $T(S)$. Now suppose we discover a new statement, $t$ for which we have a truth value. Now, an implementation of surprisal is a `epistemic uncertainty heuristic'. By measuring the estimated entropy,
+\begin{equation*}
+    \mathbb{E}_{P(t|T(S))}[-\log P(t|T(S))],
+\end{equation*}
+of the truth value of the new statement $t$, we can estimate the information gain or expected surprise of this statement.
+Can something similar be done when the statement $t$ is a conjecture?
+
+\par I am interested in exploring a number of other heuristics to estimate the utility of a conjecture and the likelihood of its truth. Connexions with the theorem space \ref{sec:theorem-spaces} are a promising avenue for these properties in particular. However, the major insights for `interestingness' heuristics are likely to arise by making observations while working on specific applications. The choice of applications made in chapter \ref{chap:applications} is motivated by this goal. By making progress in these projects, we are hopeful to abstract our learning as meta-mathematical tools.
 
 \subsection{Stuff with Eric, GP's?}
 Setting up machine learning on the conjecture space where the goal is to implement heuristics of interestingness and understand how to choose our function boxes.
 Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
-talk about information content, entropy stuff here. Include what the issue with entropy directly is, some of the GP stuff maybe. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
+talk about information content, entropy stuff here. Include what the issue with entropy directly is. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
 
-Updating the implementation in section \ref{sec:basic-setup} to be more efficient and scale when working with larger amounts of data. Also aim to include these heuristics in the symbolic implementation (section \ref{sec:symbolic-implement}). The tangible goal is to publish this pipeline as a package and make it accessible to the community.
 
-\section{Multi-agent based math discovery}
-\label{sec:agent-based}

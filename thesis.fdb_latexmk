@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex thesis"] 1730064043.36508 "thesis.aux" "thesis.bbl" "thesis" 1730064248.23504 0
-  "./thesis.bib" 1730062089.10352 84532 c22b5ea52756d8e29ddefb59768cb596 ""
+["bibtex thesis"] 1730069761.88126 "thesis.aux" "thesis.bbl" "thesis" 1730069763.21704 0
+  "./thesis.bib" 1730069458.57083 87220 9581ac9bd6abd3ec9ca9c27e825a61f1 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "thesis.aux" 1730064247.9418 20633 4afc05ee9f0496375bcdf5af77b41115 "pdflatex"
+  "thesis.aux" 1730069762.96282 21020 1d9c76e6f025ce91da732b1a680349a4 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
   (rewritten before read)
-["makeindex thesis.idx"] 1730052931.99521 "thesis.idx" "thesis.ind" "thesis" 1730064248.23495 0
-  "thesis.idx" 1730064247.16396 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+["makeindex thesis.idx"] 1730069460.30504 "thesis.idx" "thesis.ind" "thesis" 1730069763.21695 0
+  "thesis.idx" 1730069762.20871 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "thesis.ilg"
   "thesis.ind"
   (rewritten before read)
-["pdflatex"] 1730064246.92068 "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" "thesis.pdf" "thesis" 1730064248.23514 0
-  "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" 1730058428.80995 4521 794f59baa4958ea889daac1efc330061 ""
+["pdflatex"] 1730069761.97246 "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" "thesis.pdf" "thesis" 1730069763.21714 0
+  "/Users/daattavya/Desktop/Research Writing/first-year-report/thesis.tex" 1730065454.26146 4521 794f59baa4958ea889daac1efc330061 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -212,8 +212,8 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1723715907.432 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1723715867 8221429 73ab4332030546c587fcd8e15f34ccb2 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "01_Introduction.tex" 1730064246.72296 18056 4cf20473a342c6ed105089c2933a022a ""
-  "02_The Conjecture Space: A Theoretical Framework.tex" 1730058847.92087 32924 7625a25ff766f043a449541caf6029e1 ""
+  "01_Introduction.tex" 1730069086.09199 18056 4cf20473a342c6ed105089c2933a022a ""
+  "02_The Conjecture Space: A Theoretical Framework.tex" 1730069760.28251 35431 8d57782393f638fc0a963c2b9fa90a73 ""
   "03_Applications.tex" 1730045355.69294 13298 47ae56b3f4b4799150beb3a334563488 ""
   "04_Progress Report.tex" 1730064167.49267 3444 c2dde1a276dcb4a03fb09f7d4c53ff93 ""
   "CollegeShields/CUni.pdf" 1724165562.82365 71776 e4dfefa7564ecf4eab7ab56e6dd0bb16 ""
@@ -223,13 +223,13 @@
   "cam-thesis.cls" 1725277029.63038 17758 00840eb8073c8d46f01f5f22691f1c77 ""
   "plots/wam_divergence_plane.png" 1729885156.39448 372020 b40b8342919a605e20b2bbc66ca31b4b ""
   "plots/wam_divergence_zoom.png" 1729885169.35784 165302 289873429ee912715d108cc8c11d0586 ""
-  "thesis.aux" 1730064247.9418 20633 4afc05ee9f0496375bcdf5af77b41115 "pdflatex"
-  "thesis.bbl" 1730064043.44756 24572 2ecf9ff920fce7a3cde37e09cfea1157 "bibtex thesis"
+  "thesis.aux" 1730069762.96282 21020 1d9c76e6f025ce91da732b1a680349a4 "pdflatex"
+  "thesis.bbl" 1730069761.96995 25439 8102fb4a86b2730670121e2e6b518175 "bibtex thesis"
   "thesis.gls" 0 -1 0 ""
-  "thesis.ind" 1730052932.06912 0 d41d8cd98f00b204e9800998ecf8427e "makeindex thesis.idx"
-  "thesis.out" 1730064247.94298 6086 229a653a2f853e703b6cb4576349774f "pdflatex"
-  "thesis.tex" 1730058428.80995 4521 794f59baa4958ea889daac1efc330061 ""
-  "thesis.toc" 1730064247.94317 2860 7b63a93ab82fa038e487e2a52b456ca5 "pdflatex"
+  "thesis.ind" 1730069460.3877 0 d41d8cd98f00b204e9800998ecf8427e "makeindex thesis.idx"
+  "thesis.out" 1730069762.96422 6034 00d511d1c864f928f3677bca0122248e "pdflatex"
+  "thesis.tex" 1730065454.26146 4521 794f59baa4958ea889daac1efc330061 ""
+  "thesis.toc" 1730069762.9644 2799 5ea8d1aa6189f576654a893291ff144a "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.glo"
