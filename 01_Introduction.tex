@@ -7,18 +7,38 @@
  
 `Experimental' approaches to mathematics are often naively seen as antithetical to the rigorous and formal nature of the discipline. However, if one examines the daily practice of working mathematicians across various sub-fields and timescales, it becomes clear that the process of mathematical discovery is and always has been intertwined with so called `experimental' approaches.
 Conjecturing is a crucial element at the heart of mathematical discovery and the ability to conjecture is often seen as a hallmark of mathematical talent. Interesting, non-trivial conjectures can drive progress for centuries and lead to unintended consequences, often birthing entire new fields of mathematics. Observing patterns in data, extrapolating from simple, well-understood cases are some of the tools used to make conjectures.
-The development of computing technology has accelerated almost all aspects of this process and human-machine collaboration has a proven track record of producing new mathematics. There are prominent examples of brute-force computation leading to new conjectures \cite{BIRCHSwinnertonDyer1965} and theorems \cite{4col_1977,4col_every_1977,MR2463991}. 
-\par
-The rise of artifical intelligence signifies a new era in mathematical discovery. Machine guided approaches have already lead to new results in areas as diverse as number theory, geometry, knot theory and string theory \cite{Davies_2021}. Crucially, many new results have been found on datasets that have existed for multiple decades and had already been actively studied. This indicates that the type of patterns spotted by these systems might be elusive or at the least quite different to what a working mathematician might explore. Professor Marc Lackenby quotes ``I was not expecting to have some of my preconceptions turned on their head''
-when referring to his work on AI-guided knot theory \cite{Davies_2021}.
-\par However, it is unclear how to judge these discoveries and AI-guided mathematics in general. The recently introduced `Birch Test' \cite{heTrium2024} captures some of the essence of
-how the mathematical community judges results from AI-guided mathematics.
-Recently, LLM approaches have outperformed state of the art reasearch mathematics in certain 
-targeted tasks \cite{Romera-Paredes_2024}. By combining a pre-trained large language model with a systematic evaluator for correctness, \citeauthor{Romera-Paredes_2024} were able to discover new constructions for the cap-set problem \cite{Grochow_2019} in extremal combinatorics. The systematic evaluator is integral to this system to tackle confabulations. To the best of my knowledge, this is the first instance of an LLM-based model providing state-of-the-art results in \textit{research} mathematics (As opposed to formalization and datasets of often difficult but solved problems).
+The development of computing technology has accelerated almost all aspects of this process and human-machine collaboration has a track record of producing new mathematics. There are prominent examples of brute-force computation leading to new conjectures \cite{BIRCHSwinnertonDyer1965} and theorems \cite{4col_1977,4col_every_1977,MR2463991}.
 
-Combined with rapid developments in proof-assistants, it is clear that machine-guided mathematics is burgeoning. (cite {Deepmind stuff, T.Tao, Gowers stuff}).
+\section{Machine guided mathematics: A modern perspective}
+The rise of artifical intelligence signifies a new era in mathematical discovery. Machine guided approaches have already lead to new results in areas as diverse as number theory, geometry, knot theory and string theory \cite{Davies_2021, Murmurations2024, AGGARWAL2024138517}. Crucially, many new results have been found on datasets that have existed for multiple decades and had already been actively studied. For instance, there has been an explosion in ML approaches applied to the Kreuzer-Skarke dataset \cite{kreuzer2000complete} of Calabi-Yau manifolds with implications to string geometry and string phenomenology \cite{BULL2019700,Berglund2023, hePatternsCalabiYauDistributions2015}. This dataset has existed since the late 1990s. The L-functions and modular forms database (LMFDB) \cite{lmfdb:234446.a} plays a similar role in discovering new results about elliptic curves. The LMFDB was initially conceived in 2007. This indicates that the type of patterns spotted by these systems might be elusive or at the least quite different to what a working mathematician might typically explore. Professor Marc Lackenby quotes ``I was not expecting to have some of my preconceptions turned on their head''
+when referring to his work on AI-guided knot theory \cite{Davies_2021}.
+\par However, it is unclear how to judge these discoveries and AI-guided mathematics in general. The recently introduced `Birch Test' \cite{heTrium2024} captures some of the essence of how the mathematical community judges results from AI-guided mathematics. They propose that a truly impressive AI-assisted discovery must satisfy the following criteria:
+\begin{itemize}
+    \item \textbf{Automaticity:} The discovery is completely made by a pattern-spotting AI without human intervention.
+    \item \textbf{Interpretability:} Output mathematical statements (or conclusions) should be clear to a human mathematician and indistinguishable from those produced by a human colleague.
+    \item \textbf{Non-triviality:} Human mathematicians should come to a consensus position that the discovery is indeed non-trivial.
+\end{itemize}
+Based on these criteria, the author believes that every AI-assisted discovery has fallen short of passing the Birch test so far. I argue that the Birch test is a reasonable starting point and touches upon some of the key philosphical issues when discussing mathematical discovery.
+\par Furthermore, I would argue that the questions of \textbf{Interpretability} and \textbf{Non-triviality} are potentially \textit{harder} than they first seem. In his \citeyear{ochigameAutomatedMathematicsReconfiguration2024} article \cite{ochigameAutomatedMathematicsReconfiguration2024}, \citeauthor{ochigameAutomatedMathematicsReconfiguration2024} discusses the different `standard of proofs' from both a historical and contemporary perspective. Elucidating the `standard of proof' that is sufficient for proof verification is an open area of research in the philosophy of mathematics. One of the central points however, is that proof verification is inherently a \textit{social} process. Borrowing a notorious example from \citeauthor{ochigameAutomatedMathematicsReconfiguration2024}, the claimed proos of the $abc$-conjecture is a controversial issue in modern mathematics. As one approaches the research frontier, it becomes clearer that the verification of a proof relies on the trust of a group of highly specialised experts and social institutions (like journals, committees etc.).\\
+Similar issues arise when understanding mathematical knowledge and discovery in general (i.e. well before we are at the stage of proving or formalizing a result). In the contemporary philosophy of mathematics, it is becoming clearer that mathematical knowledge itself can emerge from an interplay between cognitive, cultural, social and historical aspects \cite{mathKnowledgeInterplayPractices2016}. The interpretability and non-triviality of a mathematical statement, discovered with the assistance of AI, is deeply intertwined with the social and historical context of the statement. It is based on the judgement of a community of mathematicians.
+\par This leads to one of the central proposals of this thesis: Building \textit{agent-based}\footnote[1]{Here `agent' has a double meaning. It refers both to mathematical knowledge being produced by social, human agents (as introduced by \citeauthor{mathKnowledgeInterplayPractices2016} in \cite{mathKnowledgeInterplayPractices2016}) and agents in standard reinforcement learning literature.} AI systems for mathematical discovery (See section \ref{sec:goals}). 
+
+\subsection{The impact of language models}
+Recently, large language model (LLM) based approaches have outperformed state of the art reasearch mathematics in certain targeted tasks \cite{Romera-Paredes_2024}. 
+By combining a pre-trained large language model with a systematic evaluator for correctness, \citeauthor{Romera-Paredes_2024} were able to discover new constructions for the cap-set problem \cite{Grochow_2019} in extremal combinatorics. The systematic evaluator is integral to this system to tackle confabulations. To the best of my knowledge, this is the first instance of an LLM-based approach producing state-of-the-art results in \textit{research} mathematics (As opposed to formalization of often difficult, but solved problems and theorems).\\
+Combined with rapid developments in proof-assistants, LLMs are having significant impact on AI-guided mathematics. 
+it is clear that machine-guided mathematics is burgeoning. (cite {Deepmind stuff, T.Tao, Gowers stuff}).
 Humans have notoriously underestimated the rate of progress of AI in impacting their field and I would argue that we are at a tipping point in modern mathematics. The arsenal of a working mathematician should include some familiarity with these tools and importantly we are at the stage where we can influence the growth of the field of machine guided mathematics.
 
+\section{Computer aided conjectures}
+
+\subsection{Lakatos stuff, good versus bad conjectures}
+
+\subsection{Combine conjecturing with machine-guided approaches}
+talk about interestingness if I want here
+
+\section{Goals of the thesis}
+\label{sec:goals}
 In light of these developments, I aim to address the following questions in my PhD:
 \begin{itemize}
     \item What is an `interesting' conjecture? : Despite its impact and importance, the process of conjecturing is mysterious and there is no accepted consensus on what is a `good' versus a `bad' conjecture. 
@@ -26,12 +46,3 @@ In light of these developments, I aim to address the following questions in my P
     \item How can we design a system for mathematical discovery that incorporates the process of working mathematicians and produces research level statements?: I propose that an agent-based model would be an effective approach.
     \item How can these tools be incorporated into the workflow of the practicing mathematician? 
 \end{itemize}
-
-\section{Conjectures as a driving force in mathematics}
-\subsection{Lakatos stuff, good versus bad conjectures}
-
-\section{Machine guided mathematics: A modern perspective}
-
-\subsection{Combine conjecturing with machine-guided approaches}
-talk about interestingness if I want here
-% \subsection{Agent based system for mathematical discovery}
