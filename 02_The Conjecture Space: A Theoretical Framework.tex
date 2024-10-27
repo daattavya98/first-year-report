@@ -1,4 +1,4 @@
-\chapter{A theoretical framework}
+\chapter{A Theoretical Framework}
 \textit{Conjecture space and interestingness}\\
 \textit{Multi-agent systems for mathematical discovery}
 
@@ -84,6 +84,8 @@ The next result ensures this.
 \section{Connexions to model theory}
 A major portion of my first year has been devoted to learn about model theory. I am trying to explore if there are connections to and tools from model theory that can be used to analyze the conjecture space in a systematic way and extend the formalism to a more general setting, i.e., beyond inequalities of continuous functions.
 \subsection{Why model theory?}
+\label{sec:why-model-theory}
+
 In \cite{baldwin2020reasonable}, Baldwin contrasts Wigner's famous observations in \cite{wigner1990unreasonable} about the `unreasonable' effectiveness of mathematics in the natural sciences with the reasonable effectiveness of model theory across various areas of mathematics. Baldwin describes three key reasons for this effectiveness.
 I believe these complement the conceptual framework of mathematical discovery that I am proposing for my thesis. These are as follows:
 \begin{itemize}
@@ -183,6 +185,7 @@ As mentioned in the introduction to this section, the above analysis can potenti
 \end{remark}
 
 \section{Theorem spaces}
+\label{sec:theorem-spaces}
 Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
 I define the ``space of theorems'', $\mathfrak{T}$ is the space of mathematical theorems. Note that this is a subset of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria, i.e.,
 there are no counter-examples to the theorem on any domain.
@@ -303,7 +306,7 @@ An example of a conjecture found by this implementation:
     \varphi\left(\Omega\left(Primorial\left(\exp\left(\frac{\exp(\cos(x))}{(x + x*\Omega(x))}\right)\right)\right)\right)\geq 0    
 \end{equation} 
 where $\varphi$ is the Euler totient function and $\Omega$ is the prime omega function. The function box in this example is $\mathcal{F} = \{\varphi, \Omega, Primorial\}$. 
-$\exp,\cos$ and $x$ are unary parameters. $+,*$ are binary parameters. These choices ensure that continuity is maintained and that equation \ref{eq:symbolic-conj} is an element of $\mathcal{C}$. This allows for a wider class of expressions than the basic setup and I am currently utilising this implementation in some applications.\\
+$\exp,\cos$ and $x$ are unary parameters. $+,*$ are binary parameters. These choices ensure that continuity is maintained and that equation \ref{eq:symbolic-conj} is an element of $\mathcal{C}$. This allows for a wider class of expressions than the basic setup and I am currently utilising this implementation in some applications.
 
 \section{Interestingness}
 \label{sec:interestingness}
@@ -313,4 +316,7 @@ Setting up machine learning on the conjecture space where the goal is to impleme
 Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
 talk about information content, entropy stuff here. Include what the issue with entropy directly is, some of the GP stuff maybe. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
 
-Updating the implementation in section \ref{sec:basic-setup} to be more efficient and scale when working with larger amounts of data. Also aim to include these heuristics in the symbolic implementation (section \ref{sec:symbolic-implement}). The tangible goal is to publish this pipeline as a package and make it accessible to the community. 
+Updating the implementation in section \ref{sec:basic-setup} to be more efficient and scale when working with larger amounts of data. Also aim to include these heuristics in the symbolic implementation (section \ref{sec:symbolic-implement}). The tangible goal is to publish this pipeline as a package and make it accessible to the community.
+
+\section{Multi-agent based math discovery}
+\label{sec:agent-based}
