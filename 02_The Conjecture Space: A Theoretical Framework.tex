@@ -49,6 +49,7 @@ Based on ~\ref{lemma:homeo-action}, we can define a notion of \textit{equivalent
 \end{definition}    
 
 \begin{prop}
+    \label{prop:equivalent-conjectures}
     Equivalence of conjectures forms an equivalence relation under the group action $\mathsf{A}$.
 \end{prop}
 \begin{proof}
@@ -323,19 +324,46 @@ Currently, a key focus is the `information content' (IC) of a conjecture. We pro
     \end{equation*}
 \end{definition}
 This is a \textit{local} notion in the sense that for a given implementation of $\mathcal{C}$ (for instance, section \ref{sec:implementation}), the tightness of an inequality is with reference to the other possible inequalities in the function box $\mathcal{F}$. We have preliminary evidence that inequality conjectures that are accepted as `interesting' by the mathematical community, tend to be tighter than their counterparts. \\
-The second aspect is the \textit{surprisingness} of a conjecture. As described by \citeauthor{bengioMachineLearningInformation2024} in \cite{bengioMachineLearningInformation2024}, a possible implementation of surprisal is the following:
+The second aspect of the IC of a conjecture is its \textit{surprisingness}. As described by \citeauthor{bengioMachineLearningInformation2024} in \cite{bengioMachineLearningInformation2024}, a possible implementation of surprisal is the following:
 Consider a math discovery model that has actively learned \cite{activeLeanringSurvey} a set of mathematical statements, $T(S)$. Now suppose we discover a new statement, $t$ for which we have a truth value. Now, an implementation of surprisal is a `epistemic uncertainty heuristic'. By measuring the estimated entropy,
 \begin{equation*}
     \mathbb{E}_{P(t|T(S))}[-\log P(t|T(S))],
 \end{equation*}
 of the truth value of the new statement $t$, we can estimate the information gain or expected surprise of this statement.
 Can something similar be done when the statement $t$ is a conjecture?
+\par For heuristics of interestingness to be well-defined on the conjecture space, they must be compatible with our notion of equivalence (\ref{prop:equivalent-conjectures}).
+\begin{equation*}
+    \forall f_1, f_2 \text{ such that } f_1\sim f_2,\quad \mathcal{I}_H (f_1) = \mathcal{I}_H (f_2)
+\end{equation*}
+where $\mathcal{I}_H$ is an arbitrary interestingness heuristic.\\
+The initial attempt at a heuristic for IC, was to measure the information entropy \cite{shannonIE1948} of a conjecture (in the implementation \ref{sec:implementation}) in the following way:
+\begin{equation*}
+    H(f) = -\sum_{x\in f(\Omega)}p(x)\log(p(x))
+\end{equation*}
+where $f(\Omega)$ is the discrete set of evaluations for a conjecture $f$. The probability distribution $p:f(\Omega)\mapsto [0, 1]$ was simply chosen as the normalised function values.
+\begin{equation*}
+    p(f(x)) = \frac{|f(x)|}{\max(f(\Omega))}
+\end{equation*}
+There are however a number of problems with this definition. As we approach `tighter' conjectures (\ref{def:tight-ineq}), this quickly becomes undefined as $p(f(x))\to 0 \text{ as } f(x)\to 0$. This is illustrated in the following figure.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{plots/divisorSigma_logIntegral_plot.png}
+    \caption{Entropy and signum-loss of a conjecture involving the divisor sigma ($\sigma$) and log-integral function as we range over the coefficients $\alpha$ in linear parameterization.
+        As the loss flips sign, we move $\mathcal{C}_>$ to $\mathcal{C}_<$. The entropy of the conjecture is undefined when the loss is non-zero.       
+    }
+    \label{fig:entropy}
+\end{figure}
+This situation does not improve by changing the probability distribution $p$. Moreover, from a theoretical standpoint, we need to consider a continuous notion of entropy on our Banach space. The widely accepted notion of continuous entropy is the \textit{differential entropy} \cite{coverELEMENTSINFORMATIONTHEORY}.
+\begin{definition}[Differential Entropy]
+    \textit{Differential entropy} $h(X)$ of a continuous random variable $X$ with density $f(x)$ is defined as 
+    \begin{equation*}
+        h(X) = -\int_S f(x)\log(f(x))dx
+    \end{equation*}
+    where $S$ is the support of $X$.
+\end{definition}
+It is unclear if this integral exists for an arbitrary chosen function box on our infinite-dimensional Banach space. As such, we are exploring alternate ways to measure information content. A potential avenue is the concept of \textit{topological entropy} which is known to be well-defined on Banach spaces \cite{bobokTopologicalEntropyBanach2011}.\\
+\par We are also interested in exploring a number of other heuristics to estimate the utility of a conjecture and the likelihood of its truth. Connexions with the theorem space \ref{sec:theorem-spaces} and effectiveness as sub-goals in theorem proving (See \ref{sec:conj-formal}) are promising avenues to explore these properties. The major insights for `interestingness' heuristics are likely to arise by making observations while working on specific applications. The choice of applications made in chapter \ref{chap:applications} is motivated by this goal. By making progress in these projects, we are hopeful to abstract our learning as meta-mathematical tools. There is an ongoing debate in the community of whether it is possible to isolate global heuristics for interestingness versus local heuristics. Based on the Lakatos framework (\ref{sec:method-proofs-refutations}), insights from model theory (\ref{sec:why-model-theory}) and contemporary philosophy of mathematics, I am inclined to believe that searching first for local heuristics and then connexions between them is a promising approach.
 
-\par I am interested in exploring a number of other heuristics to estimate the utility of a conjecture and the likelihood of its truth. Connexions with the theorem space \ref{sec:theorem-spaces} are a promising avenue for these properties in particular. However, the major insights for `interestingness' heuristics are likely to arise by making observations while working on specific applications. The choice of applications made in chapter \ref{chap:applications} is motivated by this goal. By making progress in these projects, we are hopeful to abstract our learning as meta-mathematical tools.
 
-\subsection{Stuff with Eric, GP's?}
-Setting up machine learning on the conjecture space where the goal is to implement heuristics of interestingness and understand how to choose our function boxes.
-Topological entropy, betti number entropy definition etc. Topological entropy of a Banach space has been studied \cite{bobokTopologicalEntropyBanach2011}
-talk about information content, entropy stuff here. Include what the issue with entropy directly is. Also connect to other ideas of interestingness I am exploring/have thought about atleast.
 
 
