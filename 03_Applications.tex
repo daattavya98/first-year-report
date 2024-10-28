@@ -38,7 +38,7 @@ The general approach to understanding this connection is to divide the system in
     where $S(AB)$ is the entropy of their union, i.e., $A\cup B\equiv AB$.
 \end{exmp}
 \par
-Over the last 10 years, a major focus of this community has been to classify and discover all known inequalities in a varying number of boundary sub-systems. For $n\geq 6$ subsystems, the full set of HEIs are not known but recent work is increasing the number of known inequalities \cite{hernandez-cuencaHolographicEntropyInequalities2023a}. My focus with this project has been to produce new HEIs in $n\geq 6$ regions. This is done through an implementation of case (ii) of the basic setup (See \ref{sec:implementation}) by providing entropy data. For optimization, I have used both a stochastic gradient descent and genetic algorithm based approach.
+Over the last 10 years, a major focus of this community has been to classify and discover all known inequalities in a varying number of boundary sub-systems. For $n\geq 6$ subsystems, the full set of HEIs are not known but recent work is increasing the number of known inequalities \cite{hernandez-cuencaHolographicEntropyInequalities2023a}. My focus with this project has been to produce new HEIs in $n\geq 6$ regions. This is done through an implementation of case (ii) of the basic setup (See \ref{sec:implementation}) by providing entropy data. For optimization, I have used both a stochastic gradient descent and genetic algorithm based approach \cite{Sastry2005}. In the case of the genetic algorithm, the fitness function is based on the signum-loss, such that it is maximised for inequalities that have exactly zero loss.
 It is known that certain HEIs are priviliged over others; namely those satsifying properties such as balance and superbalance \cite{heSuperbalanceHolographicEntropy2020} These are known to hold greater physical significance.
 \par The main motivation for this project is thus to investigate whether we can find these inequalities on the conjecture space. If so, how do we distinguish between priviliged and non-priviliged inequalities? Can we transfer classifications of this type to other mathematical structures and the conjecture space at large?
 
@@ -86,7 +86,7 @@ Amongst many others, some simple properties (that were discovered while trying t
     \item For $s$ in the complex plane, $\text{WAM}(n, s)$ has a large number of isolated poles as shown in figure \ref{fig:div} and \ref{fig:wam_complex_plane_zoomed} below. 
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
