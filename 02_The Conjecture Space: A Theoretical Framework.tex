@@ -1,7 +1,6 @@
 \chapter{A Theoretical Framework}
 \label{chap:theory-framework}
-\textit{Conjecture space and interestingness}\\
-\textit{Multi-agent systems for mathematical discovery}
+\textit{Conjecture space, theorem spaces and interestingness}
 
 \section{The Conjecture Space}
 \label{sec:conj-space}
@@ -186,36 +185,30 @@ As mentioned in the introduction to this section, the above analysis can potenti
     This direction might turn out to be more fruitful as Banach spaces are more natural objects in this setting. I am currently working through \cite{yaacovModelTheoryMetric2008} and attempting to incorporate these ideas in an application, \ref{sec:abc-conjecture}.   
 \end{remark}
 
-\section{Theorem spaces}
+\section{Theorem spaces and formalisation}
 \label{sec:theorem-spaces}
-Whilst a ``space of conjectures'' is a potentially large leap from current literature, a related concept, ``space of theorems'', can be tackled via a variety of tools.
-I define the ``space of theorems'', $\mathfrak{T}$ is the space of mathematical theorems. Note that this is a subset of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria, i.e.,
-there are no counter-examples to the theorem on any domain.
-$\mathfrak{T}$ itself contains a furthermore rigorous subset, $\mathfrak{T}_F$, the ``space of formal theorems''. $\mathfrak{T}_F$ is the set of theorems that have been formalized in any formal system. Clearly $\mathfrak{T}_F\subset\mathfrak{T}$. A potential upside of working with $\mathfrak{T}_F$ is that their is a growing database of formalized theorems due to the widespread interest and ingenuity of the formalization community \cite{formalization_examples}.
-Moreover a number of recent results have been published by training models by learning on datasets of formal theorems \cite{Deepmind_stuff}. A natural direction of inquiry is what is the relationship between these spaces? What is the connexion, if any, between the elements of these spaces?
-\\\par
-It is clear that $\mathfrak{T}_F\subset\mathfrak{T}\subset\mathfrak{Conj}$. The datasets based on $\mathfrak{T}_F$ can be leveraged for a variety of learning techniques. These models have achieved state-of-the-art accuracies on solving benchmark mathematics problems such as miniF2F, ProofNet, MATH and competition problem datasets such as IMO 2024 and the recently introduced PutnamBench. Improving AI models' ability to solve these tasks with formally verified proofs
-is an extremely active and fruitful area of research. However, I argue that there is an obstruction to these models proving helpful for research and discovery in mathematics. I expand on this issue in an article I am currently working on (preprint to be available soon). 
-
-\textcolor{red}{
-An essential feature in applications of formalization and formal datasets is that an informal proof/solution already exists. Informal in this context refers to the notion of a formal proof as verified by a theorem proving system. Note that while the ability to formalize is at the heart of the field of mathematics and acceptance of proofs,
-it is not a target that the working mathematician ever seeks to achieve in practice. The working mathematician's goal is to find proofs at the level of certainty that is accepted by the mathematical community and is fruitful to the progress of the discipline as a whole. Formal proofs as produced by systems such as Lean, Isabelle, Coq etc., although conceptually crucial, are often unintelligble to humans and well beyond the level of rigour that is needed by the community. Many formalization details are simply unnecessary and
-intuitively already understood and internalized by mathematicians. Moreover, details of formalization can on occasion be extremely tedious and don't provide further insight into the problem.
-\\
+A related concept to the conjecture space, $\mathcal{C}$, is what I define as the space of mathematical theorems, $\mathfrak{T}$. Note that this is a subspace of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria of $\mathcal{C}$.
+There are no counter-examples to a theorem on any domain.
+$\mathfrak{T}$ itself contains a furthermore rigorous subset that I name the `space of formal theorems', $\mathfrak{T}_F$. $\mathfrak{T}_F$ is the set of theorems that have been formalised in an at least one formal system. Clearly $\mathfrak{T}_F\subset\mathfrak{T}$. A potential upside of working with $\mathfrak{T}_F$ is that there is a growing database of formalised theorems due to the widespread interest and ingenuity of the formalization community \cite{mathlib, DiskPaxos-AFP}.
+As described in the introduction, a number of recent work such as \cite{AlphaProof} and \cite{trinhSolvingOlympiadGeometry2024} involve training models on datasets of formal theorems. A natural direction of inquiry is what is the connexion, if any, between the elements of these spaces?
+\par
+It is clear that $\mathfrak{T}_F\subset\mathfrak{T}\subset\mathcal{C}$. Datasets on $\mathfrak{T}_F$ have been leveraged for a variety of learning techniques. These models have achieved impressive accuracies on solving benchmark mathematics problems, available in datasets like miniF2F and ProofNet \cite{Minif2f,azerbayev2023proofnetautoformalizingformallyproving}. We now also have access to competition problem datasets such as PutnamBench \cite{tsoukalas2024putnambench}. Improving AI models' ability to solve these competition level problems with formally verified proofs
+is an active and fruitful area of research. However, based on some of the arguments in chapter \ref{chap:intro}, I believe there is still work to be done for these models to be helpful in mathematical discovery.
+\par
+An essential feature of formalisation is that an informal proof/solution either already exists or is generated (often by LLMs) first and only then formalised. Informal in this context refers to the level of rigour that is generally accepted by the mathematics community. This is a weaker level of rigour than that achieved by a formal system. The working mathematician's goal is to find proofs at the level of certainty that is accepted by the mathematical community and is fruitful to the progress of the discipline as a whole. Formal proofs as produced by proof assistants, although conceptually crucial, are often well beyond the level of rigour that is needed by the community. Formalisation details can often be unnecessary for working mathematicians to utilise results in further discovery.\\ Russell quotes,
 “My intellect never quite recovered from the strain of
 writing [Principia Mathematica]. I have been ever since
 definitely less capable of dealing with difficult
-abstractions than I was before.” (Russell, Autobiography)
-However, formalization is quickly becoming widely accepted by the mathematical community and is quickly becoming the expected standard for published research \cite{Tao, formalization_projects_to_check_shit}.
-Increasing specialization making reviewing almost impossible, mistakes in math literature etc and the utility of previously models increasing.
-}
+abstractions than I was before.” (\citeauthor{Russell1975-RUSA-7}, \cite{Russell1975-RUSA-7})\\
+This is not to downplay the utility and important role that formalisation plays, which has been highlighted in the introduction (\ref{sec:machine-guided-math}). Additionally it seems that formalisation can also give genuine mathematical insights. In \cite{buzzardGrothendieckUseEquality2024}, \citeauthor{buzzardGrothendieckUseEquality2024} demonstrates the existence of certain ambiguities/holes in mathematical literature that presented a roadblock while attempting to formalise. What is crucial is that filling in these gaps required new mathematical insights. Particularly, equality can be abused in a manner that is not clear on the surface but will be caught by a proof assistant. In advanced mathematics, this could be not explicitly checking that a result does not depend on the choice of representative of an equivalence class.
+A similar hole exists with various maps being called `canonical', a word that lacks a formal mathematical definition but is widely used and understood by most human researchers.
 
-The existence of solutions to problems in these datasets and ``informal'' proofs in literature are essential for these models to work as the existence of solutions and proofs \textbf{implies} that there is a configuration of axioms and deduction rules in your chosen formalization system that verifiably solves the problem/proves the theorem at hand.
-The knowledge of the existence of such a solution/proof can by definition not exist for \textbf{new} research. Moreover, the set of possible formal statements is closed. This is because every element of $\mathfrak{T}_F$ is characterized by a specific \textit{deduction}\footnote[1]{A deduction from a set of sentences $\Gamma$ is a finite sequence \textbf{D} of formulas such that whenever a formula $A$ occurs in the sequence \textbf{D}, then either (i) $A\in\Gamma$, (ii) $A$ is an axiom (iii) A follows from the allowed inference rules applied to a sequence of formulas already appearing in \textbf{D}} in your chosen system of axioms and inference rules. 
-If one works in classical logic, every well-formed formula in a given interpretation can only be either true or false. This implies that the concept of ``conjectures'' cannot exist in such a framework. By definition any well-formed formula is either true or false
-and any statement that is not a well-formed formula simply cannot be parsed. Historically, mathematics has never developed in a ground up manner where every statement made is a logical consequence of previous statements. The ability to conjecture and pose questions (without knowing the answer) is crucial to mathematical research and creativity. As such, I would argue that it is unlikely to discover new, non-trivial mathematical results while being restricted to only making completely rigorous formal \textit{deductions}. Such a feat would be unprecedented.
-However, including a ``pedantic'' formalizer as an agent in the process of discovery could be very meaningful. Also one can imagine that with increasing computational abilities, computers will be able to explore the infinite space of deductions at a much larger scale than human mathematicians and produce
-complex, well-formed formulas that could be interesting. However, it is currently unclear if those formulas could be understood by humans and perhaps it would be necessary to develop ``translators'' in tandem. While a fertile area of research, this is not the focus of my current work and PhD. I believe that there is much to be gained by trying to learn from the predominant methods of mathematical discovery and trying to incorporate these into the AI models that are currently being developed.
+The existence of solutions to problems in math datasets is essential for formalisation. The existence of solutions and informal proofs, \textbf{implies} that there is a configuration of axioms and deduction rules in your chosen formalisation system that verifiably solves the problem/proves the theorem at hand.
+The knowledge of the existence of such a solution/proof can by definition not exist for \textbf{new} research. Additionally, every element of $\mathfrak{T}_F$ is characterized by a \textit{deduction}\footnote[1]{A deduction from a set of sentences $\Gamma$ is a finite sequence \textbf{D} of formulas such that whenever a formula $A$ occurs in the sequence \textbf{D}, then either (i) $A\in\Gamma$, (ii) $A$ is an axiom (iii) A follows from the allowed inference rules applied to a sequence of formulas already appearing in \textbf{D}} in your chosen system of axioms and inference rules. 
+If one works in classical logic, every well-formed formula in a given interpretation can only be either true or false. This implies that the concept of `conjectures' is harder to define in such a framework. By definition any well-formed formula is either true or false
+and any statement that is not a well-formed formula cannot be parsed. Historically, mathematics has not developed in a ground up manner where every statement made is a logical consequence of previous statements. The ability to conjecture and pose questions (without knowing the answer) is crucial to mathematical research and creativity. As such, I would argue that to discover new, non-trivial mathematical results while being restricted to only making completely rigorous formal \textit{deductions} is challenging.
+However, including a ``pedantic'' formalizer as an agent in the process of discovery could be very meaningful. With increasing computational abilities, it is imaginable that computers will be able to explore the infinite space of deductions at a much larger scale than human mathematicians. This can produce
+complex, well-formed formulas that could be interesting. However, it is currently unclear if those formulas could be intepreted by humans, which seems to be an integral feature of mathematical knowledge. Perhaps it would be necessary to develop ``translators'' in tandem.
 
 \section{Implementation}
 \label{sec:implementation}
@@ -312,8 +305,8 @@ $\exp,\cos$ and $x$ are unary parameters. $+,*$ are binary parameters. These cho
 
 I am currently updating the implementation in section \ref{sec:basic-setup} to be more efficient when scaling to larger amounts of data. Specifically, I am refactoring the system to be compatible with JAX \cite{jax2018github}. The tangible goal is to publish this pipeline as a package and make it accessible to the community.
 
-\section{Interestingness and multi-agent based discovery}
-\label{sec:interestingness}
+\section{Interestingness and multi-agent systems}
+\label{sec:intrst-multi-agent}
 As described in section \ref{sec:intrst-conj-agents}, `interesting' conjectures typically have a variety of properties.\\
 Currently, a key focus is the `information content' (IC) of a conjecture. We propose two main apsects of the IC of a conjecture that are helpful in our context. The first is a \textit{`local'} notion of IC of a conjecture. We propose that on the conjecture space $\mathcal{C}$, tight inequalities contain more information.
 \begin{definition}[Tight inequality]
@@ -361,9 +354,9 @@ This situation does not improve by changing the probability distribution $p$. Mo
     \end{equation*}
     where $S$ is the support of $X$.
 \end{definition}
-It is unclear if this integral exists for an arbitrary chosen function box on our infinite-dimensional Banach space. As such, we are exploring alternate ways to measure information content. A potential avenue is the concept of \textit{topological entropy} which is known to be well-defined on Banach spaces \cite{bobokTopologicalEntropyBanach2011}.\\
+It is unclear if this integral exists for an arbitrary chosen function box on our infinite-dimensional Banach space. As such, we are exploring alternate ways to measure information content. A potential avenue is the concept of \textit{topological entropy} which is known to be well-defined on Banach spaces \cite{bobokTopologicalEntropyBanach2011}.
 \par We are also interested in exploring a number of other heuristics to estimate the utility of a conjecture and the likelihood of its truth. Connexions with the theorem space \ref{sec:theorem-spaces} and effectiveness as sub-goals in theorem proving (See \ref{sec:conj-formal}) are promising avenues to explore these properties. The major insights for `interestingness' heuristics are likely to arise by making observations while working on specific applications. The choice of applications made in chapter \ref{chap:applications} is motivated by this goal. By making progress in these projects, we are hopeful to abstract our learning as meta-mathematical tools. There is an ongoing debate in the community of whether it is possible to isolate global heuristics for interestingness versus local heuristics. Based on the Lakatos framework (\ref{sec:method-proofs-refutations}), insights from model theory (\ref{sec:why-model-theory}) and contemporary philosophy of mathematics, I am inclined to believe that searching first for local heuristics and then connexions between them is a promising approach.
 
-
+\subsection{Multi-agent math discovery}
 
 
