@@ -1,10 +1,10 @@
 \chapter{A Collection of Applications}
 \label{chap:applications}
 In my PhD, I plan to tackle the question of `AI-guided mathematical discovery' through a hybrid approach of building theory and targeted applications. The ultimate goal is to tie together the theory and applications in a natural way; the applications being a demonstration of the effectiveness of the theory. As such, during the first year of my PhD I have began work on a number of
-applications in different areas with conjecturing being a key theme in the project.
+applications in different areas with conjecturing as a common thread.
 \par
 The following applications are in extremely diverse areas with no apparent commonality and differing mathematical structures. These are all very interesting problems in their own right, but I would like to emphasize that the goal of this thesis isn't necessarily to make advances in multiple different problems. The primary aim is to identify heuristics of interestingness and a methodology of discovery that is relatively successful \textit{independent} of the specific area being explored. Additionally, we can cover different attributes of our approach through these applications (namely: discovering new conjectures and the relationship between them, formal theorem proving).
-Ultimately, this can form a positive feedback loop, where the theory can be refined and improved based on results from applications, leading to a more effective system when applied to new problems.
+This can form a positive feedback loop, where the theory can be refined and improved based on results from applications, leading to a more effective system when applied to new problems.
 
 \section{Inequalities in Ehrhart Theory}
 \label{sec:ehrhart}
@@ -28,7 +28,7 @@ the Ryu-Takayanagi proposal \cite{RT_Entropy_2006} hints at a connection between
     S(X) = \frac{\text{area}\chi}{4G_N},
 \end{equation*} 
 where $\chi$ is the Ryu-Takayanagi surface for $X$ and $G_N$ is Newton's constant \cite{baoPropertiesContractionMap2024}.\\
-The general approach to understanding this connection is to divide the system into multiple subsystems and consider the relationship between the entanglement entropies of these subsystems. Interestingly in \citeyear{haydenHolographicMutualInformation2013} it was discovered that the entanglement entropies of these subsystems are more constrained than generic quantum states. These constraints can be represented as inequalities amongst the entanglement entropies, namely, holographic entropy inequalities (HEIs).
+The general approach to understanding this connection is to divide the system into multiple subsystems and consider the relationship between the entanglement entropies of these subsystems. Interestingly, in \citeyear{haydenHolographicMutualInformation2013} it was discovered that the entanglement entropies of these subsystems are more constrained than generic quantum states. These constraints can be represented as inequalities amongst the entanglement entropies, the so called, holographic entropy inequalities (HEIs).
 \begin{exmp}[Subadditivity]
     \label{ex:subadditivity}
     For two subsystems $A, B$ of a boundary CFT, their entropies must satisfy:
@@ -38,8 +38,8 @@ The general approach to understanding this connection is to divide the system in
     where $S(AB)$ is the entropy of their union, i.e., $A\cup B\equiv AB$.
 \end{exmp}
 \par
-Over the last 10 years, a major focus of this community has been to classify and discover all known inequalities in a varying number of boundary sub-systems. For $n\geq 6$ subsystems, the full set of HEIs are not known but recent work is increasing the number of known inequalities \cite{hernandez-cuencaHolographicEntropyInequalities2023a}. My focus with this project has been to produce new HEIs in $n\geq 6$ regions. This is done through an implementation of case (ii) of the basic setup (See \ref{sec:implementation}) by providing entropy data. For optimization, I have used both a stochastic gradient descent and genetic algorithm based approach \cite{Sastry2005}. In the case of the genetic algorithm, the fitness function is based on the signum-loss, such that it is maximised for inequalities that have exactly zero loss.
-It is known that certain HEIs are priviliged over others; namely those satsifying properties such as balance and superbalance \cite{heSuperbalanceHolographicEntropy2020} These are known to hold greater physical significance.
+Over the last 10 years, a major focus of this community has been to classify and discover all known inequalities in a varying number of boundary sub-systems. For $n\geq 6$ subsystems, the full set of HEIs are not known. The number of known inequalities is increasing with recent work \cite{hernandez-cuencaHolographicEntropyInequalities2023a}. My focus with this project has been to produce new HEIs in $n\geq 6$ sub-systems. This is done through an implementation of case (ii) of the basic setup (See \ref{sec:implementation}) by providing entropy data for the sub-systems. For optimization, I have used both a stochastic gradient descent and genetic algorithm based approach \cite{Sastry2005}. In the case of the genetic algorithm, the fitness function is based on the signum-loss, such that it is maximised for inequalities that have exactly zero loss.
+It is known from physics literature that certain HEIs are priviliged over others; namely those satsifying properties such as balance and superbalance \cite{heSuperbalanceHolographicEntropy2020}.
 \par The main motivation for this project is thus to investigate whether we can find these inequalities on the conjecture space. If so, how do we distinguish between priviliged and non-priviliged inequalities? Can we transfer classifications of this type to other mathematical structures and the conjecture space at large?
 
 \section{Explorations around the \texorpdfstring{$abc$}{abc}-conjecture}
@@ -74,18 +74,26 @@ We can reformulate the $abc$-conjecture in the following way:
 The initial goal was to utilise the symbolic implementation of the conjecture space (see \ref{sec:symbolic-implement}) to find expressions that bound $\text{WAM}(n,s)$.
 However, experimentation in this direction revealed a number of interesting features of $\text{WAM}(n,s)$ which we have been able to use to produce new conjectures and prove simple theorems.
 Amongst many others, some simple properties (that were discovered while trying to find symbolic conjectures) are:
-\begin{itemize}
-    \item For large $s$, $\text{WAM}(n, s)$ converges to the exponent of the largest prime:
-          \begin{equation*}
-                \lim_{s\to\infty} \text{WAM}(n, s) = \max_i \alpha_i.
-          \end{equation*}
-    \item Consider $Real(s) < 1$. Then when $n$ ranges over $abc$-triples, we prove the following asymptotic behaviour:
-            \begin{equation*}
-                \limsup_{n\to\infty} |\text{WAM}(n, s)| = +\infty.
-            \end{equation*}
-    \item For $s$ in the complex plane, $\text{WAM}(n, s)$ has a large number of isolated poles as shown in figure \ref{fig:div} and \ref{fig:wam_complex_plane_zoomed} below. 
-\end{itemize}
 
+\begin{theorem}
+    For large $s$, $\text{WAM}(n, s)$ converges to the exponent of the largest prime:
+    \begin{equation*}
+        \lim_{s\to\infty} \text{WAM}(n, s) = \max_i \alpha_i.
+    \end{equation*}
+\end{theorem} 
+\begin{theorem}
+    Consider $Real(s) < 1$. Then when $n$ ranges over $abc$-triples, we prove the following asymptotic behaviour:
+    \begin{equation*}
+        \limsup_{n\to\infty} |\text{WAM}(n, s)| = +\infty.
+    \end{equation*}
+\end{theorem} 
+\begin{conjecture}
+    \label{conj:crit-line}
+    On the line $s = 1 + \iota t, \;\limsup_n|\text{WAM}(n, 1 + \iota t)|$ is bounded on the segment $(-t_{crit}, t_{crit})$ and diverges elsewhere.
+\end{conjecture}
+Note: Conjecture \ref{conj:crit-line} has been made on limited empirical data and potentially needs major modifications.
+
+For $s$ in the complex plane, $\text{WAM}(n, s)$ has a large number of isolated poles as shown in figure \ref{fig:div} and \ref{fig:wam_complex_plane_zoomed} below. 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
@@ -106,17 +114,19 @@ Amongst many others, some simple properties (that were discovered while trying t
 This pattern of poles is reminiscent of various zeta functions and this is an area we are actively exploring. (\textbf{Note:} Divergence to $+\infty$ in the left half plane is not visible because we are taking a max over finitely many triples.)
 We are currently exploring the connections to zeta functions, the behaviour of $\text{WAM}(n,s)$ on non $abc$-triples and the region $Real(s) > 1$ amongst many other intriguing questions. We are incorporating this new found knowledge about $\text{WAM}(n,s)$ into our symbolic search for conjectures.
 \begin{remark}
-    This project highlights an important methodological point in the process of mathematical discovery. There are certain properties of $\text{WAM}(n,s)$ that we had to naturally examine \textit{because} we were trying to find conjectures.
+    This project highlights an important methodological point in the process of mathematical discovery. There are certain properties of $\text{WAM}(n,s)$ that we naturally examined \textit{because} we were trying to find conjectures.
 \end{remark}
 
 \section{Conjectures as sub-goals in proof formalization}
 \label{sec:conj-formal}
-I supervised Deepro Choudhary's MPhil project, where we explored the idea of using conjectures as sub-goals to aid the process of formal theorem proving.  
+I was part of the supervision team for Deepro Choudhary's MPhil project. We explored the idea of using conjectures as sub-goals in the process of formal theorem proving.  
 The program of formal theorem proving is based on the Curry-Howard isomorphism \cite{Howard1980-HOWTFN-2} which posits an equivalence between a mathematical proof and certain kinds of computer programs. Colloquially, ``a proof is a program and the formula it proves is the type of the program''.
 As discussed in previous chapters, formalisation of mathematics has become a major area of research for both the mathematics and computer science community.
 \par
 The basic proposal of this project was to use conjectures as a stepping stone while formalising theorems. This would be in a manner analogous to a `cut'\footnote[1]{A `cut' is a rule of inference in sequent calculus} or informally, an intermediate goal. 
-The cut-elimination theorem was proved by the famous logician Gentzen in \cite{gentzenUntersuchungenUeberLogische1935}. It states that any sequent\footnote[2]{A sequent is conditional assertion. Suppose $A_1,\dots,A_m\;\vdash\; B_1,\dots,B_n$. This is a sequent if when all $A_1,\dots,A_m$ are true, at least one of $B_1,\dots,B_n$ is true.} that can be proved in sequent calculus without cuts can also be proved with cuts. 
-This has turned out to be influential in all modern proof systems. Cuts are known to exponentially reduce the size of the search space \cite{Boolos1984,ed8c6549bwf9}.\\ The goal of automated theorem proving (`autoformalisation') is to solve mathematics problems by first translating them into the formal syntax of a chosen proof assistant and then use this assistant to produce a formal, verified proof. There have been a flurry of results in this field, propelled by the advent of LLMs which have made progress in translating human mathematics into formal syntax \cite{wuAutoformalizationLargeLanguage, jiangDraftSketchProve2023, jiangLISA2021}.
+The cut-elimination theorem was proved by the famous logician Gentzen in \cite{gentzenUntersuchungenUeberLogische1935}. It states that any sequent\footnote[2]{A sequent is conditional assertion. Suppose $A_1,\dots,A_m\;\vdash\; B_1,\dots,B_n$. This is a sequent if when all $A_1,\dots,A_m$ are true, at least one of $B_1,\dots,B_n$ is true.} that can be proved in sequent calculus with cuts can also be proved without cuts. 
+This has turned out to be influential in all modern proof systems. Cuts are known to exponentially reduce the size of the search space \cite{Boolos1984,ed8c6549bwf9}.\\ The goal of automated theorem proving (`autoformalisation') is to solve mathematics problems by first translating them into the formal syntax of a chosen proof assistant and then use this assistant to produce a formal, verified proof. There has been a flurry of results in this field, propelled by the advent of LLMs which have made progress in translating human mathematics into formal syntax \cite{wuAutoformalizationLargeLanguage, jiangDraftSketchProve2023, jiangLISA2021}.
 \par
-In this project, we were able to show slight improvement over the previous state-of-the-art performance on the GSM8k and MiniF2F datasets \cite{GSM8k,Minif2f}. This establishes an initial proof-of-concept of utilising conjectures as sub-goals in formalisation. We are currently working on running a larger scale analysis to ensure statistical significance of our results and submit this work to a conference.
+Our starting point was to adapt the Draft, Sketch and Proof framework \cite{jiangDraftSketchProve2023} which was the baseline we tested our results against. An overview of the pipeline is as follows: Suppose we are presented a high-school word problem, a la, the GSM8k \cite{GSM8k} dataset. We first `draft' an informal (human) proof. This was done through an LLM with few-shot learning \cite{NEURIPS2020_1457c0d6}. Next, we generate conjectures relevant to this problem. We tested conjectures from both the conjecture machine (Implementation \ref{sec:implementation}) and LLMs. We then attempt to formally prove the conjectures. The conjectures that pass this check are kept and the rest are discarded. We then generate a `sketch' of the formal proof (In Isabelle \cite{IsabelleHOL} syntax) based on this informal proof and utilising the kept conjectures. 
+The proof assistant then attempts to prove this `sketch'.
+\par We were able to show slight improvement over the previous state-of-the-art performance on the GSM8k and MiniF2F datasets \cite{GSM8k,Minif2f}. In particular, there were problems that could not be solved without introducing conjectures. This establishes an initial proof-of-concept of the utility of conjectures as sub-goals in formalisation. At this stage the results are not statisically significant. We are currently running a larger scale analysis to check whether these improvements are indeed statiscially significant and working on submitting this to a conference.
