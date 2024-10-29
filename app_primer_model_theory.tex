@@ -1,19 +1,19 @@
 \chapter{A primer on Model Theory}
 \label{chap:model-theory}
-For the purpose of this appendix I assume some basic terminology from first-order logic and present some definitions and results from model theory.
+For the purpose of this appendix I assume some basic terminology from first-order logic and present some definitions and results from model theory. For a detailed introduction and proofs, please see \cite{changModelTheory1990,Dries_1998}.
 
-\begin{definition}[Definable set \cite{changModelTheory1990}]
+\begin{definition}[Definable set]
     \label{def:definable-set}
     Let $\mathcal{L}$ be a first-order language, $\mathcal{M}$ an $\mathcal{L}$-structure with domain $M$, $X$ a fixed subset of $M$ and $n$ a natural number. \\
     Then a set $A\subseteq M^n$ is \textit{definable} in $\mathcal{M}$ with parameters from $X$ if and only if there exists a formula $\varphi[x_1,x_2,...,x_n,y_1,...,y_m]$ and elements $b_1,...,b_m\in X$ such that for all $a_1,...,a_n\in M, (a_1,...,a_n)\in A$ if and only if $\mathcal{M}\models\varphi[a_1,...,a_n,b_1,...,b_m]$
 \end{definition}
 
-\begin{definition}[Definable function \cite{Dries_1998}]
+\begin{definition}[Definable function]
     \label{def:definable-function}
     Consider definable sets $X, Y$ in some structure. The function $f:X\mapsto Y$ is definable iff the graph of $f$ is a definable subset of $X\times Y$.
 \end{definition}
 
-\begin{definition}[Elementary Equivalence \cite{changModelTheory1990}]
+\begin{definition}[Elementary Equivalence]
     \label{def:elementary-equivalence}
     Let $\mathcal{L}$ be a first-order language. Consider $\mathcal{L}$ models $\mathcal{A}, \mathcal{B}$. $\mathcal{A}$ and $\mathcal{B}$ are \textit{elementary equivalent} if they have the same true $\mathcal{L}$-sentences, i.e., for every $\mathcal{L}$-sentence, $\varphi, \mathcal{A}\models\varphi \text{ iff }\mathcal{B}\models\varphi$. Then $\mathcal{A}\equiv\mathcal{B}$ 
 \end{definition}
@@ -25,6 +25,27 @@ For the purpose of this appendix I assume some basic terminology from first-orde
         \{x\in\R^n : f(x) = 0, g_1(x)>0,...,g_k(x)>0\}
     \end{equation*}
     where $f$ and $g$'s are real polynomials in $n$ variables.
+\end{definition}
+
+\begin{definition}[Structure]
+    \label{def:structure}
+    A structure $S$ on the real line consists of a boolean algebra $S_n$ of subsets of $\R^n$ for each $n\in\N$ such that the following hold:
+    \begin{enumerate}
+        \item The diagonals $\Delta_{ij} := \{x\in\R^n: x_i=x_j\}, 1\leq i<j\leq n$ belong to $S_n$.
+        \item $A\in S_m, B\in S_n\implies A\times B\in S_{m+n}$
+        \item $A\in S_{n+1}\implies\pi(A)\in S_n$, where $\pi:\R^{n+1}\mapsto\R^n$ is the projection map defined by $\pi(x_1,\dots,x_{n+1}) = (x_1,\dots,x_n)$
+        \item The ordering $\{(x,y)\in\R^2: x < y\}$ of the real line belongs to $S_2$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[o-minimal structure]
+    \label{def:o-minimal-structure}
+    A structure $S$ on the real line is o-minimal if the sets in $S_1$ are exactly the finite unions of intervals and points.
+\end{definition}
+
+\begin{definition}[$R_{alg}$]
+    \label{def:ralg}
+    $R_{alg}$ is the o-minimal structure whose definable sets are precisely the semi-algebraic sets.
 \end{definition}
 
 For o-minimal structures, we have the following theorem:
