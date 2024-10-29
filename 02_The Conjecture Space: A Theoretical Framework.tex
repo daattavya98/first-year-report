@@ -6,7 +6,7 @@
 \section{The Conjecture Space}
 \label{sec:conj-space}
 The conjecture space was introduced in \cite{mishraConjGen2023} by Mishra et.al. This framework can be utilized as a tool to study conjectures that can be expressed as inequalities involving continuous functions. This is a starting point to explore the notion 
-of a space of conjectures as a meta-mathematical tool that can be used for mathematical dicovery across sub-disciplines. One of the major goals of my thesis is to try to extend this formalism beyond inequalities involving continuous functions and hence cover wider classes of mathematical statements. 
+of a space of conjectures as a meta-mathematical tool that can be used for mathematical dicovery across sub-disciplines. One of the goals of the thesis is to extend this formalism beyond inequalities involving continuous functions and hence cover wider classes of mathematical statements. 
 I describe the conjecture space along with some useful results below (\textit{In preparation: Challenger Mishra, Rahul Sarkar and Daattavya Aggarwal}).
 
 \begin{definition}[Relation Space]
@@ -103,10 +103,10 @@ The crucial argument is captured by part of \citeauthor{Baldwin_2018}'s theses i
 
 I believe this focus on \textit{local} formalisations of specific areas is an essential feature of a math discovery system. This emulates the process of working mathematicians and avoids some of the shortcomings of global formalisation. The decisive advantage of model theory is in the ability to systematically compare these formalisations and \textit{classify theories}\footnote[3]{A formal theory is a set of sentences in a formal language \cite{changModelTheory1990}}.
 These are \textit{meta-mathematical tools} (Initially coined by the famous logician Tarski). They allow us to study these local theories as mathematical objects themselves.
-\par Restriction to \textit{definable} (See \ref{def:definable-set}) subsets is desirable in most of mathematics. Speaking loosely, `definable' objects in a structure are those which arise naturally, i.e., when pathological cases are disallowed. As an example, focus on definable sets has led to understanding the method of quantifier elimination \cite{robinsonApplicationSymbolicLogic1952,TarskiDecisionMethod} which has wide ranging applications in algebra and field theory.
+\par Restriction to \textit{definable} subsets is desirable in most of mathematics. Speaking loosely, `definable' objects in a structure are those which arise naturally, i.e., when pathological cases are disallowed. As an example, a focus on definable sets has led to understanding the method of quantifier elimination \cite{robinsonApplicationSymbolicLogic1952,TarskiDecisionMethod} which has wide ranging applications in algebra and field theory.
 Stability theory has led to a  new direction that is epistemologically fruitful: the classification of complete, first-order theories into finitely many kinds. This allows for comparisons amongst local formalizations as described above.\\
 A combination of these tools led to the discovery of \textit{o-minimality} in the 1980s \cite{pillayDefinableSetsOrdered1986, DENDRIES198497}. o-minimality has had successful applications in arithmetic geometry \cite{binyaminiWilkiesConjecturePfaffian2022,binyaminiBoundsRationalPoints2023}, analysis \cite{pilaOminimalityAndreOortConjecture2011}, hodge theory and recently even string theory \cite{douglasTamenessQuantumField2022,grimmComplexityTameQuantum2023,grimmFinitenessTheoremsCounting2023,grimmTamenessStringsDistance2022}!
-Importantly, definability and o-minimality in particular are thought of as realizations of `tameness' and Grothendieck's `tame topology' \cite{acampoGrothendieckTameTopology2016, piekoszTameTopology2023}.
+Definability and o-minimality in particular are thought of as realizations of `tameness' and Grothendieck's `tame topology' \cite{acampoGrothendieckTameTopology2016, piekoszTameTopology2023}.
 \par
 Some of the central questions I am interested in potentially link contemporary model theory to mathematical discovery:
 \begin{itemize}
@@ -118,7 +118,7 @@ Some of the central questions I am interested in potentially link contemporary m
 \subsection{Connexions between o-minimality and \texorpdfstring{$\mathcal{C}$}{C}}
 \label{sec:ominimal-connexions}
 The analysis below is limited to the implementation of the conjecture space
-on a computer (See \ref{sec:implementation} for further details). This means I only consider a \textit{finite} number of continuous functions. Thus $\mathcal{R}$ and $\mathcal{C}$ will be \textit{finite}-dimensional Banach spaces rather than infinite-dimensional. This greatly simplifies the analysis. After conversations with Professor Jonathan Kirby (Reader in mathematical logic at University of East Anglia) and Professor Anuj Dawar (Department of Computer Science and Technology, University of Cambridge), it is very likely that to fully utilise tools from model theory, we have to extend our analysis to the more general, infinite-dimensional case.
+on a computer (See \ref{sec:implementation} for further details). This means I only consider a \textit{finite} number of continuous functions. Thus $\mathcal{R}$ and $\mathcal{C}$ will be \textit{finite}-dimensional Banach spaces rather than infinite-dimensional. This greatly simplifies the analysis. After conversations with Professor Jonathan Kirby (Reader in mathematical logic at University of East Anglia) and Professor Anuj Dawar (Department of Computer Science and Technology, University of Cambridge), it seems likely that to fully utilise tools from model theory, we have to extend our analysis to the more general, infinite-dimensional case.
 This is a major area of interest that I plan to work on during the coming terms, potentially in collaboration with Professor Kirby and Professor Dawar. I present the current state of the analysis below (For basic definitions, please refer to appendix \ref{chap:model-theory}):
 
 \subsubsection{o-minimality in the Finite Dimensional Case}
@@ -223,7 +223,7 @@ The basic setup is as follows (For notation and definitions please see \ref{sec:
             \item[$\blacktriangleright$] As a discrete set of points (Can be useful if there are specific points/regions where a function is known to have interesting behaviour. For example, many number theoretic functions have intereseting behaviour at very large primes.)
             \item[$\blacktriangleright$] As an interval box, $\mathcal{I}^n = [min, max]\times_1...\times_n[min, max]$ with a choice of range and arbitrary precision (by varying the number of points).
           \end{itemize}
-          In case (i), I utilize SymPy \cite{10.7717/peerj-cs.103} implementations of the functions where available or write a custom implementation that is compatible with SymPy. In case (ii), a symbol is assigned to the function evaluations and manipulated as a SymPy symbol. The function box then consists of all such symbols.
+          In case (i), I either utilize SymPy \cite{10.7717/peerj-cs.103} implementations of the functions where available or write a custom method that is compatible with SymPy. In case (ii), a symbol is assigned to the function evaluations and manipulated as a SymPy symbol. The function box then consists of all such symbols.
     \item 
         \textbf{Optimization:} As described in \ref{loss}, the optimization problem is finding tuples $\alpha = (\alpha_1,...,\alpha_{|\mathcal{F}|})$, such that the loss is zero. Let $\alpha_{init}\in\R^{|\mathcal{F}|}$ be an initial, randomly chosen tuple of coefficients.
         There are multiple options for loss functions, that satisfy the condition in \ref{loss}. I focus on a differentiable, signum-based loss function that is amenable to a number of different learning algorithms.
@@ -293,13 +293,18 @@ I am omitting other conjectures involving the same functions to cover a larger d
 \label{sec:symbolic-implement}
 To move beyond linear parameterisation for elements in the relation space (rf:\ref{loss}), Viktor Mirjanic and I have developed a pipeline that allows for non-linear symbolic expressions involving functions in the function box. We utilise the technique of symbolic regression, implemented with PySR \cite{cranmerInterpretableMachineLearning2023}. We ensure that the expressions found in this manner are still valid elements of $\mathcal{C}$ by choosing the unary and binary operators of our PySR implementation accordingly.
 The input, loss functions and output are similar to the basic setup described in section \ref{sec:basic-setup}. PySR provides the `complexity' of an operator/variable as a tunable parameter. This simply refers to the number of times an operator/variable is allowed to appear in the expression. We are able to tune this parameter to penalize or promote the complexity of an expression while simultaneously ensuring that the signum loss is zero. We can also control the total `size' (A count of the number of operators in the expression) of the output.
-An example of a conjecture found by this implementation: 
-\begin{equation}
-    \label{eq:symbolic-conj}
-    \varphi\left(\Omega\left(Primorial\left(\exp\left(\frac{\exp(\cos(x))}{(x + x*\Omega(x))}\right)\right)\right)\right)\geq 0    
-\end{equation} 
-where $\varphi$ is the Euler totient function and $\Omega$ is the prime omega function. The function box in this example is $\mathcal{F} = \{\varphi, \Omega, Primorial\}$. 
-$\exp,\cos$ and $x$ are unary parameters. $+,*$ are binary parameters. These choices ensure that continuity is maintained and that equation \ref{eq:symbolic-conj} is an element of $\mathcal{C}$. This allows for a wider class of expressions than the basic setup and I am currently utilising this implementation in some applications.
+An example of a conjecture found by this implementation:
+\begin{exmp}
+    \label{exmp:symbolic-conj}
+    \begin{equation*}
+        \label{eq:symbolic-conj}
+        \varphi\left(\Omega\left(Primorial\left(\exp\left(\frac{\exp(\cos(x))}{(x + x*\Omega(x))}\right)\right)\right)\right)\geq 0    
+    \end{equation*}     
+    where $\varphi$ is the Euler totient function and $\Omega$ is the prime omega function. The function box in this example is $\mathcal{F} = \{\varphi, \Omega, Primorial\}$. 
+    $\exp,\cos$ and $x$ are unary parameters. $+,*$ are binary parameters. These choices ensure that continuity is maintained and that equation \ref{eq:symbolic-conj} is an element of $\mathcal{C}$.
+\end{exmp} 
+
+This allows for a wider class of expressions than the basic setup and I am currently utilising this implementation in some applications.
 
 I am currently updating the implementation in section \ref{sec:basic-setup} to be more efficient when scaling to larger amounts of data. Specifically, I am refactoring the system to be compatible with JAX \cite{jax2018github}. The tangible goal is to publish this pipeline as a package and make it accessible to the community.
 
@@ -316,18 +321,18 @@ Currently, a key focus is the `information content' (IC) of a conjecture. We pro
 \end{definition}
 This is a \textit{local} notion in the sense that for a given implementation of $\mathcal{C}$ (for instance, section \ref{sec:implementation}), the tightness of an inequality is with reference to the other possible inequalities in the function box $\mathcal{F}$. We have preliminary evidence that inequality conjectures that are accepted as `interesting' by the mathematical community, tend to be tighter than their counterparts. \\
 The second aspect of the IC of a conjecture is its \textit{surprisingness}. As described by \citeauthor{bengioMachineLearningInformation2024} in \cite{bengioMachineLearningInformation2024}, a possible implementation of surprisal is the following:
-Consider a math discovery model that has actively learned \cite{activeLeanringSurvey} a set of mathematical statements, $T(S)$. Now suppose we discover a new statement, $t$ for which we have a truth value. Now, an implementation of surprisal is a `epistemic uncertainty heuristic'. By measuring the estimated entropy,
+Consider a math discovery model that has learned a set of mathematical statements, $T(S)$. Now suppose we discover a new statement, $t$, for which we have a truth value. An implementation of surprisal is an `epistemic uncertainty heuristic'. By measuring the estimated entropy,
 \begin{equation*}
     \mathbb{E}_{P(t|T(S))}[-\log P(t|T(S))],
 \end{equation*}
-of the truth value of the new statement $t$, we can estimate the information gain or expected surprise of this statement.
+of the truth value of the new statement $t$, we can estimate the information gain or expected surprise.
 Can something similar be done when the statement $t$ is a conjecture?
-\par For heuristics of interestingness to be well-defined on the conjecture space, they must be compatible with our notion of equivalence (\ref{prop:equivalent-conjectures}).
+\par For heuristics of interestingness to be well-defined on the conjecture space, they must be compatible with our notion of equivalence (\ref{prop:equivalent-conjectures}). We require:
 \begin{equation*}
     \forall f_1, f_2 \text{ such that } f_1\sim f_2,\quad \mathcal{I}_H (f_1) = \mathcal{I}_H (f_2)
 \end{equation*}
 where $\mathcal{I}_H$ is an arbitrary interestingness heuristic.\\
-The initial attempt at a heuristic for IC, was to measure the information entropy \cite{shannonIE1948} of a conjecture (in the implementation \ref{sec:implementation}) in the following way:
+Our initial attempt at a heuristic for IC, was to measure the information entropy \cite{shannonIE1948} of a conjecture (in the implementation \ref{sec:implementation}) in the following way:
 \begin{equation*}
     H(f) = -\sum_{x\in f(\Omega)}p(x)\log(p(x))
 \end{equation*}
@@ -373,7 +378,7 @@ Mathematical discovery seems both harder and very different to the sort of games
 The process of discovery followed by such a system would be closer to that of working mathematicians and perhaps more likely to pass the interpretability and non-triviality criteria of the Birch test (See \ref{sec:machine-guided-math}). The \textit{revising agents} can potentially overcome one of the shortcomings of current formalisation systems. One of the issues with proof assistants (purely in the context of math discovery) is that it is extremely difficult to analyse at what step a formaliser fails. While working on using conjectures as sub-goals in formalisation (please see \ref{sec:conj-formal}), it became clear that it is very difficult to isolate \textit{why} a certain formalisation attempt fails (namely what `tactic' fails) while another succeeds.
 This information could be extremely helpful to revise statements in a mathematically meaningful way. This seems to be in line with Lakatos' description of monster or exception barring \cite{Lakatos_Worrall_Zahar_1976}. Specifically, by isolating what sub-goal a proof assistant is unable to achieve, we can update that local region instead of throwing away the entire `global' proof attempt. We are exploring these connexions in more detail (To appear in the article referenced at the end of the introduction \ref{intro:article}).
 \par
-This is an idea that has come to the forefront towards the end of my first year. Currently, the \textit{refuting} and \textit{revising} agents mentioned above require the most thought when it comes to design. It seems that is a mixed setting where some types of agents are cooperative (for instance the conjecturing and revising agents) and others are competitive (for instance the conjecturing and refuting agents).  The tangible goals in this direction are: 
+This is an idea that has come to the forefront towards the end of my first year. Currently, the \textit{refuting} and \textit{revising} agents mentioned above require the most thought when it comes to design. It seems that a mixed setting where some types of agents are cooperative (for instance the conjecturing and revising agents) and others are competitive (for instance the conjecturing and refuting agents) is a sound approach.  The tangible goals in this direction are: 
 \begin{itemize}
     \item First, to develop a proof-of-concept of the approach, by re-discovering interesting but known mathematical statements. This will help straighten out the kinks in the design of the MAS.
     \item To discover interesting mathematical statements with this approach.
