@@ -19,7 +19,7 @@ I describe the conjecture space along with some useful results below (\textit{In
     \begin{equation*}
         f:\Omega\rightarrow\R
     \end{equation*}
-    We will call this Banach space, the \textit{Relation Space}, $\crlR$
+    We will call this Banach space, the \textit{Relation Space}, $\crlR$.
 \end{definition}
 
 Following on from the definition of the Relation space~\ref{def:space-relations}, we can define the \textit{Conjecture Space} as follows:
@@ -101,11 +101,11 @@ The crucial argument is captured by part of \citeauthor{Baldwin_2018}'s theses i
     \item Modern model theory allows us to systematically compare these \textit{local}, \textit{specific} formalisations for distinct mathematical areas. This allows us to organize and analyse mathematical practice.
 \end{itemize}
 
-I believe this focus on \textit{local} formalisations of specific areas is an essential feature of a math discovery system. This emulates the process of working mathematicians and avoids some of the shortcomings of global formalisation. The decisive advantage of model theory is in the ability to systematically compare these formalisations and \textit{classify theories}\footnote[3]{A formal theory is a set of sentences in a formal language \cite{changModelTheory1990}}.
+I believe this focus on \textit{local} formalisations of specific areas is a promising approach for a math discovery system. This avoids some of the shortcomings of global formalisation and lets us work with harder, non-trivial statements that are dependent on the local structure of the problem. The decisive advantage of model theory is in the ability to systematically compare these local formalisations and \textit{classify theories}\footnote[3]{A formal theory is a set of sentences in a formal language \cite{changModelTheory1990}}.
 These are \textit{meta-mathematical tools} (Initially coined by the famous logician Tarski). They allow us to study these local theories as mathematical objects themselves.
 \par Restriction to \textit{definable} subsets is desirable in most of mathematics. Speaking loosely, `definable' objects in a structure are those which arise naturally, i.e., when pathological cases are disallowed. As an example, a focus on definable sets has led to understanding the method of quantifier elimination \cite{robinsonApplicationSymbolicLogic1952,TarskiDecisionMethod} which has wide ranging applications in algebra and field theory.
-Stability theory has led to a  new direction that is epistemologically fruitful: the classification of complete, first-order theories into finitely many kinds. This allows for comparisons amongst local formalizations as described above.\\
-A combination of these tools led to the discovery of \textit{o-minimality} in the 1980s \cite{pillayDefinableSetsOrdered1986, DENDRIES198497}. o-minimality has had successful applications in arithmetic geometry \cite{binyaminiWilkiesConjecturePfaffian2022,binyaminiBoundsRationalPoints2023}, analysis \cite{pilaOminimalityAndreOortConjecture2011}, hodge theory and recently even string theory \cite{douglasTamenessQuantumField2022,grimmComplexityTameQuantum2023,grimmFinitenessTheoremsCounting2023,grimmTamenessStringsDistance2022}!
+Stability theory has led to a  new direction that is epistemologically fruitful: the classification of complete, first-order theories into finitely many kinds. This allows for comparisons amongst local formalizations as described above.
+\par A combination of these tools led to the discovery of \textit{o-minimality} in the 1980s \cite{pillayDefinableSetsOrdered1986, DENDRIES198497}. o-minimality has had successful applications in arithmetic geometry \cite{binyaminiWilkiesConjecturePfaffian2022,binyaminiBoundsRationalPoints2023}, analysis \cite{pilaOminimalityAndreOortConjecture2011}, hodge theory and recently even string theory \cite{douglasTamenessQuantumField2022,grimmComplexityTameQuantum2023,grimmFinitenessTheoremsCounting2023,grimmTamenessStringsDistance2022}!
 Definability and o-minimality in particular are thought of as realizations of `tameness' and Grothendieck's `tame topology' \cite{acampoGrothendieckTameTopology2016, piekoszTameTopology2023}.
 \par
 Some of the central questions I am interested in potentially link contemporary model theory to mathematical discovery:
@@ -122,10 +122,10 @@ on a computer (See \ref{sec:implementation} for further details). This means I o
 This is a major area of interest that I plan to work on during the coming terms, potentially in collaboration with Professor Kirby and Professor Dawar. I present the current state of the analysis below (For basic definitions, please refer to appendix \ref{chap:model-theory}):
 
 \subsubsection{o-minimality in the Finite Dimensional Case}
-Consider $\R_{alg}$ (\ref{def:ralg}), the simplest o-minimal structure (\ref{def:o-minimal-structure}) whose definable sets are exactly the semi-algebraic sets (\ref{def:semialgebraic-set}). We are interested in analysing elements of the Relation space, $\crlR$.
+Consider $\R_{alg}$ (\ref{def:ralg}), the simplest o-minimal structure (\ref{def:o-minimal-structure}), whose definable sets are exactly the semi-algebraic sets (\ref{def:semialgebraic-set}). We are interested in analysing elements of the Relation space, $\crlR$.
 These are $C^0$ real-valued functions, $f:\Omega\mapsto\R$, where $\Omega$ is a compact subset of $\R^n$.
 
-By the Heine-Borel theorem \cite{Caradus_1967}, $\Omega$ must be closed and bounded. By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\R^n:|x - a| < r\}$. \\$B(a, r)$ is definable in $\R_{alg}$, by the following first-order formula:
+By the Heine-Borel theorem \cite{Caradus_1967}, $\Omega$ must be closed and bounded. By definition, a bounded set is contained in an open ball, $B(a,r) = \{x\in\R^n:|x - a| < r\}$. \\ This condition is definable in $\R_{alg}$, by the following first-order formula:
 
 \begin{equation*}
     \exists r\;\forall x \quad (x - a) < r\; \vee \; (a - x) > r
@@ -177,7 +177,7 @@ Some of the questions to explore are:
     \item Is there any connexion between `meta-properties' of the conjectures (interesting/trivial conjectures for example) and o-minimal properties of this definable set (finiteness, stratifications, decompositions etc. \cite{Dries_1998})? Can these connexions be leveraged in a meaningful way?
 \end{itemize}
 
-As mentioned in the introduction to this section, the above analysis can potentially become a lot more interesting once we can analyse the infinite dimensional case. I believe that the convergence results presented in \cite{thomasConvergenceResultsFunction2012} is a promising starting point to extend this analysis.
+As mentioned in the introduction to this section, the above analysis can potentially become a lot more interesting once we can analyse the infinite dimensional case. I believe that the convergence results presented in \cite{thomasConvergenceResultsFunction2012} are a promising starting point to extend this analysis.
 \begin{remark}
     Another possible source of model theory connexions is to work with continuous logic rather than discrete logic and utilise results from model theory on Banach spaces \cite{yaacovModelTheoryMetric2008}. Continuous first-order logic (CFO) is a generalisation of first-order logic (FOL) (Simply consider any structure in FOL as a metric structure where the underlying metric $d$ is discrete, i.e, $d(a, b) = 1$ for distinct $a, b$). Basic results that hold in CFO can be framed as generalisations of corresponding results in FOL. 
     This direction might turn out to be more fruitful as Banach spaces are more natural objects in this setting. I am currently working through \cite{yaacovModelTheoryMetric2008}.   
@@ -187,8 +187,8 @@ As mentioned in the introduction to this section, the above analysis can potenti
 \label{sec:theorem-spaces}
 A related concept to the conjecture space, $\mathcal{C}$, is what I define as the space of mathematical theorems, $\mathfrak{T}$. Note that this is a subspace of the conjecture space as every element of $\mathfrak{T}$ trivially satisfies the membership criteria of $\mathcal{C}$:
 there are no counter-examples to a theorem on any domain.
-$\mathfrak{T}$ itself contains a furthermore rigorous subset that I name the `space of formal theorems', $\mathfrak{T}_F$. $\mathfrak{T}_F$ is the set of theorems that have been formalised in at least one proof assistant (Lean, Isabelle etc). Clearly $\mathfrak{T}_F\subset\mathfrak{T}$. A potential upside of working with $\mathfrak{T}_F$ is that there is a growing database of formalised theorems due to the widespread interest and ingenuity of the formalization community \cite{mathlib, DiskPaxos-AFP}.
-As described in the introduction, a number of recent work such as \cite{AlphaProof} and \cite{trinhSolvingOlympiadGeometry2024} involve training models on datasets of formal theorems. A natural direction of inquiry is what is the connexion, if any, between the elements of these spaces?
+$\mathfrak{T}$ itself contains a furthermore rigorous subset that I name the `space of formal theorems', $\mathfrak{T}_F$. $\mathfrak{T}_F$ is the set of theorems that have been formalised in at least one proof assistant such as Lean \cite{LeanCADE2015} or Isabelle \cite{IsabelleHOL}. Clearly $\mathfrak{T}_F\subset\mathfrak{T}$. A potential upside of working with $\mathfrak{T}_F$ is that there is a growing database of formalised theorems due to the widespread interest and ingenuity of the formalization community \cite{mathlib, DiskPaxos-AFP}.
+As described in the introduction, a number of recent work such as AlphaProof \cite{AlphaProof} and AlphaGeometry \cite{trinhSolvingOlympiadGeometry2024} involve training models on datasets of formal theorems. A natural direction of inquiry is what is the connexion, if any, between the elements of these spaces?
 \par
 It is clear that $\mathfrak{T}_F\subset\mathfrak{T}\subset\mathcal{C}$. Datasets on $\mathfrak{T}_F$ have been leveraged for a variety of learning techniques. These models have achieved impressive accuracies on solving benchmark mathematics problems, available in datasets like miniF2F and ProofNet \cite{Minif2f,azerbayev2023proofnetautoformalizingformallyproving}. We now also have access to competition problem datasets such as PutnamBench \cite{tsoukalas2024putnambench}. Improving AI models' ability to solve these competition level problems with formally verified proofs
 is an active and fruitful area of research. However, based on some of the arguments in chapter \ref{chap:intro}, I believe there is still work to be done for these models to be helpful in mathematical discovery.
@@ -291,7 +291,7 @@ I am omitting other conjectures involving the same functions to cover a larger d
 
 \subsection{Beyond Linear Parameters}
 \label{sec:symbolic-implement}
-To move beyond linear parameterisation for elements in the relation space (rf:\ref{loss}), Viktor Mirjanic and I have developed a pipeline that allows for non-linear symbolic expressions involving functions in the function box. We utilise the technique of symbolic regression, implemented with PySR \cite{cranmerInterpretableMachineLearning2023}. We ensure that the expressions found in this manner are still valid elements of $\mathcal{C}$ by choosing the unary and binary operators of our PySR implementation accordingly.
+To move beyond linear parameterisation for elements in the relation space (rf:\ref{loss}), Viktor Mirjanic and I have developed a pipeline that allows for non-linear, symbolic expressions involving functions in the function box. We utilise the technique of symbolic regression, implemented with PySR \cite{cranmerInterpretableMachineLearning2023}. We ensure that the expressions found in this manner are still valid elements of $\mathcal{C}$ by choosing the unary and binary operators of our PySR implementation accordingly.
 The input, loss functions and output are similar to the basic setup described in section \ref{sec:basic-setup}. PySR provides the `complexity' of an operator/variable as a tunable parameter. This simply refers to the number of times an operator/variable is allowed to appear in the expression. We are able to tune this parameter to penalize or promote the complexity of an expression while simultaneously ensuring that the signum loss is zero. We can also control the total `size' (A count of the number of operators in the expression) of the output.
 An example of a conjecture found by this implementation:
 \begin{exmp}
